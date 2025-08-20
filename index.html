@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. [Ihr Name] - Architektur & KI</title>
+    <meta name="description" content="Professor für Entwerfen, Digitale Werkzeuge und KI">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #1a1a1a;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #fff; /* Titelformatierung auf weiß */
+            background: none; /* Entfernt den bisherigen Farbverlauf */
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
+            background-clip: initial;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #FDC5F6; /* Tagline auf rosa */
+            font-weight: 300;
+        }
+        
+        section {
+            margin-bottom: 2.5rem;
+        }
+        
+        details {
+            background: #2a2a2a;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        summary {
+            font-size: 1.3rem;
+            color: #15FFBC;
+            font-weight: 400;
+            border-left: 3px solid #15FFBC;
+            padding: 1rem 1rem 1rem 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            transition: background-color 0.2s ease;
+        }
+        
+        summary:hover {
+            background: #333;
+        }
+        
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 1rem;
+            color: #FDC5F6;
+            font-size: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+        
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+        
+        .section-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #15FFBC;
+            font-weight: 400;
+            border-left: 3px solid #15FFBC;
+            padding-left: 1rem;
+        }
+        
+        .about p {
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+        
+        .focus-areas {
+            display: flex;
+            flex-direction: column; /* Ändere von 'row' auf 'column' */
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            overflow-x: unset;
+        }
+        .focus-item {
+            background: #2a2a2a;
+            padding: 1rem;
+            border-radius: 4px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #FDC5F6; /* Neuer horizontaler Trenner */
+        }
+        
+        .focus-item:last-child {
+            border-bottom: none; /* Letztes Element ohne Linie */
+        }
+        
+        .focus-item h3 {
+            color: #FDC5F6;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project, .course, .keynote {
+            background: #2a2a2a;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border-left: 3px solid #15FFBC;
+        }
+        
+        .project a, .keynote a {
+            color: #15FFBC;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .project a:hover, .keynote a:hover {
+            color: #FDC5F6;
+            text-decoration: underline;
+        }
+        
+        .project h3, .course h3, .keynote h3 {
+            color: #15FFBC;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project p, .course p, .keynote p {
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+        
+        .contact {
+            text-align: center;
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+        }
+        
+        .contact a {
+            color: #15FFBC;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        
+        .contact a:hover {
+            color: #FDC5F6;
+            transition: color 0.2s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        
+        footer a:hover {
+            color: #15FFBC;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 0.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        .keynote-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+}
+.keynote-item {
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid #444;
+}
+.keynote-item:last-child {
+    border-bottom: none;
+}
+.keynote-meta {
+    color: #cccccc;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+.keynote-title {
+    color: #FDC5F6;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Prof. Thomas J. Mrokon</h1>
+            <p class="tagline">Architektur • Digitale Transformation • Künstliche Intelligenz</p>
+        </header>
+
+        <main>
+            <details>
+    <summary>Über mich</summary>
+    <div class="section-content">
+        <p>Thomas Mrokon ist Professor für Entwerfen und Digitale Konstruktion an der Hochschule Mainz und seit 2024 auch Studiengangsleiter Architektur. </p>
+        <p>Mit den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie, Heidelberg“ und „ESO Supernova, Garching“ konnte er seine Expertise im Bereich Computational Design und digitaler Fertigung mit praktischer Innovationskraft kombinieren.</p>
+        <p>Nach einer unternehmerischen Phase mit eigenem Startup (monomer), folgte die Mitarbeit in der neuen Architektur-Abteilung bei Drees&Sommer, bis 2021 der Ruf an die Hochschule Mainz kam.</p>
+        <p>Neben einem weiteren Fokus auf immersive Raumlehre mit VR/AR-Tools, entwickelte sich seit 2023 der Schwerpunkt KI-Anwendungen in der Bauwirtschaft, welcher zwischenzeitlich in einem eigenen Lehrmodul vermittelt wird.</p> 
+        <p>Der Schwerpunkt beim Einsatz von digitalen Werkzeugen liegt auf deren transformativer Wirkung in der gesamten Wertschöpfungskette. Daraus ergeben sich sowohl individuelle als auch gesellschaftliche Implikationen für alle Lebensbereiche.</p>
+        <p>Seit 2023 hält Thomas Mrokon regelmäßig Keynotes und Impulsvorträge rund um das Thema KI für unterschiedliche Zielgruppen.</p>
+        <hr style="border: 0; border-top: 2px solid #FDC5F6; margin: 2rem 0 1.2rem 0;">
+        <p style="font-weight: 500; color: #FDC5F6;">Meine Vision: Eine Welt in der Technologie nicht nur zur Effizienzsteigerung oder als Bedrohung eingesetzt wird, sondern als Mittel zur Freiheitswahrung, Persönlichkeitsentfaltung und Sinnstiftung.</p>
+        <p style="font-style: italic; color: #FDC5F6;">OFFLINE ist das neue Online.</p>
+    </div>
+</details>
+
+            <details>
+                <summary>Schwerpunkte</summary>
+                <div class="section-content">
+                    <div class="focus-areas">
+                        <div class="focus-item">
+                            <h3>Digitale Planung</h3>
+                            <p>Parametrisches Design und algorithmische Architektur ermöglichen komplexe, datengetriebene Entwurfsprozesse. Computational Design hat die Planungskomplexität und -qualität auf ein sehr hohes Niveau gebracht. Multi-Kriterien-Analysen und Optioneering werden zu technischen Methoden, die sowohl Nachhaltigkeitsaspekte, öknomische Faktoren und die Architekturqualität in eine verantwortungsvolle Balance bringen.</p>
+                        </div>
+                        <div class="focus-item">
+                            <h3>Immersive Raumlehre mit VR/AR</h3>
+                            <p>Die Immersion mittels VR/AR erweitert räumliche Gestaltungsprozesse um die wichtige dritte Dimension. Es entstehen neue Freiheiten statt einer zweidimensionalen Abstraktion.</p>
+                        </div>
+                        <div class="focus-item">
+                            <h3>Disruptionen in der Baubranche</h3>
+                            <p>Die träge Bauindustrie erlebt durch KI massive Veränderungen in allen Leistungsphasen und entlang der gesamten Wertschöpfungskette. Während BIM noch eine Option war, wird der Einsatz von KI essentiell.</p>
+                        </div>
+                        <div class="focus-item">
+                            <h3>KI als transformative Technologie</h3>
+                            <p>KI und die Kombination mit Robotik hat massive gesellschaftliche, soziale und geopolitische Auswirkungen auf unsere Arbeitswelt, die Stadtentwicklung und unsere gemeinsame Zukunft. Die ethische Dimensionen von Hyperautomation, Effizienzstrategien und Digitaler Spezien erfordert einen breiten Diskurs.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Projekte</summary>
+                <div class="section-content">
+                    <div class="project">
+                        <h3>Künstliche Intelligenz in der Bau- und Immobilienwirtschaft</h3>
+                        <p>In meinem Beitrag zu diesem Buch geht es um die Digitale Transformation der Planungsphasen und Wertschöpfungsketten im Bauwesen.</p>
+                        <p><a href="https://shop.haufe.de/prod/kuenstliche-intelligenz-in-der-bau-und-immobilienwirtschaft?srsltid=AfmBOoryL_mVVshCuVBMywHDfwGho-6Av0glmYelmELDBUMUaE1LNx04" target="_blank">→ Buchbestellung</a></p>
+                    </div>
+                    <div class="project">
+                        <h3>Lamellenlounge</h3>
+                        <p>Das Semesterprojekt „Digitales Handwerk“ zeigt, wie 34 Architekturstudierende im zweiten Semester mithilfe digitaler und analoger Werkzeuge gemeinsam einen Holzpavillon entwarfen und bauten, wobei innovative Methoden, studentische Selbstorganisation, VR-Design sowie parametrisierte Planung und Holzverbindungen im Vordergrund standen.</p>
+                        <p><a href="https://www.hs-mainz.de/news/campus-award-engere-wahl/?back=443&cHash=f07f9ba6244764bf11d2a7908676ecec" target="_blank">→ Projektdetails</a></p>
+                    </div>
+                    <div class="project">
+                        <h3>Immersive Raumlehre</h3>
+                        <p>Das Lehrprojekt „Immersive Raumlehre“ am Architekturinstitut der Hochschule Mainz untersucht, wie Architekturstudierende mithilfe von Virtual-Reality-Werkzeugen in der Entwurfsphase Architektur räumlich erleben und gestalten können. Dabei werden ausschließlich immersive Tools wie Head-Mounted Displays verwendet, um einen interaktiven, dreidimensionalen und kollaborativen Gestaltungsprozess zu fördern</p>
+                        <p><a href="https://architekturinstitut.hs-mainz.de/projects/immersive-raumlehre" target="_blank">→ Projektdetails</a></p>
+                    </div>
+                    <div class="project">
+                        <h3>monomer</h3>
+                        <p>Monomer transformiert CAD-gefertigte, algorithmisch inspirierte Formen in einzigartige Schmuckstücke via 3D-Druck – ein spannender Transfer von integraler Planungsmethodik in die Welt des filigranen Luxusdesigns</p>
+                        <p><a href="https://next-mannheim.de/monomer/?utm_source=chatgpt.com" target="_blank">→ Interview</a></p>
+                    </div>
+                    <div class="project">
+                        <h3>ESO Supernova, Garching</h3>
+                        <p>Das ESO Supernova-Besucherzentrum interpretiert ein Doppelsternsystem kurz vor der Supernova – zwei ineinander tanzende Kerne umhüllt von einer aufbrechenden Hülle, mit Planetarium im einen, Glaskuppel im anderen Kern, verbunden durch wechselnde Rampen- und Galerieebenen, vollständig in einem parametrischen 3D-Modell geplant und 2019 realisiert.</p>
+                        <p><a href="https://bp-da.de/projekte/besucherzentrum-astronomie-eso-supernova-garching.php" target="_blank">→ Projektdetails und Publikation</a></p>
+                    </div>
+                    <div class="project">
+                        <h3>Haus der Astronomie, Heidelberg</h3>
+                        <p>Als architektonisch parametrisch generierte Spiralgalaxie ruht das nahezu stützenfreie Haus der Astronomie auf lediglich acht Pfeilern, zwei Kernanlagen und einer segmentierten Betonkup­pel, während seine hochkomplexe Fassade aus 392 sphärisch und mehrfach geknickten Metallbauteilen ohne einzige parallele Kante den Raum monumental interpretiert.</p>
+                        <p><a href="https://bp-da.de/projekte/haus-der-astronomie-galaxie-heidelberg.php" target="_blank">→ Projektdetails und Publikation</a></p>
+                    </div>
+                     <div class="project">
+                        <h3>raumsyntax</h3>
+                        <p>Ein Forschungsprojekt mit der congena GmbH zeigt, wie sich mit agentenbasierter Simulation Bewegungsströme in Gebäuden und Quartieren bereits in der Entwurfsphase analysieren lassen, um Wegeführungen, Aufenthaltsqualitäten und funktionale Effizienz von Architektur datenbasiert zu optimieren. Weitere Forschungsprojekte mit der BMW Group für die IAA 2003 und 2005 folgten.</p>
+                        <p><a href="https://www.yumpu.com/de/document/view/4576112/besuchen-sie-uns-im-internet-congena-gmbh" target="_blank">→ Projektbericht</a></p>
+                    </div>
+                         <div class="project">
+                        <h3>Diplomarbeit</h3>
+                        <p>Im Rahmen meiner Diplomarbeit 2004 wurde ein Amsterdamer Stadtquartier mithilfe agentenbasierter Simulation analysiert: Digitale ‚Bewohner‘ mit unterschiedlichen Tageszyklen (Arbeiten, Einkaufen, Freizeit etc.) bewegen sich durch ein virtuelles Modell, wobei Wege, Zeiten und Aufenthaltsorte aufgezeichnet werden. Veränderungen in der Struktur – etwa neue Brücken oder Blockteilungen – lassen sich so quantitativ bewerten. Vier städtebauliche Entwurfskonzepte wurden auf Effizienz und räumliche Wirkung hin verglichen. Die Methode zeigt, wie Architekt:innen schon in der Planungsphase das Nutzerverhalten simulieren, Entwürfe kritisch prüfen und urbane Entwicklungsprozesse partizipativ steuern können. Faktisch meine erste Erfahrunge mit künstlicher Intelligenz.</p>
+                        <p><a href="https://www.rkw-kompetenzzentrum.de/publikationen/dokumentation/auf-it-gebaut-bauberufe-mit-zukunft/verzeichnis-aller-preistraeger-der-wettbewerbe-2002-2012/" target="_blank">→ Auszeichnung "Auf IT gebaut"</a></p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+    <summary>Lehre</summary>
+    <div class="section-content">
+        <div class="focus-areas">
+            <div class="focus-item">
+                <h3>Informierte Architektur</h3>
+                <p>Studierende erlernen diverse digitale Werkzeuge, um Entwürfe bereits in der Frühphase kritisch zu bewerten und die bestmögliche Entscheidung zu treffen. Neben Autodesk Forma werden auch CAALA und ecotool eingesetzt, um das Thema Ökobilanzierung als wichtigen Aspekt in der Entwurfsgestaltung frühzeitig zu verankern.</p>
+            </div>
+            <div class="focus-item">
+                <h3>Immersive Raumlehre</h3>
+                <p>Der räumliche Gestaltungsprozess im virtuellen Raum ist für viele Studierende eine neuartige Erfahrung. Neue geometrische Freiheiten und eine direkte Raumwahrnehmung durch physische Interaktion machen den Entwurfsprozess erlebbar. Die VR/AR Tools Arkio und GravitySketch bringen Virtualität und Realität ganz nah zusammen.</p>
+            </div>
+            <div class="focus-item">
+                <h3>Neue Geschäftsmodelle mit KI</h3>
+                <p>Im Modul "Digitale Konstruktionsprozesse" erhalten Studierende einen Einblick in die aktuellen KI-Entwicklungen in der Baubranche und darüber hinaus. Alleine oder in Teams werden neuartige disruptive Geschäftsmodelle entwickelt, die bisherige Wertschöpfungsketten auf den Kopf stellen.</p>
+            </div>
+        </div>
+    </div>
+</details>
+
+            <details>
+                <summary>Keynotes & Vorträge</summary>
+                <div class="section-content">
+                    <p style="color:#cccccc; margin-bottom:1.2rem;">
+            Hier finden Sie eine Auswahl aktueller und vergangener Keynotes und Vorträge zu den Themen Digitalisierung und KI. Mittlerweile habe ich den Fokus auf die Baubranche verlassen und beschäftige mich auch mit den sozialen und gesellschaftlichen Implikationen der KI-Transformation in allen Lebensbereichen.
+            Kontaktieren Sie mich gerne, wenn Sie Interesse an einem Impuls haben oder eine Kooperation anstreben.
+            
+        </p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">14.11.2025 · Baugenossenschaft Freie Scholle eG, Bielefeld</div>
+                            <div class="keynote-title">in Arbeit</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">06.11.2025 · Blaser Architekten AG "Schauraum B", Basel</div>
+                            <div class="keynote-title">in Arbeit</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">30.09.2025 · Geschäftstelle Lebenshilfe Verden e.V., Verden</div>
+                            <div class="keynote-title">in Arbeit</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">26.09.2025 · DGA BAU, Berlin</div>
+                            <div class="keynote-title">in Arbeit</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">03.07.2025 · Carpus+Partner AG "Cinq á Sept", Frankfurt</div>
+                            <div class="keynote-title">Wie verändert KI das Planen, Arbeiten und Leben?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">13.06.2025 · Rotenburger Wirtschaftsforum, Rotenburg</div>
+                            <div class="keynote-title">Künstliche Intelligenz verändert alles - nur nicht den Menschen?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">22.05.2025 · Architektenkammer Hessen, Wiesbaden</div>
+                            <div class="keynote-title">Ökologische Bewertung von Architektur-Wettbewerben</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">14.05.2025 · Sparkasse Duisburg "Immobilien-Talk", Duisburg</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das Planen, Bauen und Leben?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">13.05.2025 · Hochschule Mainz "XR-Day", Mainz</div>
+                            <div class="keynote-title">Digitales Handwerk und immersive Raumlehre</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">03.04.2025 · urban future forum, Frankfurt</div>
+                            <div class="keynote-title">Bestimmt KI das Bild der Stadt?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05.03.2025 · VDW- /VNW-Fachtagung "Digitalisierung&Innovation", Hamburg</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das Planen, Bauen und Leben?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05.02.2025 · Deutsches Institut für Urbane Transformation DIUT, Essen</div>
+                            <div class="keynote-title">Künstliche Intelligenz baut - Wie digital kann das Bauen werden?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05.11.2024 · Hochschule Mainz "Dozentenfutter", Mainz</div>
+                            <div class="keynote-title">Digitales Handwerk</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">10.09.2024 · Verheyen-Ingenieure "Forum Wissen&Networking", Bad Kreuznach</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">02.07.2024 · VdW-Forum Wohnungswirtschaft, Düsseldorf</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">27.06.2024 · BIM-Cluster Rheinland-Pfalz, Mainz</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">14.06.2024 · Verband Beratender Ingenieure VBI, Bernkastel-Kues</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">29.04.2024 · Hochschule Mainz "International Construction Management", Mainz</div>
+                            <div class="keynote-title">Disruptions in AEC</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">20.04.2024 · Hochschule Mainz "Infotag", Mainz</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">04.11.2023 · Handwerkskammer Koblenz "Nacht der Technik", Koblenz</div>
+                            <div class="keynote-title">Analogisierung 1.0 - Perspektiven von Mensch und KI in der Bauwirtschaft</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">11.10.2023 · Zentrum Baukultur "KI baut - Wie digital kann bauen sein?", Mainz</div>
+                            <div class="keynote-title">Analogisierung 0.1 - Wie uns das Handwerk retten kann</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">27.03.2023 · BIM-Cluster Rheinland-Pfalz, Mainz</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Kontakt</summary>
+    <div class="section-content">
+        <div class="contact">
+            <p style="margin-top: 1.5rem; color: #cccccc; font-size: 0.9rem;">
+                Für Keynote-Anfragen, Kooperationen oder sonstige Ideen kontaktieren Sie mich gerne direkt. </p><br>
+            </p>
+            <span style="color: #15FFBC; font-size: 1.1rem;">Email: thomas.mrokon [at] hs-mainz [dot] de</span><br>
+            <a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" style="font-size: 1.1rem;">Personenverzeichnis Hochschule Mainz</a><br>
+            <a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" style="font-size: 1.1rem;">Architekturinstitut der Hochschule Mainz</a><br>
+            <a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" style="font-size: 1.1rem;">LinkedIn</a>
+        </div>
+    </div>
+</details>
+        </main>
+
+        <footer>
+            <p>
+                <a href="impressum.html" style="color: #888;">Impressum</a> •
+                <a href="datenschutz.html" style="color: #888;">Datenschutz</a>
+            </p>
+            <p style="margin: 1rem 0; color: #888; font-size: 0.85rem;">
+                🌱 Diese Website erreicht mit 30Kb eine A+ Bewertung bei <a href="https://www.websitecarbon.com" target="_blank" style="color: #888; text-decoration: underline;">websitecarbon.com</a>
+            </p>
+            <p style="color: #888;">© 2025 Prof. Thomas J. Mrokon</p>
+        </footer>
+    </div>
+</body>
+</html>
