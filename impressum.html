@@ -246,12 +246,20 @@
         body.classList.add('light-mode');
         html.classList.add('light-mode');
         modeLabel.textContent = 'Hell';
+        // Speichern im localStorage
+        localStorage.setItem('theme', 'light');
+        // Event für andere Seiten auslösen
+        window.dispatchEvent(new CustomEvent('themeChange', { detail: 'light' }));
     }
     
     function setDarkMode() {
         body.classList.remove('light-mode');
         html.classList.remove('light-mode');
         modeLabel.textContent = 'Dunkel';
+        // Speichern im localStorage
+        localStorage.setItem('theme', 'dark');
+        // Event für andere Seiten auslösen
+        window.dispatchEvent(new CustomEvent('themeChange', { detail: 'dark' }));
     }
     
     toggle.addEventListener('change', function() {
@@ -262,11 +270,39 @@
         }
     });
     
-    // Optional: Zustand merken
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-        toggle.checked = true;
-        setLightMode();
+    // Beim Laden: Gespeicherten Zustand wiederherstellen
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            toggle.checked = true;
+            setLightMode();
+        } else if (savedTheme === 'dark') {
+            toggle.checked = false;
+            setDarkMode();
+        } else {
+            // Fallback: System-Präferenz verwenden
+            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                toggle.checked = true;
+                setLightMode();
+            }
+        }
     }
+    
+    // Event-Listener für Theme-Änderungen von anderen Seiten
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+            if (e.newValue === 'light') {
+                toggle.checked = true;
+                setLightMode();
+            } else {
+                toggle.checked = false;
+                setDarkMode();
+            }
+        }
+    });
+    
+    // Initialisierung beim Laden
+    initializeTheme();
     </script>
 </body>
 </html>
