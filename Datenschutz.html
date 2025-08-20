@@ -5,15 +5,212 @@
     <title>Datenschutz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { background: #1a1a1a; color: #fff; font-family: system-ui, sans-serif; margin: 0; padding: 0; }
-        .container { max-width: 700px; margin: 0 auto; padding: 2rem 1rem; }
-        h1 { color: #15FFBC; font-size: 2rem; margin-bottom: 1.5rem; }
-        h2 { color: #FDC5F6; font-size: 1.2rem; margin-top: 2rem; }
-        a { color: #15FFBC; }
-        .back { margin-top: 2rem; display: inline-block; color: #FDC5F6; }
+        /* --- CSS VARIABLES --- */
+        :root {
+            --accent-pink-dark: #D94F9F;
+            --accent-pink-light: #FDC5F6;
+            --accent-green-dark: #009E7F;
+            --accent-green-light: #15FFBC;
+            --text-dark: #222;
+            --text-light: #fff;
+            --text-grey-dark: #888;
+            --text-grey-light: #cccccc;
+            --text-grey-mid: #444;
+            --bg-dark: #1a1a1a;
+            --bg-light: #fff;
+            --bg-box-dark: #2a2a2a;
+            --bg-box-light: #f7f7f7;
+            --border-color: #333;
+        }
+
+        /* --- BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        h1 {
+            color: var(--accent-green-light);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            color: var(--accent-pink-light);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        a {
+            color: var(--accent-green-light);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--accent-pink-light);
+            text-decoration: underline;
+        }
+        
+        .back {
+            margin-top: 2rem;
+            display: inline-block;
+            color: var(--accent-pink-light);
+            font-size: 1rem;
+        }
+        
+        p {
+            color: var(--text-grey-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        strong {
+            color: var(--text-light);
+        }
+        
+        span {
+            color: var(--accent-green-light);
+        }
+        
+        /* --- THEME SWITCHER --- */
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            user-select: none;
+            color: var(--accent-pink-light);
+        }
+        
+        .theme-switch .slider {
+            width: 2.2em;
+            height: 1.2em;
+            background: #333;
+            border-radius: 1em;
+            position: relative;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .theme-switch .slider::before {
+            content: "";
+            position: absolute;
+            left: 0.2em;
+            top: 0.2em;
+            width: 0.8em;
+            height: 0.8em;
+            background: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 0 2px #0002;
+        }
+        
+        .theme-switch input[type="checkbox"] {
+            display: none;
+        }
+        
+        .theme-switch .mode-label {
+            min-width: 6em;
+            display: inline-block;
+            text-align: left;
+            font-size: 1em;
+            color: inherit;
+            margin-left: 0.5em;
+        }
+        
+        /* --- LIGHT MODE --- */
+        body.light-mode {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        body.light-mode .container {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        body.light-mode h1 {
+            color: var(--accent-green-dark);
+        }
+        
+        body.light-mode h2 {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode a {
+            color: var(--accent-green-dark);
+        }
+        
+        body.light-mode a:hover {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode .back {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode p {
+            color: var(--text-grey-mid);
+        }
+        
+        body.light-mode strong {
+            color: var(--text-dark);
+        }
+        
+        body.light-mode span {
+            color: var(--accent-green-dark);
+        }
+        
+        body.light-mode .theme-switch {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode .theme-switch .slider {
+            background: #ccc;
+        }
+        
+        body.light-mode .theme-switch .slider::before {
+            background: #222;
+        }
+        
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 0.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <label class="theme-switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider"></span>
+      <span class="mode-label">Dunkel / Hell</span>
+    </label>
     <div class="container">
         <h1>Datenschutzerklärung</h1>
         <p>
@@ -42,5 +239,38 @@
         </p>
         <a class="back" href="index.html">&larr; Zurück zur Startseite</a>
     </div>
+    <script>
+    // Theme Toggle mit JS
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const html = document.documentElement;
+    const modeLabel = document.querySelector('.mode-label');
+
+    function setLightMode() {
+        body.classList.add('light-mode');
+        html.classList.add('light-mode');
+        modeLabel.textContent = 'Hell';
+    }
+    
+    function setDarkMode() {
+        body.classList.remove('light-mode');
+        html.classList.remove('light-mode');
+        modeLabel.textContent = 'Dunkel';
+    }
+    
+    toggle.addEventListener('change', function() {
+        if (this.checked) {
+            setLightMode();
+        } else {
+            setDarkMode();
+        }
+    });
+    
+    // Optional: Zustand merken
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        toggle.checked = true;
+        setLightMode();
+    }
+    </script>
 </body>
 </html>
