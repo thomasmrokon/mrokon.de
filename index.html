@@ -6,6 +6,25 @@
     <title>Thomas Mrokon</title>
     <meta name="description" content="Professor für Entwerfen, Digitale Werkzeuge und KI">
     <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --accent-pink-dark: #D94F9F;
+            --accent-pink-light: #FDC5F6;
+            --accent-green-dark: #009E7F;
+            --accent-green-light: #15FFBC;
+            --text-dark: #222;
+            --text-light: #fff;
+            --text-grey-dark: #888;
+            --text-grey-light: #cccccc;
+            --text-grey-mid: #444;
+            --bg-dark: #1a1a1a;
+            --bg-light: #fff;
+            --bg-box-dark: #2a2a2a;
+            --bg-box-light: #f7f7f7;
+            --border-color: #333;
+        }
+
+        /* --- BASE STYLES --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,56 +34,64 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: #ffffff;
-            background: #1a1a1a;
+            color: var(--text-light);
+            background: var(--bg-dark);
             font-size: 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        html {
+            transition: background 0.3s;
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem 1rem;
+            background: var(--bg-dark);
+            color: var(--text-light);
         }
         
+        /* --- HEADER --- */
         header {
             text-align: center;
             margin-bottom: 3rem;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 2rem;
+            background: var(--bg-dark);
+            color: var(--text-light);
         }
         
         h1 {
             font-size: 2.5rem;
             font-weight: 300;
             margin-bottom: 0.5rem;
-            color: #fff; /* Titelformatierung auf weiß */
-            background: none; /* Entfernt den bisherigen Farbverlauf */
-            -webkit-background-clip: initial;
-            -webkit-text-fill-color: initial;
-            background-clip: initial;
+            color: var(--text-light);
         }
 
         .tagline {
             font-size: 1.1rem;
-            color: #FDC5F6; /* Tagline auf rosa */
+            color: var(--accent-pink-light);
             font-weight: 300;
         }
         
+        /* --- SECTIONS --- */
         section {
             margin-bottom: 2.5rem;
         }
         
         details {
-            background: #2a2a2a;
+            background: var(--bg-box-dark);
             border-radius: 4px;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         summary {
             font-size: 1.3rem;
-            color: #15FFBC;
+            color: var(--accent-green-light);
             font-weight: 400;
-            border-left: 3px solid #15FFBC;
+            border-left: 3px solid var(--accent-green-light);
             padding: 1rem 1rem 1rem 1.5rem;
             cursor: pointer;
             list-style: none;
@@ -80,7 +107,7 @@
             content: '+';
             position: absolute;
             right: 1rem;
-            color: #FDC5F6;
+            color: var(--accent-pink-light);
             font-size: 1.5rem;
             transition: transform 0.2s ease;
         }
@@ -91,126 +118,371 @@
         
         .section-content {
             padding: 0 1.5rem 1.5rem 1.5rem;
+            background: var(--bg-box-dark);
+            color: var(--text-light);
         }
         
         h2 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: #15FFBC;
+            color: var(--accent-green-light);
             font-weight: 400;
-            border-left: 3px solid #15FFBC;
+            border-left: 3px solid var(--accent-green-light);
             padding-left: 1rem;
         }
         
         .about p {
-            color: #e0e0e0;
+            color: var(--text-grey-light);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        /* --- FOCUS AREAS --- */
+        .focus-areas {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
         
-        .focus-areas {
-            display: flex;
-            flex-direction: column; /* Ändere von 'row' auf 'column' */
-            gap: 1rem;
-            margin-bottom: 1rem;
-            justify-content: flex-start;
-            flex-wrap: nowrap;
-            overflow-x: unset;
-        }
         .focus-item {
-            background: #2a2a2a;
+            background: var(--bg-box-dark);
             padding: 1rem;
             border-radius: 4px;
-            box-sizing: border-box;
-            border-bottom: 2px solid #FDC5F6; /* Neuer horizontaler Trenner */
+            border-bottom: 2px solid var(--accent-pink-light);
+            color: var(--text-light);
         }
         
         .focus-item:last-child {
-            border-bottom: none; /* Letztes Element ohne Linie */
+            border-bottom: none;
         }
         
         .focus-item h3 {
-            color: #FDC5F6;
-            font-size: 0.9rem;
+            color: var(--accent-pink-light);
+            font-size: 1rem;
             margin-bottom: 0.5rem;
         }
         
         .focus-item p {
-            color: #cccccc;
+            color: var(--text-grey-light);
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 0;
         }
         
+        /* --- PROJECTS, COURSES, KEYNOTES --- */
         .project, .course, .keynote {
-            background: #2a2a2a;
+            background: var(--bg-box-dark);
             padding: 1.2rem;
             margin-bottom: 1rem;
             border-radius: 4px;
-            border-left: 3px solid #15FFBC;
+            border-left: 3px solid var(--accent-green-light);
+            color: var(--text-light);
         }
         
         .project a, .keynote a {
-            color: #15FFBC;
+            color: var(--accent-pink-light);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             display: inline-block;
             margin-top: 0.5rem;
         }
         
         .project a:hover, .keynote a:hover {
-            color: #FDC5F6;
+            color: var(--accent-green-light);
             text-decoration: underline;
         }
         
         .project h3, .course h3, .keynote h3 {
-            color: #15FFBC;
+            color: var(--accent-green-light);
             font-size: 1rem;
             margin-bottom: 0.5rem;
         }
         
         .project p, .course p, .keynote p {
-            color: #cccccc;
-            font-size: 0.95rem;
+            color: var(--text-grey-light);
+            font-size: 1rem;
         }
         
+        /* --- KEYNOTE LIST --- */
+        .keynote-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .keynote-item {
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid #444;
+        }
+        
+        .keynote-item:last-child {
+            border-bottom: none;
+        }
+        
+        .keynote-meta {
+            color: var(--text-grey-light);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .keynote-title {
+            color: var(--accent-pink-light);
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        /* --- CONTACT --- */
         .contact {
-            text-align: center;
-            background: #2a2a2a;
+            text-align: left;
+            background: var(--bg-box-dark);
             padding: 2rem;
             border-radius: 4px;
-            border: 1px solid #333;
+            color: var(--text-light);
         }
         
         .contact a {
-            color: #15FFBC;
+            color: var(--accent-green-light);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .contact a:hover {
-            color: #FDC5F6;
+            color: var(--accent-pink-light);
             transition: color 0.2s ease;
         }
         
+        /* --- FOOTER --- */
         footer {
             text-align: center;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #888;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-grey-dark);
             font-size: 0.9rem;
+            background: var(--bg-dark);
         }
         
         footer a {
-            color: #888;
+            color: var(--text-grey-dark);
             text-decoration: none;
             margin: 0 0.5rem;
         }
         
         footer a:hover {
-            color: #15FFBC;
+            color: var(--accent-green-light);
         }
         
+        /* --- THEME SWITCHER --- */
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            user-select: none;
+            color: var(--accent-pink-light);
+        }
+        
+        .theme-switch .slider {
+            width: 2.2em;
+            height: 1.2em;
+            background: #333;
+            border-radius: 1em;
+            position: relative;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .theme-switch .slider::before {
+            content: "";
+            position: absolute;
+            left: 0.2em;
+            top: 0.2em;
+            width: 0.8em;
+            height: 0.8em;
+            background: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 0 2px #0002;
+        }
+        
+        .theme-switch input[type="checkbox"] {
+            display: none;
+        }
+        
+        .theme-switch .mode-label {
+            min-width: 6em;
+            display: inline-block;
+            text-align: left;
+            font-size: 1em;
+            color: inherit;
+            margin-left: 0.5em;
+        }
+        
+        /* --- LIGHT MODE --- */
+        body.light-mode {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        body.light-mode .container,
+        body.light-mode header,
+        body.light-mode main,
+        body.light-mode footer {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        body.light-mode h1,
+        body.light-mode h2,
+        body.light-mode summary,
+        body.light-mode .tagline {
+            color: var(--text-dark);
+        }
+        
+        body.light-mode .tagline {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode summary,
+        body.light-mode h2,
+        body.light-mode .focus-item h3,
+        body.light-mode .project h3,
+        body.light-mode .course h3,
+        body.light-mode .keynote h3,
+        body.light-mode .contact a,
+        body.light-mode .contact span {
+            color: var(--accent-green-dark);
+        }
+        
+        body.light-mode .section-content,
+        body.light-mode .focus-item,
+        body.light-mode .project,
+        body.light-mode .course,
+        body.light-mode .keynote,
+        body.light-mode details,
+        body.light-mode .contact {
+            background: var(--bg-box-light);
+            color: var(--text-dark);
+        }
+        
+        body.light-mode .focus-item p,
+        body.light-mode .project p,
+        body.light-mode .course p,
+        body.light-mode .keynote p,
+        body.light-mode .contact,
+        body.light-mode .keynote-meta,
+        body.light-mode .about p {
+            color: var(--text-grey-mid);
+        }
+        
+        body.light-mode .keynote-title {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode .focus-item h3,
+        body.light-mode .project h3,
+        body.light-mode .course h3,
+        body.light-mode .keynote h3 {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode .project a,
+        body.light-mode .keynote a {
+            color: var(--accent-green-dark);
+        }
+        
+        body.light-mode .project a:hover,
+        body.light-mode .keynote a:hover {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode .focus-item {
+            border-bottom: 2px solid var(--accent-pink-dark);
+        }
+        
+        body.light-mode .theme-switch {
+            color: var(--accent-pink-dark);
+        }
+        
+        body.light-mode .theme-switch .slider {
+            background: #ccc;
+        }
+        
+        body.light-mode .theme-switch .slider::before {
+            background: #222;
+        }
+        
+        /* --- KORREKTUREN FÜR HELLEN MODUS --- */
+        
+        /* Vertikale grüne Linien vor Bereichsnamen und Projekten */
+        body.light-mode h2,
+        body.light-mode summary {
+            border-left: 3px solid var(--accent-green-dark);
+        }
+        
+        /* Vertikale grüne Linie bei Projekten */
+        body.light-mode .project,
+        body.light-mode .course,
+        body.light-mode .keynote {
+            border-left: 3px solid var(--accent-green-dark);
+        }
+        
+        /* Text unter dem Bild im Bereich "Über mich" */
+        body.light-mode .section-content p[style*="color: var(--accent-pink-light)"] {
+            color: var(--accent-pink-dark) !important;
+        }
+        
+        /* Horizontale Trennlinien in Schwerpunkte und Lehre */
+        body.light-mode .focus-item {
+            border-bottom: 2px solid var(--accent-pink-dark);
+        }
+        
+        /* Farbe der Links bei den Projekten */
+        body.light-mode .project a,
+        body.light-mode .keynote a {
+            color: var(--accent-green-dark);
+        }
+        
+        body.light-mode .project a:hover,
+        body.light-mode .keynote a:hover {
+            color: var(--accent-pink-dark);
+        }
+        
+        /* Einleitungstext im Bereich "Keynotes" */
+        body.light-mode .section-content > p[style*="color: var(--text-grey-light)"] {
+            color: var(--text-grey-mid) !important;
+        }
+        
+        /* Grauer Text im Bereich "Kontakt" */
+        body.light-mode .contact p,
+        body.light-mode .contact {
+            color: var(--text-grey-mid);
+        }
+        
+        /* Email-Adresse im Kontaktbereich */
+        body.light-mode .contact span[style*="color: var(--accent-green-light)"] {
+            color: var(--accent-green-dark) !important;
+        }
+        
+        /* Plus/Minus Symbole rechts bei den Bereichen */
+        body.light-mode summary::after {
+            color: var(--accent-pink-dark);
+        }
+        
+        /* Kontakt-Bereich: Erster Satz und Links */
+        body.light-mode .contact p[style*="margin-top: 1.5rem"] {
+            color: var(--text-grey-mid) !important;
+        }
+        
+        body.light-mode .contact a:hover {
+            color: var(--accent-pink-dark) !important;
+        }
+        
+        /* --- RESPONSIVE --- */
         @media (max-width: 600px) {
             .container {
                 padding: 1rem 0.5rem;
@@ -220,33 +492,14 @@
                 font-size: 2rem;
             }
         }
-        .keynote-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-top: 0.5rem;
-}
-.keynote-item {
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid #444;
-}
-.keynote-item:last-child {
-    border-bottom: none;
-}
-.keynote-meta {
-    color: #cccccc;
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-}
-.keynote-title {
-    color: #FDC5F6;
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.4;
-}
     </style>
 </head>
 <body>
+    <label class="theme-switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider"></span>
+      <span class="mode-label">Dunkel / Hell</span>
+    </label>
     <div class="container">
         <header>
             <h1>Prof. Thomas J. Mrokon</h1>
@@ -258,15 +511,15 @@
     <summary>Über mich</summary>
     <div class="section-content">
         <p>Thomas Mrokon ist Professor für Entwerfen und Digitale Konstruktion an der Hochschule Mainz und seit 2024 auch Studiengangsleiter Architektur. </p>
-        <p>Mit den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie, Heidelberg“ und „ESO Supernova, Garching“ konnte er seine Expertise im Bereich Computational Design und digitaler Fertigung mit praktischer Innovationskraft kombinieren.</p>
+        <p>Mit den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie, Heidelberg" und „ESO Supernova, Garching" konnte er seine Expertise im Bereich Computational Design und digitaler Fertigung mit praktischer Innovationskraft kombinieren.</p>
         <p>Nach einer unternehmerischen Phase mit eigenem Startup (monomer), folgte die Mitarbeit in der neuen Architektur-Abteilung bei Drees&Sommer, bis 2021 der Ruf an die Hochschule Mainz kam.</p>
         <p>Neben einem weiteren Fokus auf immersive Raumlehre mit VR/AR-Tools, entwickelte sich seit 2023 der Schwerpunkt KI-Anwendungen in der Bauwirtschaft, welcher zwischenzeitlich in einem eigenen Lehrmodul vermittelt wird.</p> 
         <p>Der Schwerpunkt beim Einsatz von digitalen Werkzeugen liegt auf deren transformativer Wirkung in der gesamten Wertschöpfungskette. Daraus ergeben sich sowohl individuelle als auch gesellschaftliche Implikationen für alle Lebensbereiche.</p>
         <p>Seit 2023 hält Thomas Mrokon regelmäßig Keynotes und Impulsvorträge rund um das Thema KI für unterschiedliche Zielgruppen.</p>
-        <hr style="border: 0; border-top: 2px solid #FDC5F6; margin: 2rem 0 1.2rem 0;">
+        <hr style="border: 0; border-top: 2px solid var(--accent-pink-light); margin: 2rem 0 1.2rem 0;">
         <img src="ThomasMrokon-46kb.jpg" alt="Thomas Mrokon" style="display: block; width: 100%; max-width: 100%; height: auto; border-radius: 8px; margin: 0 auto 1.5rem auto; box-shadow: 0 2px 12px #0003;">
-        <p style="font-weight: 500; color: #FDC5F6;">Meine Vision: Eine Welt in der Technologie nicht nur zur Effizienzsteigerung oder als Bedrohung eingesetzt wird, sondern als Mittel zur Freiheitswahrung, Persönlichkeitsentfaltung und Sinnstiftung.</p>
-        <p style="font-style: italic; color: #FDC5F6;">OFFLINE ist das neue Online.</p>
+        <p style="font-weight: 500; color: var(--accent-pink-light); font-size: 1rem;">Meine Vision: Eine Welt in der Technologie nicht nur zur Effizienzsteigerung oder als Bedrohung eingesetzt wird, sondern als Mittel zur Freiheitswahrung, Persönlichkeitsentfaltung und Sinnstiftung.</p>
+        <p style="font-style: italic; color: var(--accent-pink-light); font-size: 1rem;">OFFLINE ist das neue Online.</p>
     </div>
 </details>
 
@@ -305,12 +558,12 @@
                     </div>
                     <div class="project">
                         <h3>Lamellenlounge</h3>
-                        <p>Das Semesterprojekt „Digitales Handwerk“ zeigt, wie 34 Architekturstudierende im zweiten Semester mithilfe digitaler und analoger Werkzeuge gemeinsam einen Holzpavillon entwarfen und bauten, wobei innovative Methoden, studentische Selbstorganisation, VR-Design sowie parametrisierte Planung und Holzverbindungen im Vordergrund standen.</p>
+                        <p>Das Semesterprojekt „Digitales Handwerk" zeigt, wie 34 Architekturstudierende im zweiten Semester mithilfe digitaler und analoger Werkzeuge gemeinsam einen Holzpavillon entwarfen und bauten, wobei innovative Methoden, studentische Selbstorganisation, VR-Design sowie parametrisierte Planung und Holzverbindungen im Vordergrund standen.</p>
                         <p><a href="https://www.hs-mainz.de/news/campus-award-engere-wahl/?back=443&cHash=f07f9ba6244764bf11d2a7908676ecec" target="_blank">→ Projektdetails</a></p>
                     </div>
                     <div class="project">
                         <h3>Immersive Raumlehre</h3>
-                        <p>Das Lehrprojekt „Immersive Raumlehre“ am Architekturinstitut der Hochschule Mainz untersucht, wie Architekturstudierende mithilfe von Virtual-Reality-Werkzeugen in der Entwurfsphase Architektur räumlich erleben und gestalten können. Dabei werden ausschließlich immersive Tools wie Head-Mounted Displays verwendet, um einen interaktiven, dreidimensionalen und kollaborativen Gestaltungsprozess zu fördern</p>
+                        <p>Das Lehrprojekt „Immersive Raumlehre" am Architekturinstitut der Hochschule Mainz untersucht, wie Architekturstudierende mithilfe von Virtual-Reality-Werkzeugen in der Entwurfsphase Architektur räumlich erleben und gestalten können. Dabei werden ausschließlich immersive Tools wie Head-Mounted Displays verwendet, um einen interaktiven, dreidimensionalen und kollaborativen Gestaltungsprozess zu fördern</p>
                         <p><a href="https://architekturinstitut.hs-mainz.de/projects/immersive-raumlehre" target="_blank">→ Projektdetails</a></p>
                     </div>
                     <div class="project">
@@ -335,7 +588,7 @@
                     </div>
                          <div class="project">
                         <h3>Diplomarbeit</h3>
-                        <p>Im Rahmen meiner Diplomarbeit 2004 wurde ein Amsterdamer Stadtquartier mithilfe agentenbasierter Simulation analysiert: Digitale ‚Bewohner‘ mit unterschiedlichen Tageszyklen (Arbeiten, Einkaufen, Freizeit etc.) bewegen sich durch ein virtuelles Modell, wobei Wege, Zeiten und Aufenthaltsorte aufgezeichnet werden. Veränderungen in der Struktur – etwa neue Brücken oder Blockteilungen – lassen sich so quantitativ bewerten. Vier städtebauliche Entwurfskonzepte wurden auf Effizienz und räumliche Wirkung hin verglichen. Die Methode zeigt, wie Architekt:innen schon in der Planungsphase das Nutzerverhalten simulieren, Entwürfe kritisch prüfen und urbane Entwicklungsprozesse partizipativ steuern können. Faktisch meine erste Erfahrunge mit künstlicher Intelligenz.</p>
+                        <p>Im Rahmen meiner Diplomarbeit 2004 wurde ein Amsterdamer Stadtquartier mithilfe agentenbasierter Simulation analysiert: Digitale ‚Bewohner' mit unterschiedlichen Tageszyklen (Arbeiten, Einkaufen, Freizeit etc.) bewegen sich durch ein virtuelles Modell, wobei Wege, Zeiten und Aufenthaltsorte aufgezeichnet werden. Veränderungen in der Struktur – etwa neue Brücken oder Blockteilungen – lassen sich so quantitativ bewerten. Vier städtebauliche Entwürfe wurden auf Effizienz und räumliche Wirkung hin verglichen. Die Methode zeigt, wie Architekt:innen schon in der Planungsphase das Nutzerverhalten simulieren, Entwürfe kritisch prüfen und urbane Entwicklungsprozesse partizipativ steuern können. Faktisch meine erste Erfahrunge mit künstlicher Intelligenz.</p>
                         <p><a href="https://www.rkw-kompetenzzentrum.de/publikationen/dokumentation/auf-it-gebaut-bauberufe-mit-zukunft/verzeichnis-aller-preistraeger-der-wettbewerbe-2002-2012/" target="_blank">→ Auszeichnung "Auf IT gebaut"</a></p>
                     </div>
                 </div>
@@ -364,7 +617,7 @@
             <details>
                 <summary>Keynotes & Vorträge</summary>
                 <div class="section-content">
-                    <p style="color:#cccccc; margin-bottom:1.2rem;">
+                    <p style="color: var(--text-grey-light); margin-bottom:1.2rem; font-size: 1rem;">
             Hier finden Sie eine Auswahl aktueller und vergangener Keynotes und Vorträge zu den Themen Digitalisierung und KI. Mittlerweile habe ich den Fokus auf die Baubranche verlassen und beschäftige mich auch mit den sozialen und gesellschaftlichen Implikationen der KI-Transformation in allen Lebensbereichen.
             Kontaktieren Sie mich gerne, wenn Sie Interesse an einem Impuls haben oder eine Kooperation anstreben.
             
@@ -466,13 +719,13 @@
                 <summary>Kontakt</summary>
     <div class="section-content">
         <div class="contact">
-            <p style="margin-top: 1.5rem; color: #cccccc; font-size: 0.9rem;">
+            <p style="margin-top: 1.5rem; color: var(--text-grey-light); font-size: 1rem;">
                 Für Keynote-Anfragen, Kooperationen oder sonstige Ideen kontaktieren Sie mich gerne direkt. </p><br>
             </p>
-            <span style="color: #15FFBC; font-size: 1.1rem;">Email: thomas.mrokon [at] hs-mainz [dot] de</span><br>
-            <a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" style="font-size: 1.1rem;">Personenverzeichnis Hochschule Mainz</a><br>
-            <a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" style="font-size: 1.1rem;">Architekturinstitut der Hochschule Mainz</a><br>
-            <a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" style="font-size: 1.1rem;">LinkedIn</a>
+            <span style="color: var(--accent-green-light); font-size: 1rem;">Email: thomas.mrokon [at] hs-mainz [dot] de</span><br>
+            <a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" style="font-size: 1rem;">Personenverzeichnis Hochschule Mainz</a><br>
+            <a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" style="font-size: 1rem;">Architekturinstitut der Hochschule Mainz</a><br>
+            <a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" style="font-size: 1rem;">LinkedIn</a>
         </div>
     </div>
 </details>
@@ -480,14 +733,47 @@
 
         <footer>
             <p>
-                <a href="impressum.html" style="color: #888;">Impressum</a> •
-                <a href="datenschutz.html" style="color: #888;">Datenschutz</a>
+                <a href="impressum.html" style="color: var(--text-grey-dark);">Impressum</a> •
+                <a href="datenschutz.html" style="color: var(--text-grey-dark);">Datenschutz</a>
             </p>
-            <p style="margin: 1rem 0; color: #888; font-size: 0.85rem;">
-                🌱 Diese Website erreicht eine A+ Bewertung bei <a href="https://www.websitecarbon.com" target="_blank" style="color: #888; text-decoration: underline;">websitecarbon.com</a>
+            <p style="margin: 1rem 0; color: var(--text-grey-dark); font-size: 0.85rem;">
+                🌱 Diese Website erreicht eine A+ Bewertung bei <a href="https://www.websitecarbon.com" target="_blank" style="color: var(--text-grey-dark); text-decoration: underline;">websitecarbon.com</a>
             </p>
-            <p style="color: #888;">© 2025 Prof. Thomas J. Mrokon</p>
+            <p style="color: var(--text-grey-dark);">© 2025 Prof. Thomas J. Mrokon</p>
         </footer>
     </div>
+    <script>
+    // Theme Toggle mit JS
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const html = document.documentElement;
+    const modeLabel = document.querySelector('.mode-label');
+
+    function setLightMode() {
+        body.classList.add('light-mode');
+        html.classList.add('light-mode');
+        modeLabel.textContent = 'Hell';
+    }
+    
+    function setDarkMode() {
+        body.classList.remove('light-mode');
+        html.classList.remove('light-mode');
+        modeLabel.textContent = 'Dunkel';
+    }
+    
+    toggle.addEventListener('change', function() {
+        if (this.checked) {
+            setLightMode();
+        } else {
+            setDarkMode();
+        }
+    });
+    
+    // Optional: Zustand merken
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        toggle.checked = true;
+        setLightMode();
+    }
+    </script>
 </body>
 </html>
