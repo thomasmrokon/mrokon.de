@@ -28,6 +28,7 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: 'analytics/package.json'
     
     - name: Install Dependencies
       run: |
