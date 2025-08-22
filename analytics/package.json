@@ -1,0 +1,17 @@
+{
+  "name": "mrokon-analytics",
+  "version": "1.0.0",
+  "description": "DSGVO-freundliche Analytics Log-Verarbeitung",
+  "main": "process-logs.js",
+  "scripts": {
+    "process": "node process-logs.js",
+    "test": "node test-logs.js"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0"
+  },
+  "devDependencies": {},
+  "keywords": ["analytics", "dsgvo", "privacy", "logs"],
+  "author": "Thomas Mrokon",
+  "license": "MIT"
+}
