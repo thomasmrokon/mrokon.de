@@ -5,6 +5,7 @@
   "main": "process-logs.js",
   "scripts": {
     "process": "node process-logs.js",
+    "download-helper": "node download-helper.js",
     "test": "node test-logs.js"
   },
   "dependencies": {
