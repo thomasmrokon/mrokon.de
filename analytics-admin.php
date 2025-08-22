@@ -2,14 +2,17 @@
 // Simple analytics admin dashboard (no external deps)
 // Place in web root and add rewrite for /analytics/admin to this file if desired.
 
-// Basic access protection (optional): set a simple password via env or inline
-$ADMIN_PASS = getenv('ANALYTICS_ADMIN_PASS') ?: '';
-if ($ADMIN_PASS !== '') {
-  $ok = isset($_GET['key']) && hash_equals($ADMIN_PASS, $_GET['key']);
-  if (!$ok) {
-    http_response_code(403);
-    echo 'Forbidden';
-    exit;
+// Optional access protection: require key only if data/admin.key exists
+$keyFile = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'admin.key';
+if (is_file($keyFile)) {
+  $ADMIN_PASS = trim(@file_get_contents($keyFile));
+  if ($ADMIN_PASS !== '') {
+    $ok = isset($_GET['key']) && hash_equals($ADMIN_PASS, $_GET['key']);
+    if (!$ok) {
+      http_response_code(403);
+      echo 'Forbidden';
+      exit;
+    }
   }
 }
 
@@ -60,7 +63,8 @@ function bar($value, $max, $label) {
 arsort($byCountry);
 arsort($pages);
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
