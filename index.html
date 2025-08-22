@@ -758,9 +758,7 @@
         body.classList.add('light-mode');
         html.classList.add('light-mode');
         modeLabel.textContent = 'Hell';
-        // Speichern im localStorage
         localStorage.setItem('theme', 'light');
-        // Event für andere Seiten auslösen
         window.dispatchEvent(new CustomEvent('themeChange', { detail: 'light' }));
     }
     
@@ -768,9 +766,7 @@
         body.classList.remove('light-mode');
         html.classList.remove('light-mode');
         modeLabel.textContent = 'Dunkel';
-        // Speichern im localStorage
         localStorage.setItem('theme', 'dark');
-        // Event für andere Seiten auslösen
         window.dispatchEvent(new CustomEvent('themeChange', { detail: 'dark' }));
     }
     
@@ -782,7 +778,6 @@
         }
     });
     
-    // Beim Laden: Gespeicherten Zustand wiederherstellen
     function initializeTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
@@ -791,16 +786,12 @@
         } else if (savedTheme === 'dark') {
             toggle.checked = false;
             setDarkMode();
-        } else {
-            // Fallback: System-Präferenz verwenden
-            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                toggle.checked = true;
-                setLightMode();
-            }
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            toggle.checked = true;
+            setLightMode();
         }
     }
     
-    // Event-Listener für Theme-Änderungen von anderen Seiten
     window.addEventListener('storage', function(e) {
         if (e.key === 'theme') {
             if (e.newValue === 'light') {
@@ -813,8 +804,44 @@
         }
     });
     
-    // Initialisierung beim Laden
     initializeTheme();
+    
+    // Lightweight privacy-friendly analytics (no cookies, no 3rd-party)
+    (function(){
+        const DNT = (navigator.doNotTrack === '1' || window.doNotTrack === '1');
+        if (DNT) {
+            return;
+        }
+        const start = Date.now();
+        const sessionId = sessionStorage.getItem('sid') || (Math.random().toString(36).slice(2) + Date.now().toString(36));
+        sessionStorage.setItem('sid', sessionId);
+        let clicks = 0;
+        document.addEventListener('click', () => { clicks += 1; }, { passive: true });
+
+        function payload(type){
+            return {
+                t: type,
+                ts: Date.now(),
+                sid: sessionId,
+                url: location.pathname,
+                ref: document.referrer || '',
+                lang: navigator.language,
+                tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+                vp: [window.innerWidth, window.innerHeight],
+                dpr: window.devicePixelRatio || 1,
+                theme: document.body.classList.contains('light-mode') ? 'light' : 'dark',
+                clicks
+            };
+        }
+        // pageview
+        try { navigator.sendBeacon && navigator.sendBeacon('/analytics', new Blob([JSON.stringify(payload('view'))], { type: 'application/json' })); } catch {}
+        // on unload send dwell/end
+        window.addEventListener('pagehide', function(){
+            const p = payload('end');
+            p.dwell = Math.max(0, Date.now() - start);
+            try { navigator.sendBeacon && navigator.sendBeacon('/analytics', new Blob([JSON.stringify(p)], { type: 'application/json' })); } catch {}
+        });
+    })();
     </script>
 </body>
 </html>
