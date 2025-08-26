@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const { format, parseISO, startOfDay, subDays, isAfter } = require('date-fns');
 
 class AnalyticsProcessor {
@@ -271,7 +272,7 @@ class AnalyticsProcessor {
         }
         
         const logFiles = fs.readdirSync(this.logsDir)
-            .filter(file => file.endsWith('.log') || file.endsWith('.txt'))
+            .filter(file => file.endsWith('.log') || file.endsWith('.txt') || file.endsWith('.gz'))
             .sort();
         
         if (logFiles.length === 0) {
@@ -285,7 +286,21 @@ class AnalyticsProcessor {
             const filePath = path.join(this.logsDir, logFile);
             console.log(`Verarbeite: ${logFile}`);
             
-            const content = fs.readFileSync(filePath, 'utf8');
+            let content;
+            try {
+                if (logFile.endsWith('.gz')) {
+                    // Komprimierte Datei dekomprimieren
+                    const compressedData = fs.readFileSync(filePath);
+                    content = zlib.gunzipSync(compressedData).toString('utf8');
+                } else {
+                    // Normale Textdatei
+                    content = fs.readFileSync(filePath, 'utf8');
+                }
+            } catch (error) {
+                console.error(`Fehler beim Lesen von ${logFile}:`, error.message);
+                continue;
+            }
+            
             const lines = content.split('\n').filter(line => line.trim());
             
             let processedLines = 0;
