@@ -46,7 +46,7 @@
             this.container.innerHTML = `
                 <div class="analytics-widget">
                     <div class="analytics-header">
-                        <h3>📊 Besucherstatistiken</h3>
+                        <h3>📊 Besucherstatistiken der letzten Woche</h3>
                         <button class="analytics-toggle" title="Ein-/Ausblenden">
                             <span class="toggle-icon">▼</span>
                         </button>
