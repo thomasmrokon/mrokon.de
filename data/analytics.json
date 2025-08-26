@@ -1,17 +1,742 @@
 {
-  "lastUpdated": "2025-08-26T08:00:21.914Z",
+  "lastUpdated": "2025-08-26T08:22:40.581Z",
   "summary": {
-    "totalPageViews": 0,
-    "uniqueVisitors": 0,
+    "totalPageViews": 329,
+    "uniqueVisitors": 52,
     "totalEvents": 0,
-    "avgSessionDuration": 0
+    "avgSessionDuration": 120
   },
-  "pages": {},
-  "referrers": {},
-  "browsers": {},
+  "pages": {
+    "/": {
+      "views": 33,
+      "uniqueVisitors": 30
+    },
+    "/robots.txt": {
+      "views": 21,
+      "uniqueVisitors": 13
+    },
+    "/login": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/geju.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/wp.php": {
+      "views": 4,
+      "uniqueVisitors": 4
+    },
+    "/posts/first-post/": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/details.php?did=1'": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/index.html": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/.alf.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/.bod/.ll/ss.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/.well-known/about/function.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/.well-known/classwithtostring.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/.well-known/index.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/.well-known/radio.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/10.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/12.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/13k.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/87.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/about.php": {
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    "/about/function.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/admin.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/admin/admin.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/admin/function.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/admin/index.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/adminfuns.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/akc.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/xleet": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/al.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/alfa.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/as.php": {
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    "/asasx.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/assets/images/doc.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/atomlib.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/auth.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/autoload_classmap.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/autoload_classmap/function.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/b.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/blog/fw.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/bugz.php": {
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    "/byp.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/cc.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/chosen.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/class.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/classwithtostring.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/composer.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/css.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/dropdown.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/edit.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/f35.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/file.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/file2.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/filemanager.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/files/index.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/fix.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/flower.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/fox.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/function/function.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/g.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/gecko.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/gel4y.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/gelay.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/gg.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/goat.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/goods.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/h.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/images/admin.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/images/class-config.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/inc.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/index.bak.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/index/function.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/info.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/infos.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/ioxi-o.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/k.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/m.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/mar.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/mini": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/mini.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/mm.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/ms-edit.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/ms-themes.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/options-general.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/options-reading.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/options-writing.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/web.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/pages.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/aa.php": {
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    "/nf.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/lock360.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/makeasmtp.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/php.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/install.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/php8.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/mah.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/pinfo.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/radio.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/robots.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/cong.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/function.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/buy.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/thoms.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/rt.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/s.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/setup.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/simple.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/sts.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/system_log.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/test1.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/themes/zMousse/otuz1.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/file/function.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/tinyfilemanager.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/ty.php": {
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    "/users.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/w.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/wp_wrong_datlib.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/wsa.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/wso.php": {
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    "/y.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/zwso.php": {
+      "views": 2,
+      "uniqueVisitors": 2
+    },
+    "/about/Geforce.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/ova.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/admin/.env": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/core/.env": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/.env": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/ThomasMrokon-46kb.JPG": {
+      "views": 4,
+      "uniqueVisitors": 4
+    },
+    "/impressum.html": {
+      "views": 3,
+      "uniqueVisitors": 2
+    },
+    "/baxa1.phP7": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/file3.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/erin1.PhP7": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/faq.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/BIBIL.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/ioxi002.PhP7": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/doc.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/themes.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/file7.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/db.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/elp.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/lv.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/fm.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/13.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/xleet.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/link.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/functions.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/readme.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/item.php": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/okon.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/mroko.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/mr.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/m.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/mrok.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/rokon.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/on.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/mrokon.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/site.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/kon.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/mro.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/n.zip": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/.well-known/": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/.well-known/security.txt": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/datenschutz.html": {
+      "views": 1,
+      "uniqueVisitors": 1
+    },
+    "/Datenschutz.html": {
+      "views": 1,
+      "uniqueVisitors": 1
+    }
+  },
+  "referrers": {
+    "google.com": 1,
+    "direct": 299,
+    "perplexity.ai": 1
+  },
+  "browsers": {
+    "other": 329
+  },
   "languages": {},
   "screenSizes": {},
-  "dailyStats": {},
-  "topPages": [],
-  "topReferrers": []
+  "dailyStats": {
+    "2025-08-25": {
+      "pageViews": 329,
+      "visitors": 52,
+      "events": 0
+    }
+  },
+  "topPages": [
+    {
+      "page": "/",
+      "views": 33,
+      "uniqueVisitors": 30
+    },
+    {
+      "page": "/robots.txt",
+      "views": 21,
+      "uniqueVisitors": 13
+    },
+    {
+      "page": "/wp.php",
+      "views": 4,
+      "uniqueVisitors": 4
+    },
+    {
+      "page": "/ThomasMrokon-46kb.JPG",
+      "views": 4,
+      "uniqueVisitors": 4
+    },
+    {
+      "page": "/about.php",
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    {
+      "page": "/as.php",
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    {
+      "page": "/bugz.php",
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    {
+      "page": "/aa.php",
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    {
+      "page": "/ty.php",
+      "views": 3,
+      "uniqueVisitors": 3
+    },
+    {
+      "page": "/wso.php",
+      "views": 3,
+      "uniqueVisitors": 3
+    }
+  ],
+  "topReferrers": [
+    {
+      "referrer": "direct",
+      "count": 299
+    },
+    {
+      "referrer": "google.com",
+      "count": 1
+    },
+    {
+      "referrer": "perplexity.ai",
+      "count": 1
+    }
+  ]
 }
