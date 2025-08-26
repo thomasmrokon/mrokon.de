@@ -89,6 +89,20 @@
                                 </div>
                             </div>
                             
+                            <div class="analytics-message" id="analytics-message" style="display: none;">
+                                <div class="message-content">
+                                    <h4>📊 Analytics-System aktiviert</h4>
+                                    <p>Das Besuchertracking wurde gerade aktiviert. Erste Statistiken werden nach den nächsten Webseitenbesuchen verfügbar sein.</p>
+                                    <p><strong>So funktioniert es:</strong></p>
+                                    <ul>
+                                        <li>DSGVO-konform ohne Cookies</li>
+                                        <li>Keine personenbezogenen Daten</li>
+                                        <li>Daten werden aus Server-Logs generiert</li>
+                                        <li>Automatische Aktualisierung alle 5 Minuten</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
                             <div class="analytics-footer">
                                 <p class="last-updated">Letzte Aktualisierung: <span id="last-updated">-</span></p>
                                 <p class="privacy-note">🔒 DSGVO-konform, keine Cookies, keine personenbezogenen Daten</p>
@@ -175,46 +189,22 @@
             }
         }
         
-        // Demo-Daten für Fallback
+        // Demo-Daten für Fallback - zeigt "Keine Daten" wenn System gerade aktiviert wurde
         getDemoData() {
             return {
                 "lastUpdated": new Date().toISOString(),
                 "summary": {
-                    "totalPageViews": 42,
-                    "uniqueVisitors": 28,
-                    "totalEvents": 8,
-                    "avgSessionDuration": 145
+                    "totalPageViews": 0,
+                    "uniqueVisitors": 0,
+                    "totalEvents": 0,
+                    "avgSessionDuration": 0
                 },
-                "pages": {
-                    "/": { "views": 25, "uniqueVisitors": 18 },
-                    "/impressum.html": { "views": 8, "uniqueVisitors": 6 },
-                    "/datenschutz.html": { "views": 9, "uniqueVisitors": 7 }
-                },
-                "referrers": {
-                    "direct": 15,
-                    "google.com": 12,
-                    "linkedin.com": 8,
-                    "github.com": 4,
-                    "hs-mainz.de": 3
-                },
-                "browsers": {
-                    "chrome": 18,
-                    "firefox": 12,
-                    "safari": 8,
-                    "edge": 4
-                },
-                "topPages": [
-                    { "page": "/", "views": 25, "uniqueVisitors": 18 },
-                    { "page": "/datenschutz.html", "views": 9, "uniqueVisitors": 7 },
-                    { "page": "/impressum.html", "views": 8, "uniqueVisitors": 6 }
-                ],
-                "topReferrers": [
-                    { "referrer": "direct", "count": 15 },
-                    { "referrer": "google.com", "count": 12 },
-                    { "referrer": "linkedin.com", "count": 8 },
-                    { "referrer": "github.com", "count": 4 },
-                    { "referrer": "hs-mainz.de", "count": 3 }
-                ]
+                "pages": {},
+                "referrers": {},
+                "browsers": {},
+                "topPages": [],
+                "topReferrers": [],
+                "message": "Analytics-System wurde gerade aktiviert. Erste Daten werden nach den nächsten Webseitenbesuchen verfügbar sein."
             };
         }
         
@@ -223,6 +213,20 @@
             if (!this.data) return;
             
             const { summary, topPages, topReferrers, browsers, lastUpdated } = this.data;
+            
+            // Prüfen ob Daten vorhanden sind
+            const hasData = summary.totalPageViews > 0 || summary.uniqueVisitors > 0;
+            
+            if (!hasData) {
+                // Zeige Nachricht wenn keine Daten vorhanden
+                document.getElementById('analytics-message').style.display = 'block';
+                // Verstecke Details-Bereiche
+                document.querySelector('.analytics-details').style.display = 'none';
+            } else {
+                // Zeige normale Daten
+                document.getElementById('analytics-message').style.display = 'none';
+                document.querySelector('.analytics-details').style.display = 'grid';
+            }
             
             // Summary-Statistiken
             this.animateValue('total-views', summary.totalPageViews);
@@ -592,6 +596,36 @@
                     text-align: center;
                     padding: 2rem;
                     color: var(--text-grey-light);
+                }
+                
+                .analytics-message {
+                    background: rgba(255,255,255,0.05);
+                    border-radius: 8px;
+                    padding: 2rem;
+                    margin-bottom: 2rem;
+                    border-left: 4px solid var(--accent-green-light);
+                }
+                
+                .analytics-message h4 {
+                    color: var(--accent-green-light);
+                    margin: 0 0 1rem 0;
+                    font-size: 1.1rem;
+                }
+                
+                .analytics-message p {
+                    color: var(--text-grey-light);
+                    margin-bottom: 1rem;
+                    line-height: 1.6;
+                }
+                
+                .analytics-message ul {
+                    color: var(--text-grey-light);
+                    margin: 0.5rem 0 0 1.5rem;
+                    line-height: 1.6;
+                }
+                
+                .analytics-message li {
+                    margin-bottom: 0.5rem;
                 }
                 
                 /* Light Mode */
