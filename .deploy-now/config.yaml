@@ -5,5 +5,6 @@ deploy:
     - .git/
     - .github/
     - .vscode/
-    - data/      # Schließt den vermutlich großen Daten-Ordner aus
-    - analytics/ # Schließt den Analytics-Ordner aus
+    - data/
+    - analytics/
+    - download/
