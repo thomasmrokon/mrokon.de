@@ -1,0 +1,9 @@
+version: 1.0
+deploy:
+  directory: .
+  exclusion:
+    - .git/
+    - .github/
+    - .vscode/
+    - data/      # Schließt den vermutlich großen Daten-Ordner aus
+    - analytics/ # Schließt den Analytics-Ordner aus
