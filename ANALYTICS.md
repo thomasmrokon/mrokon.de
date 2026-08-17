@@ -10,8 +10,8 @@ sämtliche Daten liegen auf dem eigenen GoatCounter-Server, nicht bei einem Drit
 
 | Datei | Zweck |
 |---|---|
-| `index.html`, `impressum.html`, `Datenschutz.html` | Zähl-Snippet vor `</body>` |
-| `Datenschutz.html`, Abschnitte 2 + 3 | Datenschutzerklärung zu GoatCounter |
+| `index.html`, `impressum.html`, `datenschutz.html` | Zähl-Snippet vor `</body>` |
+| `datenschutz.html`, Abschnitte 2 + 3 | Datenschutzerklärung zu GoatCounter |
 | `deploy/goatcounter/goatcounter.service` | systemd-Unit für den Server |
 
 `presse.html` ist bewusst **nicht** eingebunden — die Seite leitet per
