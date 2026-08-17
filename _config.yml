@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) — Dateien, die nicht ausgeliefert werden sollen.
+# Ohne diesen Ausschluss waeren sie unter mrokon.de/... oeffentlich abrufbar.
+exclude:
+  - ANALYTICS.md
+  - deploy/

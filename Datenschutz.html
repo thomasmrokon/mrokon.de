@@ -227,31 +227,43 @@
         </p>
         <h2>2. Erhebung und Speicherung personenbezogener Daten</h2>
         <p>
-            Diese Website verwendet ein DSGVO-konformes Analytics-System zur Erfassung anonymisierter Besucherstatistiken. Es werden keine Cookies gesetzt und keine externen Tracking-Dienste verwendet.
+            Diese Website verzichtet auf Cookies, auf Einwilligungsbanner und auf externe Tracking-Dienste. Zur Erhebung anonymer Besucherstatistiken wird ausschließlich die quelloffene Software GoatCounter eingesetzt, die auf einem eigenen Server betrieben wird.
         </p>
-        <h2>3. Analytics und Besucherstatistiken</h2>
+        <h2>3. Besucherstatistik mit GoatCounter</h2>
         <p>
-            <strong>Was wird erfasst:</strong><br>
-            • Seitenaufrufe (ohne IP-Adressen)<br>
-            • Ungefähre Herkunft (nur Domain, keine vollständigen URLs)<br>
-            • Browser-Typ (vereinfacht: Chrome, Firefox, Safari, etc.)<br>
-            • Bildschirmauflösung (für responsive Design-Optimierung)<br>
-            • Spracheinstellung des Browsers
+            <strong>Eingesetzte Software:</strong><br>
+            GoatCounter (Lizenz EUPL-1.2, <a href="https://www.goatcounter.com" target="_blank" rel="noopener">www.goatcounter.com</a>), betrieben auf einem eigenen Server unter <em>stats.mrokon.de</em>. Es findet keine Übermittlung an Dritte statt; es besteht keine Verbindung zu Google Analytics oder vergleichbaren Diensten.
+        </p>
+        <p>
+            <strong>Was erfasst wird:</strong><br>
+            • Aufgerufene Seite und Zeitpunkt des Aufrufs<br>
+            • Verweisende Seite (Referrer), sofern übermittelt<br>
+            • Browser und Betriebssystem in vereinfachter Form<br>
+            • Bildschirmgröße (zur Optimierung des responsiven Layouts)<br>
+            • Herkunftsland, abgeleitet aus der IP-Adresse
         </p>
         <p>
             <strong>Was NICHT erfasst wird:</strong><br>
-            • Keine IP-Adressen oder andere personenbezogene Daten<br>
-            • Keine Cookies oder lokale Speicherung<br>
-            • Keine Verfolgung über mehrere Websites<br>
-            • Keine detaillierten Nutzungsprofile
+            • Keine Cookies und keine Speicherung von Daten auf Ihrem Endgerät<br>
+            • Keine dauerhafte Speicherung Ihrer IP-Adresse<br>
+            • Keine seitenübergreifende Verfolgung und keine Nutzungsprofile<br>
+            • Keine Weitergabe oder kommerzielle Verwertung der Daten
         </p>
         <p>
-            <strong>Technische Umsetzung:</strong><br>
-            Das System sendet minimale, anonymisierte Daten an interne Server-URLs, die in den Access-Logs erfasst werden. Diese Logs werden periodisch ausgewertet und zu aggregierten Statistiken verarbeitet. Alle Daten werden ausschließlich auf unseren eigenen Servern gespeichert.
+            <strong>Umgang mit der IP-Adresse:</strong><br>
+            Ihre IP-Adresse wird ausschließlich flüchtig verarbeitet, um daraus das Herkunftsland zu bestimmen und – zusammen mit der Browserkennung und einem wechselnden Zufallswert – eine nicht rückrechenbare Prüfsumme zu bilden. Diese dient allein dazu, wiederholte Aufrufe innerhalb eines Tages nicht mehrfach zu zählen. Die IP-Adresse selbst wird nicht gespeichert, die Prüfsumme lässt keinen Rückschluss auf Ihre Person zu.
         </p>
         <p>
-            <strong>Zweck:</strong><br>
-            Die Statistiken dienen ausschließlich der Verbesserung der Website-Qualität und des Nutzererlebnisses. Es erfolgt keine kommerzielle Nutzung oder Weitergabe an Dritte.
+            <strong>Zweck und Rechtsgrundlage:</strong><br>
+            Die Statistiken dienen ausschließlich der Verbesserung der Inhalte und der technischen Qualität dieser Website. Rechtsgrundlage ist das berechtigte Interesse an einer bedarfsgerechten Gestaltung des Angebots gemäß Art. 6 Abs. 1 lit. f DSGVO. Da keine Informationen auf Ihrem Endgerät gespeichert oder ausgelesen werden, ist keine Einwilligung nach § 25 TDDDG erforderlich.
+        </p>
+        <p>
+            <strong>Speicherdauer:</strong><br>
+            Es werden ausschließlich aggregierte Zählwerte vorgehalten. Die zur Erkennung wiederholter Aufrufe gebildeten Prüfsummen werden spätestens nach 24 Stunden verworfen.
+        </p>
+        <p>
+            <strong>Widerspruch:</strong><br>
+            Sie können der Zählung jederzeit widersprechen, indem Sie in Ihrem Browser die Einstellung „Do Not Track“ oder „Global Privacy Control“ aktivieren. Diese Website prüft beide Signale und unterlässt in diesem Fall jede Zählung. Ebenso wirksam ist das Blockieren von JavaScript für diese Website, da die Zählung ausschließlich per JavaScript erfolgt und keine Zählpixel eingesetzt werden.
         </p>
         <h2>4. Kontaktaufnahme</h2>
         <p>
@@ -332,5 +344,20 @@
     // Initialisierung beim Laden
     initializeTheme();
     </script>
+
+    <!-- Besucherstatistik: selbst gehostetes GoatCounter (Open Source, keine Cookies) -->
+    <script>
+    // GoatCounter wertet "Do Not Track" von sich aus nicht aus. Diese Zeilen
+    // unterdruecken die Zaehlung, wenn der Browser DNT oder Global Privacy
+    // Control sendet -- so bleibt der in der Datenschutzerklaerung genannte
+    // Widerspruch wirksam.
+    window.goatcounter = {
+        no_onload: navigator.doNotTrack === '1'
+                || window.doNotTrack === '1'
+                || navigator.globalPrivacyControl === true
+    };
+    </script>
+    <script data-goatcounter="https://stats.mrokon.de/count"
+            async src="https://stats.mrokon.de/count.js"></script>
 </body>
 </html>

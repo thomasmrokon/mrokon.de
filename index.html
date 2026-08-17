@@ -770,12 +770,20 @@
         </footer>
     </div>
     
-    <!-- Analytics Widget Container - deaktiviert -->
-    <!-- <div id="analytics-widget"></div> -->
-    
-    <!-- Analytics Scripts - deaktiviert -->
-    <!-- <script src="js/analytics.js"></script> -->
-    <!-- <script src="js/analytics-widget.js"></script> -->
+    <!-- Besucherstatistik: selbst gehostetes GoatCounter (Open Source, keine Cookies) -->
+    <script>
+    // GoatCounter wertet "Do Not Track" von sich aus nicht aus. Diese Zeilen
+    // unterdruecken die Zaehlung, wenn der Browser DNT oder Global Privacy
+    // Control sendet -- so bleibt der in der Datenschutzerklaerung genannte
+    // Widerspruch wirksam.
+    window.goatcounter = {
+        no_onload: navigator.doNotTrack === '1'
+                || window.doNotTrack === '1'
+                || navigator.globalPrivacyControl === true
+    };
+    </script>
+    <script data-goatcounter="https://stats.mrokon.de/count"
+            async src="https://stats.mrokon.de/count.js"></script>
     
     <script>
     // Theme Toggle mit JS

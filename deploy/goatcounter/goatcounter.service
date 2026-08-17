@@ -1,0 +1,44 @@
+[Unit]
+Description=GoatCounter web analytics
+Documentation=https://www.goatcounter.com/help/self-host
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=goatcounter
+Group=goatcounter
+WorkingDirectory=/var/lib/goatcounter
+
+# Laeuft hinter Nginx Proxy Manager, der TLS terminiert und X-Forwarded-For setzt.
+# Deshalb kein eigenes TLS: -tls bleibt auf dem Standardwert "http".
+#
+# Gebunden wird ausschliesslich an die Tailscale-Adresse des Hosts. Damit ist
+# GoatCounter aus dem Internet nicht erreichbar, fuer den NPM-Container aber schon.
+# Nicht an 0.0.0.0 binden -- die Firewall dieses Servers filtert nur teilweise.
+ExecStart=/usr/local/bin/goatcounter serve \
+    -listen 100.107.88.64:8090 \
+    -db 'sqlite+/var/lib/goatcounter/db.sqlite3' \
+    -automigrate
+
+# Die Tailscale-Adresse existiert erst, wenn tailscaled oben ist; bis dahin
+# schlaegt das Binden fehl und systemd versucht es erneut.
+Restart=on-failure
+RestartSec=5s
+
+# Absicherung
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/goatcounter
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
