@@ -185,7 +185,7 @@
             color: var(--text-light);
         }
         
-        .project a, .keynote a {
+        .project a, .keynote a, .focus-item a {
             color: var(--accent-pink-light);
             text-decoration: none;
             font-size: 1rem;
@@ -193,7 +193,7 @@
             margin-top: 0.5rem;
         }
         
-        .project a:hover, .keynote a:hover {
+        .project a:hover, .keynote a:hover, .focus-item a:hover {
             color: var(--accent-green-light);
             text-decoration: underline;
         }
@@ -396,11 +396,13 @@
         }
         
         body.light-mode .project a,
+        body.light-mode .focus-item a,
         body.light-mode .keynote a {
             color: var(--accent-green-dark);
         }
         
         body.light-mode .project a:hover,
+        body.light-mode .focus-item a:hover,
         body.light-mode .keynote a:hover {
             color: var(--accent-pink-dark);
         }
@@ -448,11 +450,13 @@
         
         /* Farbe der Links bei den Projekten */
         body.light-mode .project a,
+        body.light-mode .focus-item a,
         body.light-mode .keynote a {
             color: var(--accent-green-dark);
         }
         
         body.light-mode .project a:hover,
+        body.light-mode .focus-item a:hover,
         body.light-mode .keynote a:hover {
             color: var(--accent-pink-dark);
         }
