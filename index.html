@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thomas Mrokon</title>
-    <meta name="description" content="Professor für Entwerfen, Digitale Werkzeuge und KI">
+    <meta name="description" content="Prof. Thomas J. Mrokon: KI-Beratung, Workshops und Keynotes zu künstlicher Intelligenz, Architektur und digitaler Transformation.">
     <style>
         /* --- CSS VARIABLES --- */
         :root {
@@ -243,7 +243,6 @@
         .contact {
             text-align: left;
             background: var(--bg-box-dark);
-            padding: 2rem;
             border-radius: 4px;
             color: var(--text-light);
         }
@@ -259,6 +258,171 @@
             transition: color 0.2s ease;
         }
         
+        /* --- CONSULTING AND CONTACT ACTIONS --- */
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .consulting, .contact {
+            --service-accent: #15FFBC;
+            --service-copy: #cccccc;
+            scroll-margin-top: 1rem;
+        }
+
+        .consulting {
+            margin-bottom: 1rem;
+        }
+
+        .consulting > summary, .contact > summary {
+            padding-right: 3rem;
+        }
+
+        .consulting-intro, .consulting-process, .contact-intro, .contact-hint {
+            color: var(--service-copy);
+            margin-bottom: 1.25rem;
+        }
+
+        .consulting-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .consulting-card {
+            background: var(--bg-box-dark);
+            border-top: 2px solid var(--service-accent);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .consulting-card h3 {
+            color: var(--service-accent);
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .consulting-card p {
+            color: var(--service-copy);
+        }
+
+        .consulting-process strong {
+            color: var(--service-accent);
+            font-weight: 500;
+        }
+
+        .contact .action-link, .consulting a.action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.65rem 1.1rem;
+            border: 1px solid var(--accent-green-light);
+            border-radius: 4px;
+            color: var(--accent-green-light);
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            font-family: inherit;
+            line-height: inherit;
+            cursor: pointer;
+        }
+
+        .consulting a.action-link:hover {
+            background: var(--bg-box-dark);
+        }
+
+        .contact .action-link {
+            color: var(--bg-dark);
+            background: var(--service-accent);
+            border-color: var(--service-accent);
+        }
+
+        .contact .action-link:hover {
+            color: var(--bg-dark);
+            background: var(--accent-pink-light);
+            border-color: var(--accent-pink-light);
+        }
+
+        .consulting a:focus-visible, .contact a:focus-visible, .contact button:focus-visible {
+            outline: 3px solid currentColor;
+            outline-offset: 4px;
+        }
+
+        .contact .action-link:focus-visible {
+            outline-color: var(--service-accent);
+        }
+
+        .contact .action-link[hidden] {
+            display: none;
+        }
+
+        .contact-email {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--service-accent);
+            overflow-wrap: anywhere;
+        }
+
+        .contact-hint {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-profiles {
+            list-style: none;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .contact-profiles a {
+            display: inline-block;
+            padding: 0.5rem 0;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        body.light-mode .consulting, body.light-mode .contact {
+            --service-accent: #00705a;
+            --service-copy: #444;
+        }
+
+        body.light-mode .consulting-card {
+            background: var(--bg-box-light);
+        }
+
+        body.light-mode .consulting a.action-link {
+            color: #00705a;
+            border-color: #00705a;
+        }
+
+        body.light-mode .consulting a.action-link:hover {
+            background: var(--bg-box-light);
+        }
+
+        body.light-mode .contact .action-link {
+            color: #fff;
+        }
+
+        body.light-mode .contact .action-link:hover {
+            color: #fff !important;
+            background: #005c49;
+            border-color: #005c49;
+        }
+
+        body.light-mode .contact-email, body.light-mode .contact-profiles a {
+            color: #00705a;
+        }
+
+        body.light-mode .contact-profiles {
+            border-color: #ddd;
+        }
+
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -500,6 +664,11 @@
             h1 {
                 font-size: 2rem;
             }
+
+            .consulting-grid {
+                grid-template-columns: 1fr;
+            }
+
         }
     </style>
 </head>
@@ -516,6 +685,30 @@
         </header>
 
         <main>
+            <details class="consulting" id="beratung" aria-labelledby="beratung-title">
+                <summary id="beratung-title">KI verstehen. Wandel gestalten.</summary>
+                <div class="section-content">
+                <p class="consulting-intro">Wie kann künstliche Intelligenz Ihre Arbeit sinnvoll unterstützen – und was bedeutet sie für Ihre Organisation? Ich begleite Unternehmen, Architektur- und Planungsbüros sowie Bildungsinstitutionen dabei, Potenziale zu erkennen, konkrete Anwendungen zu entwickeln und Menschen im Wandel mitzunehmen.</p>
+                <p class="consulting-intro">Meine Perspektive verbindet die Erfahrung als Architekt und Unternehmer mit meiner Arbeit als Professor für Entwerfen und Digitale Konstruktion. Im Mittelpunkt stehen die praktische Anwendung von KI und ihre Auswirkungen auf Zusammenarbeit, Geschäftsmodelle und Gesellschaft.</p>
+                <div class="consulting-grid">
+                    <article class="consulting-card">
+                        <h3>Strategische KI-Beratung</h3>
+                        <p>Wo lohnt sich der Einstieg? Gemeinsam betrachten wir Ihre Arbeitsprozesse, identifizieren geeignete KI-Anwendungen und priorisieren die nächsten Schritte – passend zu Ihren Zielen und Ressourcen.</p>
+                    </article>
+                    <article class="consulting-card">
+                        <h3>Workshops &amp; Befähigung</h3>
+                        <p>KI im eigenen Arbeitsalltag erproben: In praxisnahen Workshops entwickeln Teams ein Verständnis für Möglichkeiten und Grenzen und erarbeiten Ansätze für ihre konkreten Aufgaben.</p>
+                    </article>
+                    <article class="consulting-card">
+                        <h3>Keynotes &amp; Impulse</h3>
+                        <p>Perspektiven für Ihre Veranstaltung: Wie verändert KI das Planen, Arbeiten und Leben? Impulse zu digitaler Transformation, neuen Geschäftsmodellen und dem Faktor Mensch eröffnen Raum für Diskussion.</p>
+                    </article>
+                </div>
+                <p class="consulting-process"><strong>Der Einstieg:</strong> Sie schildern Ihr Anliegen. In einem ersten Gespräch klären wir Ihre Ausgangslage und Ziele. Daraus entwickeln wir ein passendes Format und stimmen Umfang und Rahmen gemeinsam ab.</p>
+                <a class="action-link" href="#kontakt">Über Ihr Vorhaben sprechen <span aria-hidden="true">&nbsp;→</span></a>
+                </div>
+            </details>
+
             <details>
     <summary>Über mich</summary>
     <div class="section-content">
@@ -759,20 +952,23 @@
                 </div>
             </details>
 
-            <details>
-                <summary>Kontakt</summary>
-    <div class="section-content">
-        <div class="contact">
-            <p style="margin-top: 1.5rem; color: var(--text-grey-light); font-size: 1rem;">
-                Für Keynote-Anfragen, Kooperationen oder sonstige Ideen kontaktieren Sie mich gerne direkt. </p><br>
-            </p>
-            <span style="color: var(--accent-green-light); font-size: 1rem;">Email: thomas.mrokon [at] hs-mainz [dot] de</span><br>
-            <a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" style="font-size: 1rem;">Personenverzeichnis Hochschule Mainz</a><br>
-            <a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" style="font-size: 1rem;">Architekturinstitut der Hochschule Mainz</a><br>
-            <a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" style="font-size: 1rem;">LinkedIn</a>
-        </div>
-    </div>
-</details>
+            <details class="contact" id="kontakt" aria-labelledby="kontakt-title">
+                <summary id="kontakt-title">Lassen Sie uns ins Gespräch kommen.</summary>
+                <div class="section-content">
+                <p class="contact-intro">Sie möchten KI in Ihrer Organisation einsetzen, Ihr Team weiterbilden oder einen Impuls für Ihre Veranstaltung setzen? Schreiben Sie mir gerne – auch für Kooperationen und erste Ideen.</p>
+                <p class="contact-intro">Ein paar Stichpunkte zu Ihrer Organisation, Ihrer Fragestellung und dem gewünschten Zeitrahmen helfen mir, mich auf unser Gespräch vorzubereiten.</p>
+                <div class="contact-actions">
+                    <button class="action-link" id="email-request" type="button" hidden>Anfrage per E-Mail senden <span aria-hidden="true">&nbsp;↗</span></button>
+                </div>
+                <span class="contact-email" id="contact-email">thomas.mrokon [at] hs-mainz [dot] de</span>
+                <p class="contact-hint">Für eine manuelle Nachricht ersetzen Sie [at] durch @ und [dot] durch einen Punkt.</p>
+                <ul class="contact-profiles" aria-label="Weitere Profile und Kontaktmöglichkeiten">
+                    <li><a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" rel="noopener noreferrer">Auf LinkedIn vernetzen <span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" rel="noopener noreferrer">Personenverzeichnis Hochschule Mainz <span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" rel="noopener noreferrer">Architekturinstitut der Hochschule Mainz <span aria-hidden="true">↗</span></a></li>
+                </ul>
+                </div>
+            </details>
         </main>
 
         <footer>
@@ -803,6 +999,31 @@
             async src="https://stats.mrokon.de/count.js"></script>
     
     <script>
+    // Die E-Mail-Adresse erst beim bewussten Klick zusammensetzen.
+    const emailRequest = document.getElementById('email-request');
+    emailRequest.addEventListener('click', () => {
+        const address = document.getElementById('contact-email').textContent.trim()
+            .replace(/\s*\[at\]\s*/, '@')
+            .replace(/\s*\[dot\]\s*/g, '.');
+        const subject = encodeURIComponent('Anfrage zu KI-Beratung, Workshop oder Keynote');
+        window.location.href = 'mailto:' + address + '?subject=' + subject;
+    });
+    emailRequest.hidden = false;
+
+    // Beim Laden auch vom Browser wiederhergestellte Klappmenüs schließen.
+    function closeDetailsOnLoad() {
+        document.querySelectorAll('details').forEach(details => { details.open = false; });
+    }
+    closeDetailsOnLoad();
+    window.addEventListener('pageshow', closeDetailsOnLoad);
+
+    // Beratung und Kontakt erst beim Anklicken eines internen Links öffnen.
+    const linkedDetails = ['beratung', 'kontakt'].map(id => document.getElementById(id));
+    linkedDetails.forEach(details => {
+        document.querySelectorAll('a[href="#' + details.id + '"]').forEach(link => {
+            link.addEventListener('click', () => { details.open = true; });
+        });
+    });
     // Theme Toggle mit JS
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
