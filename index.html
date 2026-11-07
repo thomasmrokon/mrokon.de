@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Mrokon</title>
-    <meta name="description" content="Prof. Thomas J. Mrokon: KI-Beratung, Workshops und Keynotes zu künstlicher Intelligenz, Architektur und digitaler Transformation.">
+    <title>Prof. Thomas J. Mrokon – Entwerfen und Digitale Konstruktion</title>
+    <meta name="description" content="Prof. Thomas J. Mrokon, Hochschule Mainz: Forschung und Lehre zu regelbasierter und KI-gestützter Planung, Computational Design und der Transformation der Architekturausbildung.">
+    <script>
+    // Sprache so früh wie möglich setzen, damit beim Laden nichts springt.
+    // Reihenfolge: ?lang=… in der Adresse, gespeicherte Wahl, Browsersprache.
+    (function () {
+        var lang = null;
+        try {
+            var param = new URLSearchParams(location.search).get('lang');
+            if (param === 'de' || param === 'en') lang = param;
+            if (!lang) {
+                var saved = localStorage.getItem('lang');
+                if (saved === 'de' || saved === 'en') lang = saved;
+            }
+        } catch (e) {}
+        if (!lang) {
+            var nav = (navigator.language || 'de').toLowerCase();
+            lang = nav.indexOf('de') === 0 ? 'de' : 'en';
+        }
+        document.documentElement.lang = lang;
+    })();
+    </script>
     <style>
         /* --- CSS VARIABLES --- */
         :root {
             --accent-pink-dark: #D94F9F;
             --accent-pink-light: #FDC5F6;
-            --accent-green-dark: #009E7F;
+            --accent-green-dark: #00705a;
             --accent-green-light: #15FFBC;
             --text-dark: #222;
             --text-light: #fff;
@@ -22,6 +42,35 @@
             --bg-box-dark: #2a2a2a;
             --bg-box-light: #f7f7f7;
             --border-color: #333;
+
+            /* Aktive Farben – werden im hellen Modus umgeschaltet */
+            --bg: var(--bg-dark);
+            --box: var(--bg-box-dark);
+            --text: var(--text-light);
+            --copy: var(--text-grey-light);
+            --muted: var(--text-grey-dark);
+            --green: var(--accent-green-light);
+            --pink: var(--accent-pink-light);
+            --line: var(--border-color);
+            --hover: #333;
+        }
+
+        body.light-mode {
+            --bg: var(--bg-light);
+            --box: var(--bg-box-light);
+            --text: var(--text-dark);
+            --copy: var(--text-grey-mid);
+            --muted: #666;
+            --green: var(--accent-green-dark);
+            --pink: var(--accent-pink-dark);
+            --line: #ddd;
+            --hover: #eee;
+        }
+
+        /* --- SPRACHE: jeweils nur eine Fassung zeigen --- */
+        html[lang="de"] [data-lang="en"],
+        html[lang="en"] [data-lang="de"] {
+            display: none !important;
         }
 
         /* --- BASE STYLES --- */
@@ -30,431 +79,60 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: var(--text-light);
-            background: var(--bg-dark);
+            color: var(--text);
+            background: var(--bg);
             font-size: 16px;
             transition: background 0.3s, color 0.3s;
         }
-        
-        html {
-            transition: background 0.3s;
-        }
-        
-        /* Ensure consistent flow text size */
+
         p {
             font-size: 1rem;
         }
-        
+
+        a {
+            color: var(--pink);
+        }
+
+        a:hover {
+            color: var(--green);
+        }
+
+        a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible + .slider {
+            outline: 3px solid var(--green);
+            outline-offset: 3px;
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem 1rem;
-            background: var(--bg-dark);
-            color: var(--text-light);
-        }
-        
-        /* --- HEADER --- */
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2rem;
-            background: var(--bg-dark);
-            color: var(--text-light);
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
         }
 
-        .tagline {
-            font-size: 1.1rem;
-            color: var(--accent-pink-light);
-            font-weight: 300;
-        }
-        
-        /* --- SECTIONS --- */
-        section {
-            margin-bottom: 2.5rem;
-        }
-        
-        details {
-            background: var(--bg-box-dark);
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-        
-        summary {
-            font-size: 1.3rem;
-            color: var(--accent-green-light);
-            font-weight: 400;
-            border-left: 3px solid var(--accent-green-light);
-            padding: 1rem 1rem 1rem 1.5rem;
-            cursor: pointer;
-            list-style: none;
-            position: relative;
-            transition: background-color 0.2s ease;
-        }
-        
-        summary:hover {
-            background: #333;
-        }
-        
-        summary::after {
-            content: '+';
-            position: absolute;
-            right: 1rem;
-            color: var(--accent-pink-light);
-            font-size: 1.5rem;
-            transition: transform 0.2s ease;
-        }
-        
-        details[open] summary::after {
-            transform: rotate(45deg);
-        }
-        
-        .section-content {
-            padding: 0 1.5rem 1.5rem 1.5rem;
-            background: var(--bg-box-dark);
-            color: var(--text-light);
-        }
-        
-        h2 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--accent-green-light);
-            font-weight: 400;
-            border-left: 3px solid var(--accent-green-light);
-            padding-left: 1rem;
-        }
-        
-        .about p {
-            color: var(--text-grey-light);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        
-        /* --- FOCUS AREAS --- */
-        .focus-areas {
+        /* --- TOP BAR: Theme und Sprache --- */
+        .topbar {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .focus-item {
-            background: var(--bg-box-dark);
-            padding: 1rem;
-            border-radius: 4px;
-            border-bottom: 2px solid var(--accent-pink-light);
-            color: var(--text-light);
-        }
-        
-        .focus-item:last-child {
-            border-bottom: none;
-        }
-        
-        .focus-item h3 {
-            color: var(--accent-pink-light);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .focus-item p {
-            color: var(--text-grey-light);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-        
-        /* --- PROJECTS, COURSES, KEYNOTES --- */
-        .project, .course, .keynote {
-            background: var(--bg-box-dark);
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-            border-left: 3px solid var(--accent-green-light);
-            color: var(--text-light);
-        }
-        
-        .project a, .keynote a, .focus-item a {
-            color: var(--accent-pink-light);
-            text-decoration: none;
-            font-size: 1rem;
-            display: inline-block;
-            margin-top: 0.5rem;
-        }
-        
-        .project a:hover, .keynote a:hover, .focus-item a:hover {
-            color: var(--accent-green-light);
-            text-decoration: underline;
-        }
-        
-        .project h3, .course h3, .keynote h3 {
-            color: var(--accent-green-light);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .project p, .course p, .keynote p {
-            color: var(--text-grey-light);
-            font-size: 1rem;
-        }
-        
-        /* --- KEYNOTE LIST --- */
-        .keynote-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        
-        .keynote-item {
-            padding-bottom: 0.7rem;
-            border-bottom: 1px solid #444;
-        }
-        
-        .keynote-item:last-child {
-            border-bottom: none;
-        }
-        
-        .keynote-meta {
-            color: var(--text-grey-light);
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-        
-        .keynote-title {
-            color: var(--accent-pink-light);
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-        
-        /* --- CONTACT --- */
-        .contact {
-            text-align: left;
-            background: var(--bg-box-dark);
-            border-radius: 4px;
-            color: var(--text-light);
-        }
-        
-        .contact a {
-            color: var(--accent-green-light);
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        
-        .contact a:hover {
-            color: var(--accent-pink-light);
-            transition: color 0.2s ease;
-        }
-        
-        /* --- CONSULTING AND CONTACT ACTIONS --- */
-        .contact-actions {
-            display: flex;
-            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.75rem;
-        }
-
-        .consulting, .contact {
-            --service-accent: #15FFBC;
-            --service-copy: #cccccc;
-            scroll-margin-top: 1rem;
-        }
-
-        .consulting {
-            margin-bottom: 1rem;
-        }
-
-        .consulting > summary, .contact > summary {
-            padding-right: 3rem;
-        }
-
-        .consulting-intro, .consulting-process, .contact-intro, .contact-hint {
-            color: var(--service-copy);
-            margin-bottom: 1.25rem;
-        }
-
-        .consulting-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
-            margin: 1.5rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 1rem 0 1rem;
         }
 
-        .consulting-card {
-            background: var(--bg-box-dark);
-            border-top: 2px solid var(--service-accent);
-            border-radius: 4px;
-            padding: 1.25rem;
-        }
-
-        .consulting-card h3 {
-            color: var(--service-accent);
-            font-size: 1.05rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
-
-        .consulting-card p {
-            color: var(--service-copy);
-        }
-
-        .consulting-process strong {
-            color: var(--service-accent);
-            font-weight: 500;
-        }
-
-        .contact .action-link, .consulting a.action-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            padding: 0.65rem 1.1rem;
-            border: 1px solid var(--accent-green-light);
-            border-radius: 4px;
-            color: var(--accent-green-light);
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            text-align: center;
-            font-family: inherit;
-            line-height: inherit;
-            cursor: pointer;
-        }
-
-        .consulting a.action-link:hover {
-            background: var(--bg-box-dark);
-        }
-
-        .contact .action-link {
-            color: var(--bg-dark);
-            background: var(--service-accent);
-            border-color: var(--service-accent);
-        }
-
-        .contact .action-link:hover {
-            color: var(--bg-dark);
-            background: var(--accent-pink-light);
-            border-color: var(--accent-pink-light);
-        }
-
-        .consulting a:focus-visible, .contact a:focus-visible, .contact button:focus-visible {
-            outline: 3px solid currentColor;
-            outline-offset: 4px;
-        }
-
-        .contact .action-link:focus-visible {
-            outline-color: var(--service-accent);
-        }
-
-        .contact .action-link[hidden] {
-            display: none;
-        }
-
-        .contact-email {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--service-accent);
-            overflow-wrap: anywhere;
-        }
-
-        .contact-hint {
-            margin-top: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .contact-profiles {
-            list-style: none;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1rem;
-        }
-
-        .contact-profiles a {
-            display: inline-block;
-            padding: 0.5rem 0;
-            text-decoration: underline;
-            text-underline-offset: 0.2em;
-        }
-
-        body.light-mode .consulting, body.light-mode .contact {
-            --service-accent: #00705a;
-            --service-copy: #444;
-        }
-
-        body.light-mode .consulting-card {
-            background: var(--bg-box-light);
-        }
-
-        body.light-mode .consulting a.action-link {
-            color: #00705a;
-            border-color: #00705a;
-        }
-
-        body.light-mode .consulting a.action-link:hover {
-            background: var(--bg-box-light);
-        }
-
-        body.light-mode .contact .action-link {
-            color: #fff;
-        }
-
-        body.light-mode .contact .action-link:hover {
-            color: #fff !important;
-            background: #005c49;
-            border-color: #005c49;
-        }
-
-        body.light-mode .contact-email, body.light-mode .contact-profiles a {
-            color: #00705a;
-        }
-
-        body.light-mode .contact-profiles {
-            border-color: #ddd;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-grey-dark);
-            font-size: 0.9rem;
-            background: var(--bg-dark);
-        }
-        
-        footer a {
-            color: var(--text-grey-dark);
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
-        
-        footer a:hover {
-            color: var(--accent-green-light);
-        }
-        
-        /* --- THEME SWITCHER --- */
         .theme-switch {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 1rem;
-            margin-bottom: 1.5rem;
             user-select: none;
-            color: var(--accent-pink-light);
+            color: var(--pink);
+            cursor: pointer;
         }
-        
+
         .theme-switch .slider {
             width: 2.2em;
             height: 1.2em;
@@ -464,7 +142,7 @@
             display: inline-block;
             transition: background 0.3s;
         }
-        
+
         .theme-switch .slider::before {
             content: "";
             position: absolute;
@@ -475,366 +153,877 @@
             background: #fff;
             border-radius: 50%;
             transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 0 2px #0002;
         }
-        
+
         .theme-switch input[type="checkbox"] {
-            display: none;
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
         }
-        
-        .theme-switch .mode-label {
-            min-width: 6em;
-            display: inline-block;
-            text-align: left;
-            font-size: 1em;
-            color: inherit;
-            margin-left: 0.5em;
-        }
-        
-        /* --- LIGHT MODE --- */
-        body.light-mode {
-            background: var(--bg-light);
-            color: var(--text-dark);
-        }
-        
-        body.light-mode .container,
-        body.light-mode header,
-        body.light-mode main,
-        body.light-mode footer {
-            background: var(--bg-light);
-            color: var(--text-dark);
-        }
-        
-        body.light-mode h1,
-        body.light-mode h2,
-        body.light-mode summary,
-        body.light-mode .tagline {
-            color: var(--text-dark);
-        }
-        
-        body.light-mode .tagline {
-            color: var(--accent-pink-dark);
-        }
-        
-        body.light-mode summary,
-        body.light-mode h2,
-        body.light-mode .focus-item h3,
-        body.light-mode .project h3,
-        body.light-mode .course h3,
-        body.light-mode .keynote h3,
-        body.light-mode .contact a,
-        body.light-mode .contact span {
-            color: var(--accent-green-dark);
-        }
-        
-        body.light-mode .section-content,
-        body.light-mode .focus-item,
-        body.light-mode .project,
-        body.light-mode .course,
-        body.light-mode .keynote,
-        body.light-mode details,
-        body.light-mode .contact {
-            background: var(--bg-box-light);
-            color: var(--text-dark);
-        }
-        
-        body.light-mode .focus-item p,
-        body.light-mode .project p,
-        body.light-mode .course p,
-        body.light-mode .keynote p,
-        body.light-mode .contact,
-        body.light-mode .keynote-meta,
-        body.light-mode .about p {
-            color: var(--text-grey-mid);
-        }
-        
-        body.light-mode .keynote-title {
-            color: var(--accent-pink-dark);
-        }
-        
-        body.light-mode .focus-item h3,
-        body.light-mode .project h3,
-        body.light-mode .course h3,
-        body.light-mode .keynote h3 {
-            color: var(--accent-pink-dark);
-        }
-        
-        body.light-mode .project a,
-        body.light-mode .focus-item a,
-        body.light-mode .keynote a {
-            color: var(--accent-green-dark);
-        }
-        
-        body.light-mode .project a:hover,
-        body.light-mode .focus-item a:hover,
-        body.light-mode .keynote a:hover {
-            color: var(--accent-pink-dark);
-        }
-        
-        body.light-mode .focus-item {
-            border-bottom: 2px solid var(--accent-pink-dark);
-        }
-        
-        body.light-mode .theme-switch {
-            color: var(--accent-pink-dark);
-        }
-        
+
         body.light-mode .theme-switch .slider {
             background: #ccc;
         }
-        
+
         body.light-mode .theme-switch .slider::before {
             background: #222;
+            transform: translateX(1em);
         }
-        
-        /* --- KORREKTUREN FÜR HELLEN MODUS --- */
-        
-        /* Vertikale grüne Linien vor Bereichsnamen und Projekten */
-        body.light-mode h2,
-        body.light-mode summary {
-            border-left: 3px solid var(--accent-green-dark);
+
+        .lang-switch {
+            display: flex;
+            gap: 0.25rem;
         }
-        
-        /* Vertikale grüne Linie bei Projekten */
-        body.light-mode .project,
-        body.light-mode .course,
-        body.light-mode .keynote {
-            border-left: 3px solid var(--accent-green-dark);
+
+        .lang-switch button {
+            font: inherit;
+            font-size: 0.9rem;
+            min-width: 44px;
+            min-height: 36px;
+            padding: 0.25rem 0.6rem;
+            background: transparent;
+            color: var(--copy);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            cursor: pointer;
         }
-        
-        /* Text unter dem Bild im Bereich "Über mich" */
-        body.light-mode .section-content p[style*="color: var(--accent-pink-light)"] {
-            color: var(--accent-pink-dark) !important;
+
+        .lang-switch button[aria-pressed="true"] {
+            color: var(--bg);
+            background: var(--green);
+            border-color: var(--green);
         }
-        
-        /* Horizontale Trennlinien in Schwerpunkte und Lehre */
-        body.light-mode .focus-item {
-            border-bottom: 2px solid var(--accent-pink-dark);
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 2rem;
         }
-        
-        /* Farbe der Links bei den Projekten */
-        body.light-mode .project a,
-        body.light-mode .focus-item a,
-        body.light-mode .keynote a {
-            color: var(--accent-green-dark);
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
         }
-        
-        body.light-mode .project a:hover,
-        body.light-mode .focus-item a:hover,
-        body.light-mode .keynote a:hover {
-            color: var(--accent-pink-dark);
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--pink);
+            font-weight: 300;
         }
-        
-        /* Einleitungstext im Bereich "Keynotes" */
-        body.light-mode .section-content > p[style*="color: var(--text-grey-light)"] {
-            color: var(--text-grey-mid) !important;
+
+
+        /* --- AKTUELL --- */
+        .current {
+            margin-bottom: 2.5rem;
         }
-        
-        /* Grauer Text im Bereich "Kontakt" */
-        body.light-mode .contact p,
-        body.light-mode .contact {
-            color: var(--text-grey-mid);
+
+        .current h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--green);
+            font-weight: 400;
+            border-left: 3px solid var(--green);
+            padding-left: 1rem;
         }
-        
-        /* Email-Adresse im Kontaktbereich */
-        body.light-mode .contact span[style*="color: var(--accent-green-light)"] {
-            color: var(--accent-green-dark) !important;
+
+        .current ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
         }
-        
-        /* Plus/Minus Symbole rechts bei den Bereichen */
-        body.light-mode summary::after {
-            color: var(--accent-pink-dark);
+
+        .current li {
+            padding-left: 1rem;
+            border-left: 1px solid var(--line);
         }
-        
-        /* Kontakt-Bereich: Erster Satz und Links */
-        body.light-mode .contact p[style*="margin-top: 1.5rem"] {
-            color: var(--text-grey-mid) !important;
+
+        .current .when {
+            display: block;
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-        
-        body.light-mode .contact a:hover {
-            color: var(--accent-pink-dark) !important;
+
+        .current .what {
+            color: var(--pink);
+            font-weight: 500;
         }
-        
+
+        .current p {
+            color: var(--copy);
+            font-size: 0.95rem;
+        }
+
+        /* --- SECTIONS --- */
+        details {
+            background: var(--box);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            font-size: 1.3rem;
+            color: var(--green);
+            font-weight: 400;
+            border-left: 3px solid var(--green);
+            padding: 1rem 3rem 1rem 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            transition: background-color 0.2s ease;
+            scroll-margin-top: 1rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:hover {
+            background: var(--hover);
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 1rem;
+            color: var(--pink);
+            font-size: 1.5rem;
+            line-height: 1.4;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .section-content {
+            padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+        }
+
+        .section-intro {
+            color: var(--copy);
+            margin-bottom: 1.25rem;
+        }
+
+        .about p {
+            color: var(--copy);
+            margin-bottom: 1rem;
+        }
+
+        .about .vision {
+            font-weight: 500;
+            color: var(--pink);
+        }
+
+        .about .motto {
+            font-style: italic;
+            color: var(--pink);
+        }
+
+        .about hr {
+            border: 0;
+            border-top: 2px solid var(--pink);
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        .about img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 2px 12px #0003;
+        }
+
+        /* --- EINTRÄGE (Forschung, Lehre, Projekte, Publikationen) --- */
+        .entry {
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border-left: 3px solid var(--green);
+            background: var(--bg);
+        }
+
+        .entry-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.75rem;
+            align-items: baseline;
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 0 0.5rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--copy);
+        }
+
+        .entry h3 {
+            color: var(--pink);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry p {
+            color: var(--copy);
+            margin-bottom: 0.5rem;
+        }
+
+        .entry .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .entry .links a {
+            text-decoration: none;
+        }
+
+        .entry .links a:hover {
+            text-decoration: underline;
+        }
+
+        .subhead {
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin: 1.75rem 0 0.75rem 0;
+        }
+
+        .subhead:first-child {
+            margin-top: 0.5rem;
+        }
+
+        /* --- VORTRÄGE --- */
+        .keynote-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .keynote-item {
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .keynote-item:last-child {
+            border-bottom: none;
+        }
+
+        .keynote-meta {
+            color: var(--copy);
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .keynote-title {
+            color: var(--pink);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .keynote-title a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: var(--line);
+            text-underline-offset: 0.2em;
+        }
+
+        .keynote-title a::after {
+            content: " ↗";
+            font-size: 0.85em;
+            color: var(--muted);
+        }
+
+        .keynote-title a:hover {
+            color: var(--green);
+            text-decoration-color: currentColor;
+        }
+
+        /* --- BERATUNG & KONTAKT --- */
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.65rem 1.1rem;
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            color: var(--green);
+            font: inherit;
+            font-weight: 500;
+            text-decoration: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .action-link:hover {
+            color: var(--bg);
+            background: var(--green);
+        }
+
+        .action-link[hidden] {
+            display: none;
+        }
+
+        .contact-email {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--green);
+            overflow-wrap: anywhere;
+        }
+
+        .contact-hint {
+            color: var(--copy);
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-profiles {
+            list-style: none;
+            border-top: 1px solid var(--line);
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+        }
+
+        .contact-profiles a {
+            display: inline-block;
+            padding: 0.5rem 0;
+            color: var(--green);
+            text-underline-offset: 0.2em;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--muted);
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            color: var(--green);
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 600px) {
             .container {
-                padding: 1rem 0.5rem;
+                padding: 1rem 0.75rem;
             }
-            
+
             h1 {
                 font-size: 2rem;
             }
 
-            .consulting-grid {
-                grid-template-columns: 1fr;
+            .section-content {
+                padding: 0.5rem 1rem 1.25rem 1rem;
             }
 
+            .entry {
+                padding: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <label class="theme-switch">
-      <input type="checkbox" id="theme-toggle">
-      <span class="slider"></span>
-      <span class="mode-label">Dunkel / Hell</span>
-    </label>
+    <div class="topbar">
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider" aria-hidden="true"></span>
+            <span class="mode-label">Dunkel</span>
+        </label>
+        <div class="lang-switch" role="group" aria-label="Sprache / Language">
+            <button type="button" data-set-lang="de" lang="de" aria-pressed="false">DE</button>
+            <button type="button" data-set-lang="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <h1>Prof. Thomas J. Mrokon</h1>
-            <p class="tagline">Architektur • Digitale Transformation • Künstliche Intelligenz</p>
+            <p class="tagline" data-lang="de">Architektur • Digitale Transformation • Künstliche Intelligenz</p>
+            <p class="tagline" data-lang="en">Architecture • Digital Transformation • Artificial Intelligence</p>
         </header>
 
         <main>
-            <details class="consulting" id="beratung" aria-labelledby="beratung-title">
-                <summary id="beratung-title">KI verstehen. Wandel gestalten.</summary>
+            <section class="current" aria-labelledby="current-title">
+                <h2 id="current-title"><span data-lang="de">Aktuell</span><span data-lang="en">Current</span></h2>
+                <ul>
+                    <li>
+                        <span class="when" data-lang="de">seit 2026 · Forschung</span>
+                        <span class="when" data-lang="en">since 2026 · research</span>
+                        <span class="what" data-lang="de">Regelbasierte Planung im Industriebau</span>
+                        <span class="what" data-lang="en">Rule-based planning for industrial buildings</span>
+                        <p data-lang="de">Wie viel Planungsaufwand steckt in wiederkehrenden Entscheidungen, die sich als Regeln beschreiben lassen? In einer Forschungskooperation mit der Planungspraxis entsteht ein Prototyp, der aus einem Planungsbriefing Layout- und Gebäudevarianten erzeugt, prüft und nachvollziehbar dokumentiert – vom Standort über das Gebäude bis zum Produktionsprozess.</p>
+                        <p data-lang="en">How much planning effort lies in recurring decisions that can be described as rules? In a research collaboration with practice, we are building a prototype that generates, checks and documents layout and building variants from a planning brief – from the site to the building to the production process.</p>
+                    </li>
+                    <li>
+                        <span class="when" data-lang="de">seit 2024 · Studiengangsleitung</span>
+                        <span class="when" data-lang="en">since 2024 · programme director</span>
+                        <span class="what" data-lang="de">Zukunft der Architekturausbildung</span>
+                        <span class="what" data-lang="en">The future of architectural education</span>
+                        <p data-lang="de">KI verändert die gesamte Planungs- und Baubranche: Arbeitsteilung, Berufsbilder und Geschäftsmodelle. Als Studiengangsleiter arbeite ich daran, wie sich das Architekturstudium darauf einstellt – von den Kompetenzzielen über die Lehrformate bis zu den Prüfungen.</p>
+                        <p data-lang="en">AI is transforming the entire planning and construction industry: division of labour, professional roles and business models. As programme director, I am working on how architectural education responds – from learning outcomes to teaching formats and assessment.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <details id="forschung">
+                <summary><span data-lang="de">Forschung</span><span data-lang="en">Research</span></summary>
                 <div class="section-content">
-                <p class="consulting-intro">Wie kann künstliche Intelligenz Ihre Arbeit sinnvoll unterstützen – und was bedeutet sie für Ihre Organisation? Ich begleite Unternehmen, Architektur- und Planungsbüros sowie Bildungsinstitutionen dabei, Potenziale zu erkennen, konkrete Anwendungen zu entwickeln und Menschen im Wandel mitzunehmen.</p>
-                <p class="consulting-intro">Meine Perspektive verbindet die Erfahrung als Architekt und Unternehmer mit meiner Arbeit als Professor für Entwerfen und Digitale Konstruktion. Im Mittelpunkt stehen die praktische Anwendung von KI und ihre Auswirkungen auf Zusammenarbeit, Geschäftsmodelle und Gesellschaft.</p>
-                <div class="consulting-grid">
-                    <article class="consulting-card">
-                        <h3>Strategische KI-Beratung</h3>
-                        <p>Wo lohnt sich der Einstieg? Gemeinsam betrachten wir Ihre Arbeitsprozesse, identifizieren geeignete KI-Anwendungen und priorisieren die nächsten Schritte – passend zu Ihren Zielen und Ressourcen.</p>
+                    <p class="section-intro" data-lang="de">Gemeinsamer Nenner ist implizites Wissen: die Erfahrung von Planenden, die Haltung hinter einem Entwurf, das Können in den Händen von Handwerkerinnen und Handwerkern. Meine Forschung untersucht, wie sich dieses Wissen explizit machen lässt – so, dass digitale Systeme damit arbeiten können und Menschen nachvollziehen, was dabei entsteht. Laufende Vorhaben beschreibe ich hier thematisch.</p>
+                    <p class="section-intro" data-lang="en">The common thread is tacit knowledge: the experience of planners, the attitude behind a design, the skill in the hands of craftspeople. My research explores how this knowledge can be made explicit – so that digital systems can work with it and people can follow what they produce. Ongoing projects are described here by topic.</p>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">seit 2026 · Forschungskooperation</span><span data-lang="en">since 2026 · research collaboration</span> <span class="status" data-lang="de">laufend</span><span class="status" data-lang="en">ongoing</span></div>
+                        <h3 data-lang="de">Regelbasierte Planung im Industriebau</h3>
+                        <h3 data-lang="en">Rule-based planning for industrial buildings</h3>
+                        <p data-lang="de">Ein großer Teil des Planungsaufwands entsteht aus implizitem Expertenwissen, wiederkehrenden Entscheidungen und Abstimmungen zwischen Disziplinen. In einer Forschungskooperation mit einem Partner aus der Planungspraxis untersuchen wir, welche Entscheidungen tatsächlich projektspezifisch sind – und welche sich als Regeln formulieren und automatisieren lassen.</p>
+                        <p data-lang="en">Much of the effort in planning stems from implicit expert knowledge, recurring decisions and coordination between disciplines. In a research collaboration with a partner from practice, we examine which decisions are truly project-specific – and which can be formulated as rules and automated.</p>
+                        <p data-lang="de">Das Vorhaben beschreibt dafür drei Planungsebenen regelbasiert – Masterplanung, Gebäudeplanung und Prozessplanung – und untersucht, wie sie sich wechselseitig beeinflussen, statt nur nacheinander abzulaufen. Der prototypische Demonstrator ist bewusst hybrid: Sprachmodelle interpretieren Anforderungen und erläutern Ergebnisse, während Regelprüfung und Geometrieerzeugung deterministisch und reproduzierbar bleiben.</p>
+                        <p data-lang="en">To this end, the project describes three planning levels in rule-based form – master planning, building design and process planning – and examines how they influence each other rather than simply following one another. The prototype is deliberately hybrid: language models interpret requirements and explain results, while rule checking and geometry generation remain deterministic and reproducible.</p>
                     </article>
-                    <article class="consulting-card">
-                        <h3>Workshops &amp; Befähigung</h3>
-                        <p>KI im eigenen Arbeitsalltag erproben: In praxisnahen Workshops entwickeln Teams ein Verständnis für Möglichkeiten und Grenzen und erarbeiten Ansätze für ihre konkreten Aufgaben.</p>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">seit 2026 · Forschung</span><span data-lang="en">since 2026 · research</span> <span class="status" data-lang="de">in Entwicklung</span><span class="status" data-lang="en">in development</span></div>
+                        <h3 data-lang="de">Entwurfs-DNA: Haltung als Parameter</h3>
+                        <h3 data-lang="en">Design DNA: attitude as parameters</h3>
+                        <p data-lang="de">Jedem Entwurf liegt eine Haltung zugrunde, die selten ausgesprochen wird. Der DNA-Ansatz macht sie explizit: Entwurfshaltungen werden als typisierte Parameter erfasst, aus denen sich Baukörper reproduzierbar erzeugen lassen. So wird nachvollziehbar, welche Haltung zu welcher Form führt – und Varianten lassen sich vergleichen, ohne die Autorschaft an das System abzugeben.</p>
+                        <p data-lang="en">Every design rests on an attitude that is rarely made explicit. The DNA approach captures design attitudes as typed parameters from which building masses can be generated reproducibly. This makes it traceable which attitude leads to which form – and variants become comparable without handing authorship over to the system.</p>
                     </article>
-                    <article class="consulting-card">
-                        <h3>Keynotes &amp; Impulse</h3>
-                        <p>Perspektiven für Ihre Veranstaltung: Wie verändert KI das Planen, Arbeiten und Leben? Impulse zu digitaler Transformation, neuen Geschäftsmodellen und dem Faktor Mensch eröffnen Raum für Diskussion.</p>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">2024 · Forschungskonzept</span><span data-lang="en">2024 · research concept</span> <span class="status" data-lang="de">Konzept</span><span class="status" data-lang="en">concept</span></div>
+                        <h3 data-lang="de">Immersives Handwerk</h3>
+                        <h3 data-lang="en">Immersive craft</h3>
+                        <p data-lang="de">Wie lassen sich handwerkliche Tätigkeiten mit Bewegungserfassung und VR/AR erfassen, analysieren und unterstützen? Das Konzept überträgt digitale Methoden von der Planung auf die materielle Ausführung.</p>
+                        <p data-lang="en">How can craft work be captured, analysed and supported with motion capture and VR/AR? The concept extends digital methods from planning to physical execution.</p>
                     </article>
-                </div>
-                <p class="consulting-process"><strong>Der Einstieg:</strong> Sie schildern Ihr Anliegen. In einem ersten Gespräch klären wir Ihre Ausgangslage und Ziele. Daraus entwickeln wir ein passendes Format und stimmen Umfang und Rahmen gemeinsam ab.</p>
-                <a class="action-link" href="#kontakt">Über Ihr Vorhaben sprechen <span aria-hidden="true">&nbsp;→</span></a>
+
+                    <p class="subhead" data-lang="de">Ursprünge</p>
+                    <p class="subhead" data-lang="en">Origins</p>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">2003–2007 · Forschung</span><span data-lang="en">2003–2007 · research</span></div>
+                        <h3 data-lang="de">raumsyntax: Agentenbasierte Bewegungssimulation</h3>
+                        <h3 data-lang="en">raumsyntax: agent-based movement simulation</h3>
+                        <p data-lang="de">Ein Forschungsprojekt mit der congena GmbH zeigte, wie sich mit agentenbasierter Simulation Bewegungsströme in Gebäuden und Quartieren schon in der Entwurfsphase analysieren lassen – um Wegeführung, Aufenthaltsqualität und funktionale Effizienz datenbasiert zu verbessern. Es folgten Projekte mit der BMW Group für die IAA 2003 und 2005. Für das Forschungsprojekt raumsyntax gab es 2005 den 1. Preis im Wettbewerb „Auf IT gebaut“ des Bundeswirtschaftsministeriums.</p>
+                        <p data-lang="en">A research project with congena GmbH showed how agent-based simulation can analyse movement in buildings and neighbourhoods during design – to improve circulation, quality of stay and functional efficiency on the basis of data. Projects with the BMW Group for the IAA motor shows in 2003 and 2005 followed. In 2005, the raumsyntax research project won first prize in the “Auf IT gebaut” competition of the German Federal Ministry for Economic Affairs.</p>
+                        <div class="links">
+                            <a href="https://www.yumpu.com/de/document/view/4576112/besuchen-sie-uns-im-internet-congena-gmbh" target="_blank" rel="noopener"><span data-lang="de">→ Projektbericht</span><span data-lang="en">→ Project report (German)</span></a>
+                            <a href="https://www.rkw-kompetenzzentrum.de/publikationen/dokumentation/auf-it-gebaut-bauberufe-mit-zukunft/verzeichnis-aller-preistraeger-der-wettbewerbe-2002-2012/" target="_blank" rel="noopener"><span data-lang="de">→ Preisträger „Auf IT gebaut“</span><span data-lang="en">→ “Auf IT gebaut” winners</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">2004 · Diplomarbeit</span><span data-lang="en">2004 · diploma thesis</span></div>
+                        <h3 data-lang="de">Diplomarbeit: Simulation eines Amsterdamer Stadtquartiers</h3>
+                        <h3 data-lang="en">Diploma thesis: simulating an Amsterdam neighbourhood</h3>
+                        <p data-lang="de">Digitale „Bewohner“ mit unterschiedlichen Tagesabläufen bewegen sich durch ein virtuelles Quartier; Wege, Zeiten und Aufenthaltsorte werden aufgezeichnet. So ließen sich vier städtebauliche Entwürfe quantitativ vergleichen – etwa die Wirkung neuer Brücken oder Blockteilungen. Faktisch meine erste Erfahrung mit künstlicher Intelligenz.</p>
+                        <p data-lang="en">Digital “residents” with different daily routines move through a virtual neighbourhood while their routes, timing and locations are recorded. This allowed four urban designs to be compared quantitatively – for instance the effect of new bridges or subdivided blocks. In effect, my first experience with artificial intelligence.</p>
+                    </article>
                 </div>
             </details>
 
-            <details>
-    <summary>Über mich</summary>
-    <div class="section-content">
-        <p>Thomas Mrokon ist Professor für Entwerfen und Digitale Konstruktion an der Hochschule Mainz und seit 2024 auch Studiengangsleiter Architektur. </p>
-        <p>Mit den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie, Heidelberg" und „ESO Supernova, Garching" konnte er seine Expertise im Bereich Computational Design und digitaler Fertigung mit praktischer Innovationskraft kombinieren.</p>
-        <p>Nach einer unternehmerischen Phase mit eigenem Startup (monomer), folgte die Mitarbeit in der neuen Architektur-Abteilung bei Drees&Sommer, bis 2021 der Ruf an die Hochschule Mainz kam.</p>
-        <p>Neben einem weiteren Fokus auf immersive Raumlehre mit VR/AR-Tools, entwickelte sich seit 2023 der Schwerpunkt KI-Anwendungen in der Bauwirtschaft, welcher zwischenzeitlich in einem eigenen Lehrmodul vermittelt wird.</p> 
-        <p>Der Schwerpunkt beim Einsatz von digitalen Werkzeugen liegt auf deren transformativer Wirkung in der gesamten Wertschöpfungskette. Daraus ergeben sich sowohl individuelle als auch gesellschaftliche Implikationen für alle Lebensbereiche.</p>
-        <p>Seit 2023 hält Thomas Mrokon regelmäßig Keynotes und Impulsvorträge rund um das Thema KI für unterschiedliche Zielgruppen.</p>
-        <hr style="border: 0; border-top: 2px solid var(--accent-pink-light); margin: 2rem 0 1.2rem 0;">
-        <img src="ThomasMrokon-46kb.jpg" alt="Thomas Mrokon" style="display: block; width: 100%; max-width: 100%; height: auto; border-radius: 8px; margin: 0 auto 1.5rem auto; box-shadow: 0 2px 12px #0003;">
-        <p style="font-weight: 500; color: var(--accent-pink-light); font-size: 1rem;">Meine Vision: Eine Welt in der Technologie nicht nur zur Effizienzsteigerung oder als Bedrohung eingesetzt wird, sondern als Mittel zur Freiheitswahrung, Persönlichkeitsentfaltung und Sinnstiftung.</p>
-        <p style="font-style: italic; color: var(--accent-pink-light); font-size: 1rem;">OFFLINE ist das neue Online.</p>
-    </div>
-</details>
-
-            <details>
-                <summary>Schwerpunkte</summary>
+            <details id="lehre">
+                <summary><span data-lang="de">Lehre</span><span data-lang="en">Teaching</span></summary>
                 <div class="section-content">
-                    <div class="focus-areas">
-                        <div class="focus-item">
-                            <h3>Beratung und Software-Entwicklung</h3>
-                            <p>Mit raumsyntax bringe ich Forschung und Lehre in die Praxis: Beratung zum Einsatz von KI in Planungsbüros und Unternehmen der Bauwirtschaft sowie individuelle Software, die Regeln, Daten und Abläufe der Planung abbildet.</p>
-                            <p><a href="https://raumsyntax.de">→ raumsyntax.de</a></p>
-                        </div>
-                        <div class="focus-item">
-                            <h3>Computational Design</h3>
-                            <p>Parametrisches Design und algorithmische Architektur ermöglichen komplexe, datengetriebene Entwurfsprozesse. Computational Design hat die Planungskomplexität und -qualität auf ein sehr hohes Niveau gebracht. Multi-Kriterien-Analysen und Optioneering werden zu technischen Methoden, die sowohl Nachhaltigkeitsaspekte, öknomische Faktoren und die Architekturqualität in eine verantwortungsvolle Balance bringen.</p>
-                        </div>
-                        <div class="focus-item">
-                            <h3>Immersive Raumlehre mit VR/AR</h3>
-                            <p>Die Immersion mittels VR/AR erweitert räumliche Gestaltungsprozesse um die wichtige dritte Dimension. Es entstehen neue Freiheiten statt einer zweidimensionalen Abstraktion.</p>
-                        </div>
-                        <div class="focus-item">
-                            <h3>Disruptionen in der Baubranche</h3>
-                            <p>Die träge Bauindustrie erlebt durch KI massive Veränderungen in allen Leistungsphasen und entlang der gesamten Wertschöpfungskette. Während BIM noch eine Option war, wird der Einsatz von KI essentiell.</p>
-                        </div>
-                        <div class="focus-item">
-                            <h3>KI als transformative Technologie</h3>
-                            <p>KI und die Kombination mit Robotik hat massive gesellschaftliche, soziale und geopolitische Auswirkungen auf unsere Arbeitswelt, die Umwelt und unsere gemeinsame Zukunft. Die ethischen Dimensionen von Hyperautomation, Effizienzstrategien und Digitaler Spezien erfordern einen breiten Diskurs in Gesellschaft, Wirtschaft und Politik.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </details>
+                    <p class="section-intro" data-lang="de">Digitale Methoden sind in meiner Lehre kein Softwaretraining, sondern Teil der fachlichen Aufgabe: Studierende sollen die Regeln, Abhängigkeiten und Bewertungsmaßstäbe hinter einer Lösung verstehen – und Ergebnisse digitaler Systeme kritisch prüfen können.</p>
+                    <p class="section-intro" data-lang="en">In my teaching, digital methods are not software training but part of the subject itself: students learn to understand the rules, dependencies and criteria behind a solution – and to critically assess what digital systems produce.</p>
 
-            <details>
-                <summary>Projekte</summary>
-                <div class="section-content">
-                    <div class="project">
-                        <h3>Künstliche Intelligenz in der Bau- und Immobilienwirtschaft</h3>
-                        <p>In meinem Beitrag zu diesem Buch geht es um die Digitale Transformation der Planungsphasen und Wertschöpfungsketten im Bauwesen.</p>
-                        <p><a href="https://shop.haufe.de/prod/kuenstliche-intelligenz-in-der-bau-und-immobilienwirtschaft?srsltid=AfmBOoryL_mVVshCuVBMywHDfwGho-6Av0glmYelmELDBUMUaE1LNx04" target="_blank">→ Buchbestellung</a></p>
-                    </div>
-                    <div class="project">
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">seit SoSe 2021 · Module KON1–KON3</span><span data-lang="en">since Summer 2021 · modules KON1–KON3</span></div>
+                        <h3 data-lang="de">Konstruktionslehre KON1–KON3</h3>
+                        <h3 data-lang="en">Building construction KON1–KON3</h3>
+                        <p data-lang="de">Drei aufeinander aufbauende Module verbinden Konstruktion mit einem schrittweisen Aufbau digitaler Kompetenz: von der dreidimensionalen Modellierung (KON1) über parametrische Methoden im Holzbau (KON2) bis zu Massivbau, Gebäudehülle und Anschlüssen mit Simulation und KI-gestützten Wissenszugängen (KON3).</p>
+                        <p data-lang="de">Didaktisch arbeiten die Module mit Concept Checks, absichtlich fehlerhaften Details, die Studierende erkennen und begründet korrigieren, mit Mini-Inputs der Studierenden, Peer Review und Korrekturgesprächen an festen Meilensteinen. Das Feedback der Studierenden fließt jedes Semester in die Weiterentwicklung ein.</p>
+                        <p data-lang="en">Three consecutive modules link building construction with a step-by-step build-up of digital skills: from 3D modelling (KON1) and parametric methods in timber construction (KON2) to solid construction, building envelopes and junctions with simulation and AI-supported access to domain knowledge (KON3).</p>
+                        <p data-lang="en">The modules work with concept checks, deliberately flawed details that students identify and correct with reasons, short student inputs, peer review and review meetings at fixed milestones. Student feedback goes into the next iteration every semester.</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">WiSe 2026/27 · Stegreif</span><span data-lang="en">Winter 2026/27 · short design task</span></div>
+                        <h3>Carbon to Silicon</h3>
+                        <p data-lang="de">Ergebnis ist kein Gebäude, sondern ein Werkzeug: Die Studierenden entwickeln einen Gebäude-Konfigurator, der aus einem selbst definierten Bauteil-Vokabular nach eigenen Regeln Entwürfe für eine Baulücke erzeugt. Zuerst entsteht das Regelsystem offline – ohne Internet und ohne KI, nur mit Stift und Papier. Erst danach setzen sie es mit KI-Agenten als lauffähige Web-Anwendung um, die live Kennwerte nach DIN 277 und ein selbst gewähltes Bewertungskriterium anzeigt.</p>
+                        <p data-lang="de">Bewertet wird nicht der von der KI geschriebene Code, sondern die architektonische Haltung und ob der Weg vom Blatt zum Werkzeug nachvollziehbar ist.</p>
+                        <p data-lang="en">The result is not a building but a tool: students develop a building configurator that generates designs for an urban infill site from a self-defined kit of parts, following their own rules. The rule system is created offline first – no internet, no AI, only pen and paper. Only then do they implement it with AI agents as a working web application that shows key figures to DIN 277 and a self-chosen evaluation criterion live.</p>
+                        <p data-lang="en">What is assessed is not the AI-written code but the architectural attitude, and whether the path from the sheet of paper to the tool is traceable.</p>
+                        <div class="links">
+                            <a href="https://github.com/thomasmrokon/carbon-to-silicon" target="_blank" rel="noopener"><span data-lang="de">→ Aufgabe und Vorlage auf GitHub</span><span data-lang="en">→ Brief and template on GitHub (German)</span></a>
+                            <a href="https://thomasmrokon.github.io/carbon-to-silicon/onboarding.html" target="_blank" rel="noopener"><span data-lang="de">→ Onboarding für Studierende</span><span data-lang="en">→ Student onboarding (German)</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">seit WiSe 2024/25 · Modul DIKO, Bachelor Architektur</span><span data-lang="en">since Winter 2024/25 · module DIKO, BA Architecture</span></div>
+                        <h3 data-lang="de">DIKO – Digitale Konstruktionsprozesse</h3>
+                        <h3 data-lang="en">DIKO – Digital construction processes</h3>
+                        <p data-lang="de">Ein neues Modul im Bachelor-Curriculum, in dem Studierende mit den digitalen Werkzeugen arbeiten, die die Branche gerade verändern. In wöchentlichen Übungen erproben sie KI-Recherche mit eigener Plausibilitätsprüfung, Vibe-Coding, Bildgenerierung, eigene Wissensassistenten und Automatisierung. Kurze „Spotlights“ zu Podcasts und Vorträgen und die Frage, wie sich die eigene Haltung zu KI verändert, gehören dazu.</p>
+                        <p data-lang="de">Im Projektteil ging es zunächst um frei gewählte Themen von Computational Design bis Robotik. Seit WiSe 2025/26 entwickeln Teams aus ein bis drei Personen in den Rollen CEO, CTO und CFO ein digitales Start-up für die Bau- und Planungsbranche: mit Problemdefinition, Marktanalyse, Geschäftsmodell und Roadmap, einem funktionierenden Prototyp, einer eigenen Website und einem Zwei-Minuten-Pitch.</p>
+                        <p data-lang="de">Das Modul wird jedes Semester anhand des Feedbacks der Studierenden umgebaut. So liefern die Werkzeug-Sitzungen inzwischen direkt Bausteine für das Start-up, statt separate Abgaben zu erzeugen.</p>
+                        <p data-lang="en">A new module in the Bachelor’s curriculum in which students work with the digital tools that are currently changing the industry. In weekly exercises they try out AI-based research with their own plausibility checks, vibe coding, image generation, custom knowledge assistants and automation. Short “spotlights” on podcasts and talks, and the question of how their own attitude towards AI is changing, are part of it.</p>
+                        <p data-lang="en">The project part initially covered freely chosen topics from computational design to robotics. Since winter 2025/26, teams of one to three people in the roles of CEO, CTO and CFO develop a digital start-up for the planning and construction industry: with problem definition, market analysis, business model and roadmap, a working prototype, their own website and a two-minute pitch.</p>
+                        <p data-lang="en">The module is reworked every semester based on student feedback. The tool sessions now feed directly into the start-up rather than producing separate assignments.</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">seit WiSe 2022/23 · Modul KON4</span><span data-lang="en">since Winter 2022/23 · module KON4</span></div>
+                        <h3 data-lang="de">Informierte Architektur</h3>
+                        <h3 data-lang="en">Informed architecture</h3>
+                        <p data-lang="de">Studierende bewerten Entwürfe bereits in der Frühphase mit digitalen Werkzeugen wie Autodesk Forma, CAALA und ecotool – damit Ökobilanzierung von Anfang an Teil der Entwurfsentscheidung ist. In einem Projekt prüften Studierende bereits entschiedene Architekturwettbewerbe nachträglich nach ökologischen Kriterien; bei rund der Hälfte änderte sich die Rangfolge. Die Ergebnisse wurden den Architektenkammern Hessen und Rheinland-Pfalz vorgestellt.</p>
+                        <p data-lang="en">Students evaluate designs at an early stage with digital tools such as Autodesk Forma, CAALA and ecotool – so that life-cycle assessment is part of design decisions from the start. In one project, students re-evaluated completed architectural competitions against ecological criteria; in about half of them, the ranking changed. The results were presented to the chambers of architects of Hesse and Rhineland-Palatinate.</p>
+                        <div class="links">
+                            <a href="https://www.competitionline.com/de/news/wettbewerbe/wir-duerfen-uns-nicht-laenger-vor-zahlen-druecken-11454.html" target="_blank" rel="noopener"><span data-lang="de">→ Bericht bei competitionline</span><span data-lang="en">→ Report on competitionline (German)</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">WiSe 2022/23 · Entwurfsmodul mit Joel Jöbgen</span><span data-lang="en">Winter 2022/23 · design module with Joel Jöbgen</span></div>
+                        <h3 data-lang="de">Immersive Raumlehre</h3>
+                        <h3 data-lang="en">Immersive spatial design</h3>
+                        <p data-lang="de">Studierende entwerfen ausschließlich mit immersiven Werkzeugen wie Arkio und Gravity Sketch und erleben Architektur schon in der Entwurfsphase im Maßstab 1:1 – interaktiv, dreidimensional und gemeinsam. Nach freien Raumstudien entwerfen sie im virtuellen Raum gemeinsam weiter.</p>
+                        <p data-lang="de">Die Aufgabe – ein sakraler Raum für Meditation oder Gebet, ohne vorgegebene Konfession, wahlweise in Kyiv, Kairo oder Mainz – setzt bewusst dort an, wo KI an ihre Grenzen stößt: Optimieren kann eine Maschine Messbares wie Fläche oder CO₂, die Wirkung eines Raums auf Menschen dagegen entsteht aus Wahrnehmung, Stimmung und Haltung.</p>
+                        <p data-lang="en">Students design exclusively with immersive tools such as Arkio and Gravity Sketch and experience architecture at 1:1 scale during the design phase – interactively, three-dimensionally and collaboratively. After free spatial studies, they continue designing together in virtual space.</p>
+                        <p data-lang="en">The brief – a sacred space for meditation or prayer, open to any faith, sited in Kyiv, Cairo or Mainz – deliberately targets what AI cannot do: a machine can optimise what is measurable, such as floor area or carbon, but the effect a space has on people arises from perception, atmosphere and attitude.</p>
+                        <div class="links">
+                            <a href="https://architekturinstitut.hs-mainz.de/projects/immersive-raumlehre" target="_blank" rel="noopener"><span data-lang="de">→ Projektdetails</span><span data-lang="en">→ Project details (German)</span></a>
+                            <a href="https://app.modelo.io/embedded/1740380711766958080" target="_blank" rel="noopener"><span data-lang="de">→ 3D-Modell ansehen</span><span data-lang="en">→ View 3D model</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">SoSe 2024 · Design-Build im Modul KON2, 2. Semester</span><span data-lang="en">Summer 2024 · design-build in module KON2, 2nd semester</span></div>
                         <h3>Lamellenlounge</h3>
-                        <p>Das Semesterprojekt „Digitales Handwerk" zeigt, wie 34 Architekturstudierende im zweiten Semester mithilfe digitaler und analoger Werkzeuge gemeinsam einen Holzpavillon entwarfen und bauten, wobei innovative Methoden, studentische Selbstorganisation, VR-Design sowie parametrisierte Planung und Holzverbindungen im Vordergrund standen.</p>
-                        <p><a href="https://www.hs-mainz.de/news/campus-award-engere-wahl/?back=443&cHash=f07f9ba6244764bf11d2a7908676ecec" target="_blank">→ Projektdetails</a></p>
-                        <p><a href="https://www.youtube.com/watch?v=n0GN8UJxtzU" target="_blank">→ Videodokumentation</a></p>
-                    </div>
-                    <div class="project">
-                        <h3>Immersive Raumlehre</h3>
-                        <p>Das Lehrprojekt „Immersive Raumlehre" am Architekturinstitut der Hochschule Mainz untersucht, wie Architekturstudierende mithilfe von Virtual-Reality-Werkzeugen in der Entwurfsphase Architektur räumlich erleben und gestalten können. Dabei werden ausschließlich immersive Tools wie Head-Mounted Displays verwendet, um einen interaktiven, dreidimensionalen und kollaborativen Gestaltungsprozess zu fördern</p>
-                        <p><a href="https://architekturinstitut.hs-mainz.de/projects/immersive-raumlehre" target="_blank">→ Projektdetails</a></p>
-                    </div>
-                    <div class="project">
+                        <p data-lang="de">34 Studierende entwarfen und bauten gemeinsam einen Holzpavillon im Maßstab 1:1. Aus über 30 VR-Studien entstand eine offene Struktur in Doppel-C-Form, deren versetzte Lamellen Sitz-, Steh- und Aufenthaltsbereiche bilden. Die 726 Einzelteile aus überwiegend wiederverwendetem Holz wurden parametrisch modelliert und ohne klassische Montagepläne gefertigt: Mixed Reality projizierte die Positionen direkt aufs Material, 3D-gedruckte Schablonen halfen beim Setzen der Dübel. Koordination und Baustelle organisierten die Studierenden selbst. Gefördert aus dem Innovationsfonds der Hochschule Mainz, nominiert für den Competitionline Campus Award 2025.</p>
+                        <p data-lang="en">34 students jointly designed and built a full-scale timber pavilion. More than 30 VR studies led to an open double-C structure whose staggered slats form places to sit, stand and linger. The 726 individual parts, mostly reclaimed timber, were modelled parametrically and made without conventional assembly drawings: mixed reality projected positions directly onto the material, and 3D-printed templates guided the dowels. The students organised coordination and the build themselves. Funded by the Mainz University innovation fund and nominated for the Competitionline Campus Award 2025.</p>
+                        <div class="links">
+                            <a href="https://www.hs-mainz.de/news/campus-award-engere-wahl/?back=443&amp;cHash=f07f9ba6244764bf11d2a7908676ecec" target="_blank" rel="noopener"><span data-lang="de">→ Projektdetails</span><span data-lang="en">→ Project details (German)</span></a>
+                            <a href="https://www.youtube.com/watch?v=n0GN8UJxtzU" target="_blank" rel="noopener"><span data-lang="de">→ Videodokumentation</span><span data-lang="en">→ Video</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">SoSe 2022 · Entwurfsstudio</span><span data-lang="en">Summer 2022 · design studio</span></div>
+                        <h3 data-lang="de">Students in the Box – LUCY wird Realität</h3>
+                        <h3 data-lang="en">Students in the Box – LUCY becomes reality</h3>
+                        <p data-lang="de">Studierende entwarfen ein rund 400 m² großes, flexibel nutzbares Gebäude für den eigenen Campus – für Arbeitsplätze, Workshops und Ausstellungen. In einem wettbewerbsähnlichen Verfahren mit externen Gutachtenden wurden drei Arbeiten ausgezeichnet und anschließend zusammengeführt. Daraus entstand mit maßgeblicher studentischer Beteiligung das Gebäude LUCY: eine Holzskelettkonstruktion mit Holz-Lehm-Decken, die so erstmals in Deutschland eingesetzt wurden.</p>
+                        <p data-lang="de">Mein Studio arbeitete dabei regelbasiert: Die Gruppe entwickelte ein gemeinsames Regelwerk – von Baufeld, GRZ und GFZ über Typologie, Erschließung und Tragwerksraster bis zur Fassade –, das jede und jeder auf das eigene Projekt anwendete. Möglichst viele Entscheidungen sollten über Bewertungssysteme wie Flächenbedarf, Materialverbrauch, Energieeintrag oder CO₂-Bilanz fallen, nachvollziehbar und jederzeit änderbar. Sogar der Bauplatz auf dem Campus war aus dem Regelwerk herzuleiten.</p>
+                        <p data-lang="en">Students designed a flexible building of around 400 m² for their own campus – for workspaces, workshops and exhibitions. In a competition-like process with external reviewers, three designs were selected and then merged. With substantial student involvement, this became the LUCY building: a timber frame structure with timber-clay floor slabs used in this form for the first time in Germany.</p>
+                        <p data-lang="en">My studio worked rule-based: the group developed a shared rule set – from plot, site coverage and floor area ratio through typology, circulation and structural grid to the facade – which each student applied to their own project. As many decisions as possible were to be made through evaluation systems such as floor area, material use, energy input or carbon balance, traceable and open to change at any time. Even the building site on campus had to be derived from the rule set.</p>
+                        <div class="links">
+                            <a href="https://www.hs-mainz.de/microsites/hochschule/lucy/" target="_blank" rel="noopener"><span data-lang="de">→ LUCY an der Hochschule Mainz</span><span data-lang="en">→ LUCY at Mainz University (German)</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">WiSe 2023/24 · Entwurfsstudio</span><span data-lang="en">Winter 2023/24 · design studio</span></div>
+                        <h3 data-lang="de">Umwidmung – Zukunft für eine Kirche</h3>
+                        <h3 data-lang="en">Conversion – a future for a church</h3>
+                        <p data-lang="de">Immer mehr Kirchen stehen leer. Am Beispiel der denkmalgeschützten Kirche St. Christoph in Neu-Isenburg-Gravenbruch von 1967 – einem elliptischen Bau von knapp 30 Metern Durchmesser, dessen baufälliger Turm 2017 zurückgebaut wurde – entwickelten Studierende auf Grundlage eines 3D-Scans neue Nutzungen. Ziel war kein neues monofunktionales Gebäude, sondern ein anpassungsfähiges, multifunktionales Haus, einschließlich eines Sanierungskonzepts für das Dach.</p>
+                        <p data-lang="en">More and more churches stand empty. Using the listed church of St. Christoph in Neu-Isenburg-Gravenbruch from 1967 – an elliptical building almost 30 metres across, whose unsafe tower was removed in 2017 – students developed new uses based on a 3D scan. The aim was not another single-use building but an adaptable, multi-use one, including a plan for refurbishing the roof.</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">SoSe 2025 · Entwurfsstudio mit der Innenarchitektur</span><span data-lang="en">Summer 2025 · design studio with interior architecture</span></div>
+                        <h3 data-lang="de">Mind the Gap – zirkuläres und interdisziplinäres Bauen</h3>
+                        <h3 data-lang="en">Mind the Gap – circular and interdisciplinary building</h3>
+                        <p data-lang="de">Interdisziplinäre Zweierteams aus Architektur und Innenarchitektur entwickelten zirkuläre Konzepte für zwei Baulücken in Mainz: Ein Gebäude sollte mit möglichst geringen Anpassungen von der einen Baulücke in die andere wandern können. Abgegeben wurden kurze Videos, die Konzept, Montage und Demontage zeigen.</p>
+                        <p data-lang="en">Interdisciplinary pairs of architecture and interior architecture students developed circular concepts for two vacant plots in Mainz: a building that can move from one gap to the other with as few changes as possible. Projects were submitted as short videos showing the concept, assembly and disassembly.</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">SoSe 2026 · Modul INPP</span><span data-lang="en">Summer 2026 · module INPP</span></div>
+                        <h3>ReShelter Montfort</h3>
+                        <p data-lang="de">Entwurf und integrale Planung eines temporären, autarken Shelters in der Ruine der Burg Montfort aus dem 13. Jahrhundert. Ausgehend von Punktwolke und Gebäudemodell analysieren die Teams den Standort, simulieren Sonneneinstrahlung und PV-Potenzial und bilden harte Randbedingungen parametrisch ab: Bauteilgewicht, Transport im Transporter mit Anhänger und Montage durch zwei Personen. Energie- und Wasserbilanz bestimmen das Autarkie-Konzept; über eine Live-Verbindung wandert das parametrische Modell ins BIM-Modell, einschließlich einer Analyse, wo dabei Information verloren geht.</p>
+                        <p data-lang="en">Design and integrated planning of a temporary, self-sufficient shelter inside the ruins of 13th-century Montfort Castle. Starting from a point cloud and building model, teams analyse the site, simulate solar radiation and PV potential, and encode hard constraints parametrically: component weight, transport by van and trailer, and assembly by two people. Energy and water balances shape the self-sufficiency concept; a live connection carries the parametric model into BIM, including an analysis of where information gets lost.</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">WiSe 2025/26 · Modul INPP, Erasmus Blended Intensive Programme</span><span data-lang="en">Winter 2025/26 · module INPP, Erasmus Blended Intensive Programme</span></div>
+                        <h3>Re-Skinning Bauhaus</h3>
+                        <p data-lang="de">Studierende mehrerer europäischer Hochschulen entwickeln in gemischten Teams Strategien zur Transformation und energetischen Erneuerung des Bauhausgebäudes in Dessau. Kuratierte digitale Impulse geben den Takt vor; die Ergebnisse werden in kurzen Iterationen präsentiert und von einem internationalen Scientific Committee begleitet.</p>
+                        <p data-lang="en">Students from several European universities work in mixed teams on strategies for transforming and energy-retrofitting the Bauhaus building in Dessau. Curated digital inputs set the pace; results are presented in short iterations and reviewed by an international scientific committee.</p>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">SoSe 2026 · Summer School mit der KNUCA Kyiv</span><span data-lang="en">Summer 2026 · summer school with KNUCA Kyiv</span></div>
+                        <h3>Summer School Mainz–Kyiv</h3>
+                        <p data-lang="de"><em>Jenseits des Sehens – Wege zu inklusiven Strategien für das architektonische Erbe.</em> Eine Woche mit der Kyiv National University of Construction and Architecture, geleitet von Dr. Ihor Tvoronovych: Studierende aus Mainz und Kyiv untersuchten die Mainzer Zitadelle nicht nur zeichnerisch, sondern über Bewegung, Klang und Tastsinn.</p>
+                        <p data-lang="de">Rund um den Drususstein entstanden erste Konzepte, den Ort für Menschen mit Sehbehinderung zugänglicher zu machen – ohne ihn baulich grundlegend zu verändern. Eine Fortsetzung ist im Gespräch.</p>
+                        <p data-lang="en"><em>Beyond Seeing – Towards Inclusive Strategies for Architectural Heritage.</em> One week with Kyiv National University of Construction and Architecture, led by Dr Ihor Tvoronovych: students from Mainz and Kyiv explored Mainz Citadel not only through drawing but through movement, sound and touch.</p>
+                        <p data-lang="en">Around the Drusus Monument, they developed first concepts for making the site more accessible to people with visual impairments – without fundamentally altering its fabric. A follow-up is under discussion.</p>
+                    </article>
+                </div>
+            </details>
+
+            <details id="projekte">
+                <summary><span data-lang="de">Bauten &amp; Praxis</span><span data-lang="en">Buildings &amp; practice</span></summary>
+                <div class="section-content">
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">2019 · Fertigstellung, Garching</span><span data-lang="en">2019 · completed, Garching</span></div>
+                        <h3>ESO Supernova</h3>
+                        <p data-lang="de">Das Besucherzentrum interpretiert ein Doppelsternsystem kurz vor der Supernova: zwei ineinander tanzende Kerne in einer aufbrechenden Hülle, mit Planetarium im einen und Glaskuppel im anderen Kern, verbunden durch Rampen- und Galerieebenen – vollständig in einem parametrischen 3D-Modell geplant.</p>
+                        <p data-lang="en">The visitor centre interprets a binary star system shortly before a supernova: two cores dancing around each other inside a breaking shell, with a planetarium in one and a glass dome in the other, linked by ramps and galleries – planned entirely in a parametric 3D model.</p>
+                        <div class="links">
+                            <a href="https://bp-da.de/projekte/besucherzentrum-astronomie-eso-supernova-garching.php" target="_blank" rel="noopener"><span data-lang="de">→ Projektdetails und Publikation</span><span data-lang="en">→ Project details and publication</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span>Heidelberg</span></div>
+                        <h3 data-lang="de">Haus der Astronomie</h3>
+                        <h3 data-lang="en">House of Astronomy</h3>
+                        <p data-lang="de">Als parametrisch generierte Spiralgalaxie ruht das nahezu stützenfreie Gebäude auf nur acht Pfeilern, zwei Kernen und einer segmentierten Betonkuppel. Die Fassade besteht aus 392 sphärisch und mehrfach geknickten Metallbauteilen ohne eine einzige parallele Kante.</p>
+                        <p data-lang="en">Generated parametrically as a spiral galaxy, the almost column-free building rests on just eight piers, two cores and a segmented concrete dome. Its facade consists of 392 spherically curved, multiply folded metal elements without a single parallel edge.</p>
+                        <div class="links">
+                            <a href="https://bp-da.de/projekte/haus-der-astronomie-galaxie-heidelberg.php" target="_blank" rel="noopener"><span data-lang="de">→ Projektdetails und Publikation</span><span data-lang="en">→ Project details and publication</span></a>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-meta"><span data-lang="de">2014–2020 · Unternehmen</span><span data-lang="en">2014–2020 · company</span></div>
                         <h3>monomer</h3>
-                        <p>Monomer transformiert CAD-gefertigte, algorithmisch inspirierte Formen in einzigartige Schmuckstücke via 3D-Druck – ein spannender Transfer von integraler Planungsmethodik in die Welt des filigranen Luxusdesigns</p>
-                        <p><a href="https://next-mannheim.de/monomer/?utm_source=chatgpt.com" target="_blank">→ Interview</a></p>
-                        <p><a href="https://www.youtube.com/watch?v=1SaKYuQ9-Ow" target="_blank">→ Herstellungsvideo</a></p>
+                        <p data-lang="de">Algorithmisch entworfene Formen wurden per 3D-Druck zu individualisierten Schmuckstücken – ein Transfer von parametrischer Planungsmethodik und digitaler Konfiguration in die Serienproduktion.</p>
+                        <p data-lang="en">Algorithmically designed forms were 3D printed as individualised jewellery – a transfer of parametric design methods and digital configuration into series production.</p>
+                        <div class="links">
+                            <a href="https://next-mannheim.de/monomer/" target="_blank" rel="noopener"><span data-lang="de">→ Interview</span><span data-lang="en">→ Interview (German)</span></a>
+                            <a href="https://www.youtube.com/watch?v=1SaKYuQ9-Ow" target="_blank" rel="noopener"><span data-lang="de">→ Herstellungsvideo</span><span data-lang="en">→ Production video</span></a>
+                        </div>
+                    </article>
+                </div>
+            </details>
+
+            <details id="publikationen">
+                <summary><span data-lang="de">Publikationen &amp; Presse</span><span data-lang="en">Publications &amp; press</span></summary>
+                <div class="section-content">
+                    <p class="section-intro" data-lang="en">Most titles are in German.</p>
+                    <p class="subhead" data-lang="de">Bücher und Fachbeiträge</p>
+                    <p class="subhead" data-lang="en">Books and articles</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2026 · Haufe · ISBN 978-3-648-19162-0</span><span data-lang="en">2026 · Haufe · ISBN 978-3-648-19162-0 · book chapter</span></div>
+                            <div class="keynote-title"><a href="https://shop.haufe.de/prod/kuenstliche-intelligenz-in-der-bau-und-immobilienwirtschaft" target="_blank" rel="noopener">Künstliche Intelligenz in der Bau- und Immobilienwirtschaft (Buchbeitrag)</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2012 · Bundesministerium für Wirtschaft und Technologie, „Auf IT gebaut“</span><span data-lang="en">2012 · Federal Ministry for Economic Affairs, “Auf IT gebaut”</span></div>
+                            <div class="keynote-title">Bewegungssimulation als Funktionstest für Architektur</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2005 · congena Texte</div>
+                            <div class="keynote-title"><a href="https://www.yumpu.com/de/document/view/4576112/besuchen-sie-uns-im-internet-congena-gmbh" target="_blank" rel="noopener">Bewegungssimulationen in der Architektur</a></div>
+                        </div>
                     </div>
-                    <div class="project">
-                        <h3>ESO Supernova, Garching</h3>
-                        <p>Das ESO Supernova-Besucherzentrum interpretiert ein Doppelsternsystem kurz vor der Supernova – zwei ineinander tanzende Kerne umhüllt von einer aufbrechenden Hülle, mit Planetarium im einen, Glaskuppel im anderen Kern, verbunden durch wechselnde Rampen- und Galerieebenen, vollständig in einem parametrischen 3D-Modell geplant und 2019 realisiert.</p>
-                        <p><a href="https://bp-da.de/projekte/besucherzentrum-astronomie-eso-supernova-garching.php" target="_blank">→ Projektdetails und Publikation</a></p>
+                    <p class="subhead" data-lang="de">Interviews und Berichte</p>
+                    <p class="subhead" data-lang="en">Interviews and reports</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">11/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/wettbewerbe/wir-duerfen-uns-nicht-laenger-vor-zahlen-druecken-11454.html" target="_blank" rel="noopener">Wir dürfen uns nicht länger vor Zahlen drücken</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">08/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/buero/wie-ki-die-hochschullehre-veraendert-9909.html" target="_blank" rel="noopener">Wie KI die Hochschullehre verändert</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">06/2025 · Kreiszeitung Rotenburg</div>
+                            <div class="keynote-title"><a href="https://www.kreiszeitung.de/lokales/rotenburg/kuenstliche-intelligenz-ist-mehr-als-ein-werkzeug-93773780.html" target="_blank" rel="noopener">Ziel sollte eine Partnerschaft mit der KI sein</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">06/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/buero/ki-wird-mehr-arbeitsplaetze-ueberfluessig-machen-als-sie-schafft-9797.html" target="_blank" rel="noopener">KI wird mehr Arbeitsplätze überflüssig machen, als sie schafft</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">03/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/wettbewerbe/re-use-antimonumente-und-wasserwelten-die-siegerprojekte-des-campus-awards-9698.html" target="_blank" rel="noopener">Campus Award 2025: Lamellenlounge unter den nominierten Projekten</a></div>
+                        </div>
                     </div>
-                    <div class="project">
-                        <h3>Haus der Astronomie, Heidelberg</h3>
-                        <p>Als architektonisch parametrisch generierte Spiralgalaxie ruht das nahezu stützenfreie Haus der Astronomie auf lediglich acht Pfeilern, zwei Kernanlagen und einer segmentierten Betonkup­pel, während seine hochkomplexe Fassade aus 392 sphärisch und mehrfach geknickten Metallbauteilen ohne einzige parallele Kante den Raum monumental interpretiert.</p>
-                        <p><a href="https://bp-da.de/projekte/haus-der-astronomie-galaxie-heidelberg.php" target="_blank">→ Projektdetails und Publikation</a></p>
+                    <p class="subhead" data-lang="de">Über Bauten und Projekte</p>
+                    <p class="subhead" data-lang="en">On buildings and projects</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2022 · Bauen+, VDI-Verlag</div>
+                            <div class="keynote-title"><a href="https://elibrary.vdi-verlag.de/de/document/view/detail/uuid/cc436f2b-8860-3385-86ef-67458761a564" target="_blank" rel="noopener">ESO Supernova</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">09/2018 · Detail</div>
+                            <div class="keynote-title"><a href="https://www.detail.de/de_de/zwei-kerne-die-verschmelzen-neue-eso-supernova-in-garching-32713" target="_blank" rel="noopener">Zwei Kerne, die verschmelzen: Neue ESO Supernova in Garching</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2018 · DBZ Deutsche BauZeitschrift</div>
+                            <div class="keynote-title"><a href="https://www.dbz.de/artikel/dbz_ESO_Supernova_Garching-2904524.html" target="_blank" rel="noopener">ESO Supernova Garching</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2018 · Doka</div>
+                            <div class="keynote-title"><a href="https://www.doka.com/de/references/europe/eso-supernova" target="_blank" rel="noopener">ESO Supernova</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2018 · Werkbericht Bernhardt + Partner Nr. 6</div>
+                            <div class="keynote-title">Grenzen sprengen: ESO Supernova</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05/2015 · Detail</div>
+                            <div class="keynote-title"><a href="https://www.detail.de/de_de/eine-galaxie-aus-beton-haus-der-astronomie-auf-dem-koenigstuhl-8576" target="_blank" rel="noopener">Eine Galaxie aus Beton – Haus der Astronomie auf dem Königstuhl</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">01/2013 · Detail</div>
+                            <div class="keynote-title"><a href="https://www.detail.de/de_de/energieeffiziente-galaxie-haus-der-astronomie-in-heidelberg-10107" target="_blank" rel="noopener">Energieeffiziente Galaxie – Haus der Astronomie in Heidelberg</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">12/2012 · Gussasphalt Magazin</div>
+                            <div class="keynote-title">Gelungene Umsetzung einer galaktischen Vision</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">02/2012 · Frankfurter Allgemeine Zeitung</div>
+                            <div class="keynote-title">Raum für Sterndeuter</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2012 · XAL Magazine Nr. 22</div>
+                            <div class="keynote-title">Spiral to the Sky</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2012 · Werkbericht Bernhardt + Partner Nr. 3</div>
+                            <div class="keynote-title">Faszination wecken: Haus der Astronomie</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">01/2012 · Radius</div>
+                            <div class="keynote-title">Galaktische Aussichten</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">12/2011 · Rhein-Neckar-Zeitung</div>
+                            <div class="keynote-title">Aufbruch in eine neue Dimension</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05/2020 · Blickpunkt Juwelier</div>
+                            <div class="keynote-title"><a href="https://blickpunktjuwelier.de/monomer-hoert-auf/" target="_blank" rel="noopener">monomer hört auf</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">01/2017 · NEXT Mannheim</div>
+                            <div class="keynote-title"><a href="https://next-mannheim.de/monomer/" target="_blank" rel="noopener">monomer</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">02/2016 · MA way of life</div>
+                            <div class="keynote-title"><a href="https://www.mawayoflife.de/2016/02/c-hub-reihe-4-monomer-einzigartiger-schmuck-aus-dem-3-d-drucker/" target="_blank" rel="noopener">monomer: Einzigartiger Schmuck aus dem 3D-Drucker</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2013 · i.materialise</div>
+                            <div class="keynote-title"><a href="https://i.materialise.com/blog/en/meet-the-designer-monomer/" target="_blank" rel="noopener">Meet the designer: monomer</a></div>
+                        </div>
                     </div>
-                     <div class="project">
-                        <h3>raumsyntax</h3>
-                        <p>Ein Forschungsprojekt mit der congena GmbH zeigt, wie sich mit agentenbasierter Simulation Bewegungsströme in Gebäuden und Quartieren bereits in der Entwurfsphase analysieren lassen, um Wegeführungen, Aufenthaltsqualitäten und funktionale Effizienz von Architektur datenbasiert zu optimieren. Weitere Forschungsprojekte mit der BMW Group für die IAA 2003 und 2005 folgten.</p>
-                        <p><a href="https://www.yumpu.com/de/document/view/4576112/besuchen-sie-uns-im-internet-congena-gmbh" target="_blank">→ Projektbericht</a></p>
-                    </div>
-                         <div class="project">
-                        <h3>Diplomarbeit</h3>
-                        <p>Im Rahmen meiner Diplomarbeit 2004 wurde ein Amsterdamer Stadtquartier mithilfe agentenbasierter Simulation analysiert: Digitale ‚Bewohner' mit unterschiedlichen Tageszyklen (Arbeiten, Einkaufen, Freizeit etc.) bewegen sich durch ein virtuelles Modell, wobei Wege, Zeiten und Aufenthaltsorte aufgezeichnet werden. Veränderungen in der Struktur – etwa neue Brücken oder Blockteilungen – lassen sich so quantitativ bewerten. Vier städtebauliche Entwürfe wurden auf Effizienz und räumliche Wirkung hin verglichen. Die Methode zeigt, wie Architekt:innen schon in der Planungsphase das Nutzerverhalten simulieren, Entwürfe kritisch prüfen und urbane Entwicklungsprozesse partizipativ steuern können. Faktisch meine erste Erfahrunge mit künstlicher Intelligenz.</p>
-                        <p><a href="https://www.rkw-kompetenzzentrum.de/publikationen/dokumentation/auf-it-gebaut-bauberufe-mit-zukunft/verzeichnis-aller-preistraeger-der-wettbewerbe-2002-2012/" target="_blank">→ Auszeichnung "Auf IT gebaut"</a></p>
+                    <p class="subhead" data-lang="de">Gutachten</p>
+                    <p class="subhead" data-lang="en">Reviewing</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2025 · Peer Review</span><span data-lang="en">2025 · peer review</span></div>
+                            <div class="keynote-title"><span data-lang="de">Gutachter für die eCAADe 2025</span><span data-lang="en">Reviewer for eCAADe 2025</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">11/2025 · Hochschule Koblenz</span><span data-lang="en">11/2025 · Koblenz University of Applied Sciences</span></div>
+                            <div class="keynote-title"><span data-lang="de">Externes Mitglied der Berufungskommission „Zirkuläres Bauen, Baustoffkunde und Entwerfen“</span><span data-lang="en">External member of the appointment committee for the professorship in circular construction, building materials and design</span></div>
+                        </div>
                     </div>
                 </div>
             </details>
 
-            <details>
-    <summary>Lehre</summary>
-    <div class="section-content">
-        <div class="focus-areas">
-            <div class="focus-item">
-                <h3>Informierte Architektur</h3>
-                <p>Studierende erlernen diverse digitale Werkzeuge, um Entwürfe bereits in der Frühphase kritisch zu bewerten und die bestmögliche Entscheidung zu treffen. Neben Autodesk Forma werden auch CAALA und ecotool eingesetzt, um das Thema Ökobilanzierung als wichtigen Aspekt in der Entwurfsgestaltung frühzeitig zu verankern.</p>
-            </div>
-            <div class="focus-item">
-                <h3>Immersive Raumlehre</h3>
-                <p>Der räumliche Gestaltungsprozess im virtuellen Raum ist für viele Studierende eine neuartige Erfahrung. Neue geometrische Freiheiten und eine direkte Raumwahrnehmung durch physische Interaktion machen den Entwurfsprozess erlebbar. Die VR/AR Tools Arkio und GravitySketch bringen Virtualität und Realität ganz nah zusammen.</p>
-            </div>
-            <div class="focus-item">
-                <h3>Neue Geschäftsmodelle mit KI</h3>
-                <p>Im Modul "Digitale Konstruktionsprozesse" erhalten Studierende einen Einblick in die aktuellen KI-Entwicklungen in der Baubranche und darüber hinaus. Alleine oder in Teams werden neuartige disruptive Geschäftsmodelle entwickelt, die bisherige Wertschöpfungsketten auf den Kopf stellen.</p>
-            </div>
-        </div>
-    </div>
-</details>
-
-            <details>
-                <summary>Keynotes & Vorträge</summary>
+            <details id="auszeichnungen">
+                <summary><span data-lang="de">Auszeichnungen &amp; Förderung</span><span data-lang="en">Awards &amp; funding</span></summary>
                 <div class="section-content">
-                    <p style="color: var(--text-grey-light); margin-bottom:1.2rem; font-size: 1rem;">
-            Hier finden Sie eine Auswahl aktueller und vergangener Keynotes und Vorträge zu den Themen Digitalisierung und KI. Mittlerweile habe ich den Fokus auf die Baubranche verlassen und beschäftige mich auch mit den sozialen und gesellschaftlichen Implikationen der KI-Transformation in allen Lebensbereichen.
-            Kontaktieren Sie mich gerne, wenn Sie Interesse an einem Impuls haben oder eine Kooperation anstreben.
-            
-        </p>
+                    <p class="section-intro" data-lang="de">Die Auszeichnungen gelten jeweils dem genannten Projekt. Beim Haus der Astronomie ging sie an das Gebäude und das Büro Bernhardt + Partner, in dessen Team ich an dem Projekt mitgearbeitet habe.</p>
+                    <p class="section-intro" data-lang="en">Each award was given to the project named. For the House of Astronomy, it went to the building and to Bernhardt + Partner, where I worked on the project as part of the team.</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2025 · Lamellenlounge</div>
+                            <div class="keynote-title"><span data-lang="de">Nominierung Competitionline Campus Award</span><span data-lang="en">Nomination, Competitionline Campus Award</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2024 · Digitales Handwerk</div>
+                            <div class="keynote-title"><span data-lang="de">Innovationsfonds der Hochschule Mainz</span><span data-lang="en">Mainz University innovation fund</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2023 · Immersive Raumlehre</div>
+                            <div class="keynote-title"><span data-lang="de">Innovationsfonds der Hochschule Mainz</span><span data-lang="en">Mainz University innovation fund</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2015 · monomer</div>
+                            <div class="keynote-title"><span data-lang="de">MEXI-Gründerpreis der Stadt Mannheim</span><span data-lang="en">MEXI founders’ award, City of Mannheim</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2014 · Projekt Haus der Astronomie, Bernhardt + Partner (Mitarbeit)</span><span data-lang="en">2014 · House of Astronomy project, Bernhardt + Partner (team member)</span></div>
+                            <div class="keynote-title"><span data-lang="de">Hugo-Häring-Auszeichnung, BDA</span><span data-lang="en">Hugo Häring Award, BDA</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2014 · Projekt Haus der Astronomie, Bernhardt + Partner (Mitarbeit)</span><span data-lang="en">2014 · House of Astronomy project, Bernhardt + Partner (team member)</span></div>
+                            <div class="keynote-title"><span data-lang="de">Iconic Award, Rat für Formgebung</span><span data-lang="en">Iconic Award, German Design Council</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2013 · monomer</div>
+                            <div class="keynote-title"><span data-lang="de">Golden A’ Design Award, Schmuckdesign</span><span data-lang="en">Golden A’ Design Award, jewellery design</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2013 · Projekt Haus der Astronomie, Bernhardt + Partner (Mitarbeit)</span><span data-lang="en">2013 · House of Astronomy project, Bernhardt + Partner (team member)</span></div>
+                            <div class="keynote-title"><span data-lang="de">Isover Energy Efficiency Award</span><span data-lang="en">Isover Energy Efficiency Award</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2012 · Projekt Haus der Astronomie, Bernhardt + Partner (Mitarbeit)</span><span data-lang="en">2012 · House of Astronomy project, Bernhardt + Partner (team member)</span></div>
+                            <div class="keynote-title"><span data-lang="de">GussAward, Verband für Gussasphalt</span><span data-lang="en">GussAward, mastic asphalt association</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2011 · Projekt Haus der Astronomie, Bernhardt + Partner (Mitarbeit)</span><span data-lang="en">2011 · House of Astronomy project, Bernhardt + Partner (team member)</span></div>
+                            <div class="keynote-title"><span data-lang="de">Auszeichnung für beispielhaftes Bauen Heidelberg, BDA</span><span data-lang="en">Award for exemplary building Heidelberg, BDA</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2005 · raumsyntax</div>
+                            <div class="keynote-title"><span data-lang="de">1. Preis „Auf IT gebaut“, Bundesministerium für Wirtschaft und Technologie</span><span data-lang="en">1st prize “Auf IT gebaut”, Federal Ministry for Economic Affairs</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2004</div>
+                            <div class="keynote-title"><span data-lang="de">Silver Medal, International Conference on Computing in Civil and Building Engineering (ICCCBE)</span><span data-lang="en">Silver Medal, International Conference on Computing in Civil and Building Engineering (ICCCBE)</span></div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details id="vortraege">
+                <summary><span data-lang="de">Keynotes &amp; Vorträge</span><span data-lang="en">Keynotes &amp; talks</span></summary>
+                <div class="section-content">
+                    <p class="section-intro" data-lang="de">Eine Auswahl aktueller und vergangener Vorträge. Ausgangspunkt war die Bauwirtschaft; inzwischen geht es zunehmend um die sozialen und gesellschaftlichen Folgen der KI-Transformation und um die Zukunft der Bildung.</p>
+                    <p class="section-intro" data-lang="en">A selection of recent and past talks, held in German unless the title is in English. They started from the construction industry and increasingly address the social consequences of the AI transformation and the future of education.</p>
+
+                    <p class="subhead">2026</p>
                     <div class="keynote-list">
                         <div class="keynote-item">
                             <div class="keynote-meta">23.06.2026 · 25. Bauforum Rheinland-Pfalz, Mainz</div>
-                            <div class="keynote-title">Code trifft Baustelle - Zwischen Digitaler Vision und physischer Realität</div>
+                            <div class="keynote-title">Code trifft Baustelle – Zwischen digitaler Vision und physischer Realität</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">18.04.2026 · Infotag der Hochschule Mainz, Mainz</div>
@@ -842,16 +1031,20 @@
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">05.03.2026 · KI-Symposium der Hochschule Mainz, Mainz</div>
-                            <div class="keynote-title">KI in der Lehre als Inkubator für neue Rollen - Urteilskraft im Zeitalter generativer Systeme</div>
+                            <div class="keynote-title">KI in der Lehre als Inkubator für neue Rollen – Urteilskraft im Zeitalter generativer Systeme</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">12.02.2026 · Frankfurt International Alumni Association e.V., Frankfurt</div>
-                            <div class="keynote-title">The Algorithmic Reordering of the World - Why AI will not remain a tool.</div>
+                            <div class="keynote-title">The Algorithmic Reordering of the World – Why AI will not remain a tool</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">27.01.2026 · Arbeitsgemeinschaft Stufenausbilung Bau e.V., Kassel</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                            <div class="keynote-meta">27.01.2026 · Arbeitsgemeinschaft Stufenausbildung Bau e.V., Kassel</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das zukünftige Bauen?</div>
                         </div>
+                    </div>
+
+                    <p class="subhead">2025</p>
+                    <div class="keynote-list">
                         <div class="keynote-item">
                             <div class="keynote-meta">14.11.2025 · Baugenossenschaft Freie Scholle eG, Bielefeld</div>
                             <div class="keynote-title">Disruptionen durch KI in der Bauwirtschaft, Gesellschaft und in unserer Lebensweise</div>
@@ -861,39 +1054,39 @@
                             <div class="keynote-title">Digitale Disruptionen in der Bauwirtschaft</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">06.11.2025 · Blaser Architekten AG "Schauraum B", Basel</div>
-                            <div class="keynote-title">Künstliche Intelligenz verändert alles - nur nicht den Menschen?</div>
+                            <div class="keynote-meta">06.11.2025 · Blaser Architekten AG „Schauraum B“, Basel</div>
+                            <div class="keynote-title">Künstliche Intelligenz verändert alles – nur nicht den Menschen?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">31.10.2025 · Architektenkammer Rheinland-Pfalz, Mainz</div>
                             <div class="keynote-title">Podiumsdiskussion zum Thema KI im Rahmen des Zukunftskongresses der AKRLP</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">30.09.2025 · Geschäftstelle Lebenshilfe Verden e.V., Verden</div>
-                            <div class="keynote-title">Von Disruption zur Befähigung - Digitalisierung & KI in der Lebenshilfe</div>
+                            <div class="keynote-meta">30.09.2025 · Geschäftsstelle Lebenshilfe Verden e.V., Verden</div>
+                            <div class="keynote-title">Von Disruption zur Befähigung – Digitalisierung &amp; KI in der Lebenshilfe</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">26.09.2025 · DGA BAU, Berlin</div>
-                            <div class="keynote-title">KI und der Faktor Mensch - Konflikte im Bauwesen neu denken</div>
+                            <div class="keynote-meta">26.09.2025 · DGA Bau, Berlin</div>
+                            <div class="keynote-title">KI und der Faktor Mensch – Konflikte im Bauwesen neu denken</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">03.07.2025 · Carpus+Partner AG "Cinq á Sept", Frankfurt</div>
+                            <div class="keynote-meta">03.07.2025 · Carpus+Partner AG „Cinq à Sept“, Frankfurt</div>
                             <div class="keynote-title">Wie verändert KI das Planen, Arbeiten und Leben?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">13.06.2025 · Rotenburger Wirtschaftsforum, Rotenburg</div>
-                            <div class="keynote-title">Künstliche Intelligenz verändert alles - nur nicht den Menschen?</div>
+                            <div class="keynote-title">Künstliche Intelligenz verändert alles – nur nicht den Menschen?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">22.05.2025 · Architektenkammer Hessen, Wiesbaden</div>
                             <div class="keynote-title">Ökologische Bewertung von Architektur-Wettbewerben</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">14.05.2025 · Sparkasse Duisburg "Immobilien-Talk", Duisburg</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das Planen, Bauen und Leben?</div>
+                            <div class="keynote-meta">14.05.2025 · Sparkasse Duisburg „Immobilien-Talk“, Duisburg</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das Planen, Bauen und Leben?</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">13.05.2025 · Hochschule Mainz "XR-Day", Mainz</div>
+                            <div class="keynote-meta">13.05.2025 · Hochschule Mainz „XR-Day“, Mainz</div>
                             <div class="keynote-title">Digitales Handwerk und immersive Raumlehre</div>
                         </div>
                         <div class="keynote-item">
@@ -901,48 +1094,56 @@
                             <div class="keynote-title">Bestimmt KI das Bild der Stadt?</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">05.03.2025 · VDW- /VNW-Fachtagung "Digitalisierung&Innovation", Hamburg</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das Planen, Bauen und Leben?</div>
+                            <div class="keynote-meta">05.03.2025 · VdW-/VNW-Fachtagung „Digitalisierung &amp; Innovation“, Hamburg</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das Planen, Bauen und Leben?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">05.02.2025 · Deutsches Institut für Urbane Transformation DIUT, Essen</div>
-                            <div class="keynote-title">Künstliche Intelligenz baut - Wie digital kann das Bauen werden?</div>
+                            <div class="keynote-title">Künstliche Intelligenz baut – Wie digital kann das Bauen werden?</div>
                         </div>
+                    </div>
+
+                    <p class="subhead">2024</p>
+                    <div class="keynote-list">
                         <div class="keynote-item">
-                            <div class="keynote-meta">05.11.2024 · Hochschule Mainz "Dozentenfutter", Mainz</div>
+                            <div class="keynote-meta">05.11.2024 · Hochschule Mainz „Dozentenfutter“, Mainz</div>
                             <div class="keynote-title">Digitales Handwerk</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">10.09.2024 · Verheyen-Ingenieure "Forum Wissen&Networking", Bad Kreuznach</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                            <div class="keynote-meta">10.09.2024 · Verheyen-Ingenieure „Forum Wissen &amp; Networking“, Bad Kreuznach</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das zukünftige Bauen?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">02.07.2024 · VdW-Forum Wohnungswirtschaft, Düsseldorf</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das zukünftige Bauen?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">27.06.2024 · BIM-Cluster Rheinland-Pfalz, Mainz</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das zukünftige Bauen?</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">14.06.2024 · Verband Beratender Ingenieure VBI, Bernkastel-Kues</div>
-                            <div class="keynote-title">Disruptionen in der Bauwirtschaft - Wie verändert KI das zukünftige Bauen?</div>
+                            <div class="keynote-title">Disruptionen in der Bauwirtschaft – Wie verändert KI das zukünftige Bauen?</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">29.04.2024 · Hochschule Mainz "International Construction Management", Mainz</div>
+                            <div class="keynote-meta">29.04.2024 · Hochschule Mainz „International Construction Management“, Mainz</div>
                             <div class="keynote-title">Disruptions in AEC</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">20.04.2024 · Hochschule Mainz "Infotag", Mainz</div>
+                            <div class="keynote-meta">20.04.2024 · Infotag der Hochschule Mainz, Mainz</div>
                             <div class="keynote-title">Disruptionen in der Bauwirtschaft</div>
                         </div>
+                    </div>
+
+                    <p class="subhead">2023</p>
+                    <div class="keynote-list">
                         <div class="keynote-item">
-                            <div class="keynote-meta">04.11.2023 · Handwerkskammer Koblenz "Nacht der Technik", Koblenz</div>
-                            <div class="keynote-title">Analogisierung 1.0 - Perspektiven von Mensch und KI in der Bauwirtschaft</div>
+                            <div class="keynote-meta">04.11.2023 · Handwerkskammer Koblenz „Nacht der Technik“, Koblenz</div>
+                            <div class="keynote-title">Analogisierung 1.0 – Perspektiven von Mensch und KI in der Bauwirtschaft</div>
                         </div>
                         <div class="keynote-item">
-                            <div class="keynote-meta">11.10.2023 · Zentrum Baukultur "KI baut - Wie digital kann bauen sein?", Mainz</div>
-                            <div class="keynote-title">Analogisierung 0.1 - Wie uns das Handwerk retten kann</div>
+                            <div class="keynote-meta">11.10.2023 · Zentrum Baukultur „KI baut – Wie digital kann Bauen sein?“, Mainz</div>
+                            <div class="keynote-title">Analogisierung 0.1 – Wie uns das Handwerk retten kann</div>
                         </div>
                         <div class="keynote-item">
                             <div class="keynote-meta">27.03.2023 · BIM-Cluster Rheinland-Pfalz, Mainz</div>
@@ -952,37 +1153,65 @@
                 </div>
             </details>
 
-            <details class="contact" id="kontakt" aria-labelledby="kontakt-title">
-                <summary id="kontakt-title">Lassen Sie uns ins Gespräch kommen.</summary>
+            <details id="ueber-mich" class="about">
+                <summary><span data-lang="de">Über mich</span><span data-lang="en">About</span></summary>
                 <div class="section-content">
-                <p class="contact-intro">Sie möchten KI in Ihrer Organisation einsetzen, Ihr Team weiterbilden oder einen Impuls für Ihre Veranstaltung setzen? Schreiben Sie mir gerne – auch für Kooperationen und erste Ideen.</p>
-                <p class="contact-intro">Ein paar Stichpunkte zu Ihrer Organisation, Ihrer Fragestellung und dem gewünschten Zeitrahmen helfen mir, mich auf unser Gespräch vorzubereiten.</p>
-                <div class="contact-actions">
-                    <button class="action-link" id="email-request" type="button" hidden>Anfrage per E-Mail senden <span aria-hidden="true">&nbsp;↗</span></button>
+                    <p data-lang="de">Thomas Mrokon ist Professor für Entwerfen und Digitale Konstruktion an der Hochschule Mainz und seit 2024 Studiengangsleiter des Bachelorstudiengangs Architektur.</p>
+                    <p data-lang="en">Thomas Mrokon is Professor of Architectural Design and Digital Construction at Mainz University of Applied Sciences and, since 2024, director of its Bachelor’s programme in Architecture.</p>
+                    <p data-lang="de">Seine Arbeit mit regelbasierten Verfahren begann 2004 mit agentenbasierter Simulation im Städtebau – im eigenen Büro raumsyntax und als wissenschaftlicher Mitarbeiter an der TU Darmstadt. Als Architekt bei Bernhardt + Partner verband er bei den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie“ in Heidelberg und „ESO Supernova“ in Garching Computational Design und digitale Fertigung mit der Realisierung komplexer Bauten.</p>
+                    <p data-lang="en">His work with rule-based methods began in 2004 with agent-based simulation in urban design – in his own practice raumsyntax and as a research associate at TU Darmstadt. As an architect with Bernhardt + Partner, he combined computational design and digital fabrication with the delivery of complex buildings on the award-winning House of Astronomy in Heidelberg and ESO Supernova in Garching.</p>
+                    <p data-lang="de">Nach der Gründung des Start-ups monomer und der Mitarbeit in der Architekturabteilung von Drees &amp; Sommer folgte er 2021 dem Ruf an die Hochschule Mainz. Seitdem verbindet er Lehre, angewandte Forschung und die Weiterentwicklung des Architekturstudiums unter den Bedingungen von KI und Automatisierung.</p>
+                    <p data-lang="en">After founding the start-up monomer and working in the architecture department of Drees &amp; Sommer, he was appointed to Mainz University of Applied Sciences in 2021. Since then, he has combined teaching, applied research and the further development of architectural education under conditions of AI and automation.</p>
+                    <p data-lang="de">Seit 2023 hält er regelmäßig Keynotes zu KI für Fachpublikum und Öffentlichkeit.</p>
+                    <p data-lang="en">Since 2023, he has regularly given keynotes on AI to professional and general audiences.</p>
+                    <hr>
+                    <img src="ThomasMrokon-46kb.jpg" alt="Thomas Mrokon" width="800" height="532" loading="lazy">
+                    <p class="vision" data-lang="de">Meine Vision: Eine Welt, in der Technologie nicht nur zur Effizienzsteigerung oder als Bedrohung eingesetzt wird, sondern als Mittel zur Freiheitswahrung, Persönlichkeitsentfaltung und Sinnstiftung.</p>
+                    <p class="vision" data-lang="en">My vision: a world in which technology is used neither merely for efficiency nor as a threat, but as a means of preserving freedom, enabling personal development and creating meaning.</p>
+                    <p class="motto" data-lang="de">OFFLINE ist das neue Online.</p>
+                    <p class="motto" data-lang="en">OFFLINE is the new online.</p>
                 </div>
-                <span class="contact-email" id="contact-email">thomas.mrokon [at] hs-mainz [dot] de</span>
-                <p class="contact-hint">Für eine manuelle Nachricht ersetzen Sie [at] durch @ und [dot] durch einen Punkt.</p>
-                <ul class="contact-profiles" aria-label="Weitere Profile und Kontaktmöglichkeiten">
-                    <li><a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" rel="noopener noreferrer">Auf LinkedIn vernetzen <span aria-hidden="true">↗</span></a></li>
-                    <li><a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" rel="noopener noreferrer">Personenverzeichnis Hochschule Mainz <span aria-hidden="true">↗</span></a></li>
-                    <li><a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" rel="noopener noreferrer">Architekturinstitut der Hochschule Mainz <span aria-hidden="true">↗</span></a></li>
-                </ul>
+            </details>
+
+            <details id="beratung">
+                <summary><span data-lang="de">Beratung</span><span data-lang="en">Consulting</span></summary>
+                <div class="section-content">
+                    <p class="section-intro" data-lang="de">Beratung, Workshops und Impulse zum Einsatz von KI in Planungsbüros und Unternehmen der Bauwirtschaft biete ich unabhängig von meiner Tätigkeit an der Hochschule unter dem Namen raumsyntax an.</p>
+                    <p class="section-intro" data-lang="en">I offer consulting, workshops and talks on the use of AI in architecture practices and construction companies independently of my university position, under the name raumsyntax (in German).</p>
+                    <a class="action-link" href="https://raumsyntax.de" target="_blank" rel="noopener">raumsyntax.de <span aria-hidden="true">&nbsp;↗</span></a>
+                </div>
+            </details>
+
+            <details id="kontakt">
+                <summary><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></summary>
+                <div class="section-content">
+                    <p class="section-intro" data-lang="de">Für Anfragen zu Forschungskooperationen, Lehre, Gutachten und Vorträgen erreichen Sie mich an der Hochschule Mainz.</p>
+                    <p class="section-intro" data-lang="en">For research collaborations, teaching, reviewing and talks, please contact me at Mainz University of Applied Sciences.</p>
+                    <button class="action-link" id="email-request" type="button" hidden><span data-lang="de">E-Mail schreiben</span><span data-lang="en">Send an email</span> <span aria-hidden="true">&nbsp;↗</span></button>
+                    <br>
+                    <span class="contact-email" id="contact-email">thomas.mrokon [at] hs-mainz [dot] de</span>
+                    <p class="contact-hint" data-lang="de">Für eine manuelle Nachricht ersetzen Sie [at] durch @ und [dot] durch einen Punkt.</p>
+                    <p class="contact-hint" data-lang="en">To write manually, replace [at] with @ and [dot] with a full stop.</p>
+                    <ul class="contact-profiles">
+                        <li><a href="https://www.linkedin.com/in/thomas-mrokon-33102971/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.hs-mainz.de/personenverzeichnis/thomas-mrokon/" target="_blank" rel="noopener noreferrer"><span data-lang="de">Personenverzeichnis Hochschule Mainz</span><span data-lang="en">Mainz University staff directory</span> <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://architekturinstitut.hs-mainz.de/team/thomas-mrokon" target="_blank" rel="noopener noreferrer"><span data-lang="de">Architekturinstitut der Hochschule Mainz</span><span data-lang="en">Institute of Architecture, Mainz University</span> <span aria-hidden="true">↗</span></a></li>
+                    </ul>
                 </div>
             </details>
         </main>
 
         <footer>
             <p>
-                <a href="impressum.html" style="color: var(--text-grey-dark);">Impressum</a> •
-                <a href="datenschutz.html" style="color: var(--text-grey-dark);">Datenschutz</a>
+                <a href="impressum.html">Impressum</a> •
+                <a href="datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a>
             </p>
-            <p style="margin: 1rem 0; color: var(--text-grey-dark); font-size: 0.85rem;">
-                🌱 Diese Website erreicht eine A+ Bewertung bei <a href="https://www.websitecarbon.com" target="_blank" style="color: var(--text-grey-dark); text-decoration: underline;">websitecarbon.com</a>
-            </p>
-            <p style="color: var(--text-grey-dark);">© 2025 Prof. Thomas J. Mrokon</p>
+            <p data-lang="de">🌱 Diese Website erreicht eine A+ Bewertung bei <a href="https://www.websitecarbon.com" target="_blank" rel="noopener">websitecarbon.com</a></p>
+            <p data-lang="en">🌱 This website is rated A+ by <a href="https://www.websitecarbon.com" target="_blank" rel="noopener">websitecarbon.com</a></p>
+            <p>© <span id="year">2026</span> Prof. Thomas J. Mrokon</p>
         </footer>
     </div>
-    
+
     <!-- Besucherstatistik: selbst gehostetes GoatCounter (Open Source, keine Cookies) -->
     <script>
     // GoatCounter wertet "Do Not Track" von sich aus nicht aus. Diese Zeilen
@@ -997,100 +1226,109 @@
     </script>
     <script data-goatcounter="https://stats.mrokon.de/count"
             async src="https://stats.mrokon.de/count.js"></script>
-    
+
     <script>
-    // Die E-Mail-Adresse erst beim bewussten Klick zusammensetzen.
+    const html = document.documentElement;
+    const body = document.body;
+    const toggle = document.getElementById('theme-toggle');
+    const modeLabel = document.querySelector('.mode-label');
+
+    // --- Sprache ---
+    const langButtons = document.querySelectorAll('[data-set-lang]');
+
+    function applyLang(lang) {
+        html.lang = lang;
+        langButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.setLang === lang)));
+        updateModeLabel();
+        document.title = lang === 'en'
+            ? 'Prof. Thomas J. Mrokon – Architectural Design and Digital Construction'
+            : 'Prof. Thomas J. Mrokon – Entwerfen und Digitale Konstruktion';
+    }
+
+    langButtons.forEach(btn => btn.addEventListener('click', () => {
+        applyLang(btn.dataset.setLang);
+        try { localStorage.setItem('lang', btn.dataset.setLang); } catch (e) {}
+    }));
+    applyLang(html.lang === 'en' ? 'en' : 'de');
+
+    // --- E-Mail erst beim bewussten Klick zusammensetzen ---
     const emailRequest = document.getElementById('email-request');
     emailRequest.addEventListener('click', () => {
         const address = document.getElementById('contact-email').textContent.trim()
             .replace(/\s*\[at\]\s*/, '@')
             .replace(/\s*\[dot\]\s*/g, '.');
-        const subject = encodeURIComponent('Anfrage zu KI-Beratung, Workshop oder Keynote');
-        window.location.href = 'mailto:' + address + '?subject=' + subject;
+        window.location.href = 'mailto:' + address;
     });
     emailRequest.hidden = false;
 
-    // Beim Laden auch vom Browser wiederhergestellte Klappmenüs schließen.
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Klappmenüs: beim Laden geschlossen, Sprunglinks öffnen das Ziel ---
     function closeDetailsOnLoad() {
         document.querySelectorAll('details').forEach(details => { details.open = false; });
     }
+    function openFromHash() {
+        const target = location.hash && document.getElementById(location.hash.slice(1));
+        if (target && target.tagName === 'DETAILS') {
+            target.open = true;
+            target.scrollIntoView();
+        }
+    }
     closeDetailsOnLoad();
-    window.addEventListener('pageshow', closeDetailsOnLoad);
+    openFromHash();
+    window.addEventListener('pageshow', () => { closeDetailsOnLoad(); openFromHash(); });
+    window.addEventListener('hashchange', openFromHash);
 
-    // Beratung und Kontakt erst beim Anklicken eines internen Links öffnen.
-    const linkedDetails = ['beratung', 'kontakt'].map(id => document.getElementById(id));
-    linkedDetails.forEach(details => {
-        document.querySelectorAll('a[href="#' + details.id + '"]').forEach(link => {
-            link.addEventListener('click', () => { details.open = true; });
-        });
-    });
-    // Theme Toggle mit JS
-    const toggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const html = document.documentElement;
-    const modeLabel = document.querySelector('.mode-label');
+    // --- Theme Toggle ---
+
+    function updateModeLabel() {
+        const light = body.classList.contains('light-mode');
+        const en = html.lang === 'en';
+        modeLabel.textContent = light ? (en ? 'Light' : 'Hell') : (en ? 'Dark' : 'Dunkel');
+    }
 
     function setLightMode() {
         body.classList.add('light-mode');
         html.classList.add('light-mode');
-        modeLabel.textContent = 'Hell';
-        // Speichern im localStorage
-        localStorage.setItem('theme', 'light');
-        // Event für andere Seiten auslösen
-        window.dispatchEvent(new CustomEvent('themeChange', { detail: 'light' }));
+        updateModeLabel();
+        try { localStorage.setItem('theme', 'light'); } catch (e) {}
     }
-    
+
     function setDarkMode() {
         body.classList.remove('light-mode');
         html.classList.remove('light-mode');
-        modeLabel.textContent = 'Dunkel';
-        // Speichern im localStorage
-        localStorage.setItem('theme', 'dark');
-        // Event für andere Seiten auslösen
-        window.dispatchEvent(new CustomEvent('themeChange', { detail: 'dark' }));
+        updateModeLabel();
+        try { localStorage.setItem('theme', 'dark'); } catch (e) {}
     }
-    
-    toggle.addEventListener('change', function() {
-        if (this.checked) {
-            setLightMode();
-        } else {
-            setDarkMode();
-        }
+
+    toggle.addEventListener('change', function () {
+        if (this.checked) { setLightMode(); } else { setDarkMode(); }
     });
-    
-    // Beim Laden: Gespeicherten Zustand wiederherstellen
-    function initializeTheme() {
-        const savedTheme = localStorage.getItem('theme');
+
+    (function initializeTheme() {
+        let savedTheme = null;
+        try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
         if (savedTheme === 'light') {
             toggle.checked = true;
             setLightMode();
         } else if (savedTheme === 'dark') {
             toggle.checked = false;
             setDarkMode();
-        } else {
-            // Fallback: System-Präferenz verwenden
-            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                toggle.checked = true;
-                setLightMode();
-            }
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            toggle.checked = true;
+            setLightMode();
         }
-    }
-    
-    // Event-Listener für Theme-Änderungen von anderen Seiten
-    window.addEventListener('storage', function(e) {
+    })();
+
+    window.addEventListener('storage', function (e) {
         if (e.key === 'theme') {
-            if (e.newValue === 'light') {
-                toggle.checked = true;
-                setLightMode();
-            } else {
-                toggle.checked = false;
-                setDarkMode();
-            }
+            if (e.newValue === 'light') { toggle.checked = true; setLightMode(); }
+            else { toggle.checked = false; setDarkMode(); }
+        }
+        if (e.key === 'lang' && (e.newValue === 'de' || e.newValue === 'en')) {
+            applyLang(e.newValue);
         }
     });
-    
-    // Initialisierung beim Laden
-    initializeTheme();
     </script>
 </body>
 </html>
