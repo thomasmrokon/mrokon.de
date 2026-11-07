@@ -441,6 +441,24 @@
             line-height: 1.4;
         }
 
+        .keynote-title a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: var(--line);
+            text-underline-offset: 0.2em;
+        }
+
+        .keynote-title a::after {
+            content: " ↗";
+            font-size: 0.85em;
+            color: var(--muted);
+        }
+
+        .keynote-title a:hover {
+            color: var(--green);
+            text-decoration-color: currentColor;
+        }
+
         /* --- BERATUNG & KONTAKT --- */
         .action-link {
             display: inline-flex;
@@ -633,13 +651,14 @@
                     <p class="subhead" data-lang="en">Origins</p>
 
                     <article class="entry">
-                        <div class="entry-meta"><span>2003–2005</span></div>
-                        <h3 data-lang="de">Agentenbasierte Bewegungssimulation</h3>
-                        <h3 data-lang="en">Agent-based movement simulation</h3>
-                        <p data-lang="de">Ein Forschungsprojekt mit der congena GmbH zeigte, wie sich mit agentenbasierter Simulation Bewegungsströme in Gebäuden und Quartieren schon in der Entwurfsphase analysieren lassen – um Wegeführung, Aufenthaltsqualität und funktionale Effizienz datenbasiert zu verbessern. Es folgten Projekte mit der BMW Group für die IAA 2003 und 2005.</p>
-                        <p data-lang="en">A research project with congena GmbH showed how agent-based simulation can analyse movement in buildings and neighbourhoods during design – to improve circulation, quality of stay and functional efficiency on the basis of data. Projects with the BMW Group for the IAA motor shows in 2003 and 2005 followed.</p>
+                        <div class="entry-meta"><span>2003–2007</span></div>
+                        <h3 data-lang="de">raumsyntax: Agentenbasierte Bewegungssimulation</h3>
+                        <h3 data-lang="en">raumsyntax: agent-based movement simulation</h3>
+                        <p data-lang="de">Ein Forschungsprojekt mit der congena GmbH zeigte, wie sich mit agentenbasierter Simulation Bewegungsströme in Gebäuden und Quartieren schon in der Entwurfsphase analysieren lassen – um Wegeführung, Aufenthaltsqualität und funktionale Effizienz datenbasiert zu verbessern. Es folgten Projekte mit der BMW Group für die IAA 2003 und 2005. Für das Forschungsprojekt raumsyntax gab es 2005 den 1. Preis im Wettbewerb „Auf IT gebaut“ des Bundeswirtschaftsministeriums.</p>
+                        <p data-lang="en">A research project with congena GmbH showed how agent-based simulation can analyse movement in buildings and neighbourhoods during design – to improve circulation, quality of stay and functional efficiency on the basis of data. Projects with the BMW Group for the IAA motor shows in 2003 and 2005 followed. In 2005, the raumsyntax research project won first prize in the “Auf IT gebaut” competition of the German Federal Ministry for Economic Affairs.</p>
                         <div class="links">
                             <a href="https://www.yumpu.com/de/document/view/4576112/besuchen-sie-uns-im-internet-congena-gmbh" target="_blank" rel="noopener"><span data-lang="de">→ Projektbericht</span><span data-lang="en">→ Project report (German)</span></a>
+                            <a href="https://www.rkw-kompetenzzentrum.de/publikationen/dokumentation/auf-it-gebaut-bauberufe-mit-zukunft/verzeichnis-aller-preistraeger-der-wettbewerbe-2002-2012/" target="_blank" rel="noopener"><span data-lang="de">→ Preisträger „Auf IT gebaut“</span><span data-lang="en">→ “Auf IT gebaut” winners</span></a>
                         </div>
                     </article>
 
@@ -649,9 +668,6 @@
                         <h3 data-lang="en">Diploma thesis: simulating an Amsterdam neighbourhood</h3>
                         <p data-lang="de">Digitale „Bewohner“ mit unterschiedlichen Tagesabläufen bewegen sich durch ein virtuelles Quartier; Wege, Zeiten und Aufenthaltsorte werden aufgezeichnet. So ließen sich vier städtebauliche Entwürfe quantitativ vergleichen – etwa die Wirkung neuer Brücken oder Blockteilungen. Faktisch meine erste Erfahrung mit künstlicher Intelligenz.</p>
                         <p data-lang="en">Digital “residents” with different daily routines move through a virtual neighbourhood while their routes, timing and locations are recorded. This allowed four urban designs to be compared quantitatively – for instance the effect of new bridges or subdivided blocks. In effect, my first experience with artificial intelligence.</p>
-                        <div class="links">
-                            <a href="https://www.rkw-kompetenzzentrum.de/publikationen/dokumentation/auf-it-gebaut-bauberufe-mit-zukunft/verzeichnis-aller-preistraeger-der-wettbewerbe-2002-2012/" target="_blank" rel="noopener"><span data-lang="de">→ Auszeichnung „Auf IT gebaut“</span><span data-lang="en">→ “Auf IT gebaut” award</span></a>
-                        </div>
                     </article>
                 </div>
             </details>
@@ -682,8 +698,11 @@
                         <div class="entry-meta"><span data-lang="de">Bachelor Architektur</span><span data-lang="en">BA Architecture</span></div>
                         <h3 data-lang="de">Informierte Architektur</h3>
                         <h3 data-lang="en">Informed architecture</h3>
-                        <p data-lang="de">Studierende bewerten Entwürfe bereits in der Frühphase mit digitalen Werkzeugen wie Autodesk Forma, CAALA und ecotool – damit Ökobilanzierung von Anfang an Teil der Entwurfsentscheidung ist.</p>
-                        <p data-lang="en">Students evaluate designs at an early stage with digital tools such as Autodesk Forma, CAALA and ecotool – so that life-cycle assessment is part of design decisions from the start.</p>
+                        <p data-lang="de">Studierende bewerten Entwürfe bereits in der Frühphase mit digitalen Werkzeugen wie Autodesk Forma, CAALA und ecotool – damit Ökobilanzierung von Anfang an Teil der Entwurfsentscheidung ist. In einem Projekt prüften Studierende bereits entschiedene Architekturwettbewerbe nachträglich nach ökologischen Kriterien; bei rund der Hälfte änderte sich die Rangfolge. Die Ergebnisse wurden den Architektenkammern Hessen und Rheinland-Pfalz vorgestellt.</p>
+                        <p data-lang="en">Students evaluate designs at an early stage with digital tools such as Autodesk Forma, CAALA and ecotool – so that life-cycle assessment is part of design decisions from the start. In one project, students re-evaluated completed architectural competitions against ecological criteria; in about half of them, the ranking changed. The results were presented to the chambers of architects of Hesse and Rhineland-Palatinate.</p>
+                        <div class="links">
+                            <a href="https://www.competitionline.com/de/news/wettbewerbe/wir-duerfen-uns-nicht-laenger-vor-zahlen-druecken-11454.html" target="_blank" rel="noopener"><span data-lang="de">→ Bericht bei competitionline</span><span data-lang="en">→ Report on competitionline (German)</span></a>
+                        </div>
                     </article>
 
                     <article class="entry">
@@ -708,8 +727,8 @@
                     <article class="entry">
                         <div class="entry-meta"><span data-lang="de">Semesterprojekt „Digitales Handwerk“ · 2. Semester</span><span data-lang="en">Semester project “Digital craft” · 2nd semester</span></div>
                         <h3>Lamellenlounge</h3>
-                        <p data-lang="de">34 Studierende entwarfen und bauten gemeinsam einen Holzpavillon – mit VR-Entwurf, parametrisierter Planung der Holzverbindungen, analogen Werkzeugen und studentischer Selbstorganisation. Engere Wahl beim Campus-Award der Hochschule Mainz.</p>
-                        <p data-lang="en">34 students jointly designed and built a timber pavilion – using VR design, parametric planning of the timber joints, hand tools and student self-organisation. Shortlisted for the Mainz University campus award.</p>
+                        <p data-lang="de">34 Studierende entwarfen und bauten gemeinsam einen Holzpavillon – mit VR-Entwurf, parametrisierter Planung der Holzverbindungen, analogen Werkzeugen und studentischer Selbstorganisation. Gefördert aus dem Innovationsfonds der Hochschule Mainz, nominiert für den Competitionline Campus Award 2025.</p>
+                        <p data-lang="en">34 students jointly designed and built a timber pavilion – using VR design, parametric planning of the timber joints, hand tools and student self-organisation. Funded by the Mainz University innovation fund and nominated for the Competitionline Campus Award 2025.</p>
                         <div class="links">
                             <a href="https://www.hs-mainz.de/news/campus-award-engere-wahl/?back=443&amp;cHash=f07f9ba6244764bf11d2a7908676ecec" target="_blank" rel="noopener"><span data-lang="de">→ Projektdetails</span><span data-lang="en">→ Project details (German)</span></a>
                             <a href="https://www.youtube.com/watch?v=n0GN8UJxtzU" target="_blank" rel="noopener"><span data-lang="de">→ Videodokumentation</span><span data-lang="en">→ Video</span></a>
@@ -765,35 +784,189 @@
             </details>
 
             <details id="publikationen">
-                <summary><span data-lang="de">Publikationen &amp; Gutachten</span><span data-lang="en">Publications &amp; reviewing</span></summary>
+                <summary><span data-lang="de">Publikationen &amp; Presse</span><span data-lang="en">Publications &amp; press</span></summary>
                 <div class="section-content">
-                    <article class="entry">
-                        <div class="entry-meta"><span data-lang="de">Buchbeitrag · Haufe</span><span data-lang="en">Book chapter · Haufe</span></div>
-                        <h3>Künstliche Intelligenz in der Bau- und Immobilienwirtschaft</h3>
-                        <p data-lang="de">Mein Beitrag behandelt die digitale Transformation der Planungsphasen und Wertschöpfungsketten im Bauwesen.</p>
-                        <p data-lang="en">My chapter (in German) addresses the digital transformation of design stages and value chains in construction.</p>
-                        <div class="links">
-                            <a href="https://shop.haufe.de/prod/kuenstliche-intelligenz-in-der-bau-und-immobilienwirtschaft" target="_blank" rel="noopener"><span data-lang="de">→ Zum Buch</span><span data-lang="en">→ Book</span></a>
+                    <p class="section-intro" data-lang="en">Most titles are in German.</p>
+                    <p class="subhead" data-lang="de">Bücher und Fachbeiträge</p>
+                    <p class="subhead" data-lang="en">Books and articles</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2026 · Haufe · ISBN 978-3-648-19162-0</span><span data-lang="en">2026 · Haufe · ISBN 978-3-648-19162-0 · book chapter</span></div>
+                            <div class="keynote-title"><a href="https://shop.haufe.de/prod/kuenstliche-intelligenz-in-der-bau-und-immobilienwirtschaft" target="_blank" rel="noopener">Künstliche Intelligenz in der Bau- und Immobilienwirtschaft (Buchbeitrag)</a></div>
                         </div>
-                    </article>
-
-                    <article class="entry">
-                        <div class="entry-meta"><span data-lang="de">Peer Review · 2025</span><span data-lang="en">Peer review · 2025</span></div>
-                        <h3 data-lang="de">Gutachter für die eCAADe 2025</h3>
-                        <h3 data-lang="en">Reviewer for eCAADe 2025</h3>
-                        <p data-lang="de">Begutachtung wissenschaftlicher Beiträge zu KI-gestütztem Entwerfen, Mixed Reality, Machine Learning in der Gebäude- und Stadtanalyse sowie Simulations- und Bewertungsverfahren.</p>
-                        <p data-lang="en">Reviewing papers on AI-assisted design, mixed reality, machine learning in building and urban analysis, and simulation and evaluation methods.</p>
-                    </article>
-
-                    <article class="entry">
-                        <div class="entry-meta"><span data-lang="de">Presse · 2025</span><span data-lang="en">Press · 2025</span></div>
-                        <h3>Künstliche Intelligenz ist mehr als ein Werkzeug</h3>
-                        <p data-lang="de">Bericht der Kreiszeitung zum Vortrag beim Rotenburger Wirtschaftsforum.</p>
-                        <p data-lang="en">Newspaper report (in German) on my talk at the Rotenburg business forum.</p>
-                        <div class="links">
-                            <a href="https://www.kreiszeitung.de/lokales/rotenburg/kuenstliche-intelligenz-ist-mehr-als-ein-werkzeug-93773780.html" target="_blank" rel="noopener"><span data-lang="de">→ Artikel</span><span data-lang="en">→ Article</span></a>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2012 · Bundesministerium für Wirtschaft und Technologie, „Auf IT gebaut“</span><span data-lang="en">2012 · Federal Ministry for Economic Affairs, “Auf IT gebaut”</span></div>
+                            <div class="keynote-title">Bewegungssimulation als Funktionstest für Architektur</div>
                         </div>
-                    </article>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2005 · congena Texte</div>
+                            <div class="keynote-title"><a href="https://www.yumpu.com/de/document/view/4576112/besuchen-sie-uns-im-internet-congena-gmbh" target="_blank" rel="noopener">Bewegungssimulationen in der Architektur</a></div>
+                        </div>
+                    </div>
+                    <p class="subhead" data-lang="de">Interviews und Berichte</p>
+                    <p class="subhead" data-lang="en">Interviews and reports</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">11/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/wettbewerbe/wir-duerfen-uns-nicht-laenger-vor-zahlen-druecken-11454.html" target="_blank" rel="noopener">Wir dürfen uns nicht länger vor Zahlen drücken</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">08/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/buero/wie-ki-die-hochschullehre-veraendert-9909.html" target="_blank" rel="noopener">Wie KI die Hochschullehre verändert</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">06/2025 · Kreiszeitung Rotenburg</div>
+                            <div class="keynote-title"><a href="https://www.kreiszeitung.de/lokales/rotenburg/kuenstliche-intelligenz-ist-mehr-als-ein-werkzeug-93773780.html" target="_blank" rel="noopener">Ziel sollte eine Partnerschaft mit der KI sein</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">06/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/buero/ki-wird-mehr-arbeitsplaetze-ueberfluessig-machen-als-sie-schafft-9797.html" target="_blank" rel="noopener">KI wird mehr Arbeitsplätze überflüssig machen, als sie schafft</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">03/2025 · competitionline</div>
+                            <div class="keynote-title"><a href="https://www.competitionline.com/de/news/wettbewerbe/re-use-antimonumente-und-wasserwelten-die-siegerprojekte-des-campus-awards-9698.html" target="_blank" rel="noopener">Campus Award 2025: Lamellenlounge unter den nominierten Projekten</a></div>
+                        </div>
+                    </div>
+                    <p class="subhead" data-lang="de">Über Bauten und Projekte</p>
+                    <p class="subhead" data-lang="en">On buildings and projects</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2022 · Bauen+, VDI-Verlag</div>
+                            <div class="keynote-title"><a href="https://elibrary.vdi-verlag.de/de/document/view/detail/uuid/cc436f2b-8860-3385-86ef-67458761a564" target="_blank" rel="noopener">ESO Supernova</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">09/2018 · Detail</div>
+                            <div class="keynote-title"><a href="https://www.detail.de/de_de/zwei-kerne-die-verschmelzen-neue-eso-supernova-in-garching-32713" target="_blank" rel="noopener">Zwei Kerne, die verschmelzen: Neue ESO Supernova in Garching</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2018 · DBZ Deutsche BauZeitschrift</div>
+                            <div class="keynote-title"><a href="https://www.dbz.de/artikel/dbz_ESO_Supernova_Garching-2904524.html" target="_blank" rel="noopener">ESO Supernova Garching</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2018 · Doka</div>
+                            <div class="keynote-title"><a href="https://www.doka.com/de/references/europe/eso-supernova" target="_blank" rel="noopener">ESO Supernova</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2018 · Werkbericht Bernhardt + Partner Nr. 6</div>
+                            <div class="keynote-title">Grenzen sprengen: ESO Supernova</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05/2015 · Detail</div>
+                            <div class="keynote-title"><a href="https://www.detail.de/de_de/eine-galaxie-aus-beton-haus-der-astronomie-auf-dem-koenigstuhl-8576" target="_blank" rel="noopener">Eine Galaxie aus Beton – Haus der Astronomie auf dem Königstuhl</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">01/2013 · Detail</div>
+                            <div class="keynote-title"><a href="https://www.detail.de/de_de/energieeffiziente-galaxie-haus-der-astronomie-in-heidelberg-10107" target="_blank" rel="noopener">Energieeffiziente Galaxie – Haus der Astronomie in Heidelberg</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">12/2012 · Gussasphalt Magazin</div>
+                            <div class="keynote-title">Gelungene Umsetzung einer galaktischen Vision</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">02/2012 · Frankfurter Allgemeine Zeitung</div>
+                            <div class="keynote-title">Raum für Sterndeuter</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2012 · XAL Magazine Nr. 22</div>
+                            <div class="keynote-title">Spiral to the Sky</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2012 · Werkbericht Bernhardt + Partner Nr. 3</div>
+                            <div class="keynote-title">Faszination wecken: Haus der Astronomie</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">01/2012 · Radius</div>
+                            <div class="keynote-title">Galaktische Aussichten</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">12/2011 · Rhein-Neckar-Zeitung</div>
+                            <div class="keynote-title">Aufbruch in eine neue Dimension</div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">05/2020 · Blickpunkt Juwelier</div>
+                            <div class="keynote-title"><a href="https://blickpunktjuwelier.de/monomer-hoert-auf/" target="_blank" rel="noopener">monomer hört auf</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">01/2017 · NEXT Mannheim</div>
+                            <div class="keynote-title"><a href="https://next-mannheim.de/monomer/" target="_blank" rel="noopener">monomer</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">02/2016 · MA way of life</div>
+                            <div class="keynote-title"><a href="https://www.mawayoflife.de/2016/02/c-hub-reihe-4-monomer-einzigartiger-schmuck-aus-dem-3-d-drucker/" target="_blank" rel="noopener">monomer: Einzigartiger Schmuck aus dem 3D-Drucker</a></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2013 · i.materialise</div>
+                            <div class="keynote-title"><a href="https://i.materialise.com/blog/en/meet-the-designer-monomer/" target="_blank" rel="noopener">Meet the designer: monomer</a></div>
+                        </div>
+                    </div>
+                    <p class="subhead" data-lang="de">Gutachten</p>
+                    <p class="subhead" data-lang="en">Reviewing</p>
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">2025 · Peer Review</span><span data-lang="en">2025 · peer review</span></div>
+                            <div class="keynote-title"><span data-lang="de">Gutachter für die eCAADe 2025</span><span data-lang="en">Reviewer for eCAADe 2025</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta"><span data-lang="de">11/2025 · Hochschule Koblenz</span><span data-lang="en">11/2025 · Koblenz University of Applied Sciences</span></div>
+                            <div class="keynote-title"><span data-lang="de">Externes Mitglied der Berufungskommission „Zirkuläres Bauen, Baustoffkunde und Entwerfen“</span><span data-lang="en">External member of the appointment committee for the professorship in circular construction, building materials and design</span></div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details id="auszeichnungen">
+                <summary><span data-lang="de">Auszeichnungen &amp; Förderung</span><span data-lang="en">Awards &amp; funding</span></summary>
+                <div class="section-content">
+                    <div class="keynote-list">
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2025 · Lamellenlounge</div>
+                            <div class="keynote-title"><span data-lang="de">Nominierung Competitionline Campus Award</span><span data-lang="en">Nomination, Competitionline Campus Award</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2024 · Digitales Handwerk</div>
+                            <div class="keynote-title"><span data-lang="de">Innovationsfonds der Hochschule Mainz</span><span data-lang="en">Mainz University innovation fund</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2023 · Immersive Raumlehre</div>
+                            <div class="keynote-title"><span data-lang="de">Innovationsfonds der Hochschule Mainz</span><span data-lang="en">Mainz University innovation fund</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2015 · monomer</div>
+                            <div class="keynote-title"><span data-lang="de">MEXI-Gründerpreis der Stadt Mannheim</span><span data-lang="en">MEXI founders’ award, City of Mannheim</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2014 · Haus der Astronomie</div>
+                            <div class="keynote-title"><span data-lang="de">Hugo-Häring-Auszeichnung, BDA</span><span data-lang="en">Hugo Häring Award, BDA</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2014 · Haus der Astronomie</div>
+                            <div class="keynote-title"><span data-lang="de">Iconic Award, Rat für Formgebung</span><span data-lang="en">Iconic Award, German Design Council</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2013 · monomer</div>
+                            <div class="keynote-title"><span data-lang="de">Golden A’ Design Award, Schmuckdesign</span><span data-lang="en">Golden A’ Design Award, jewellery design</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2013 · Haus der Astronomie</div>
+                            <div class="keynote-title"><span data-lang="de">Isover Energy Efficiency Award</span><span data-lang="en">Isover Energy Efficiency Award</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2012 · Haus der Astronomie</div>
+                            <div class="keynote-title"><span data-lang="de">GussAward, Verband für Gussasphalt</span><span data-lang="en">GussAward, mastic asphalt association</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2011 · Haus der Astronomie</div>
+                            <div class="keynote-title"><span data-lang="de">Auszeichnung für beispielhaftes Bauen Heidelberg, BDA</span><span data-lang="en">Award for exemplary building Heidelberg, BDA</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2005 · raumsyntax</div>
+                            <div class="keynote-title"><span data-lang="de">1. Preis „Auf IT gebaut“, Bundesministerium für Wirtschaft und Technologie</span><span data-lang="en">1st prize “Auf IT gebaut”, Federal Ministry for Economic Affairs</span></div>
+                        </div>
+                        <div class="keynote-item">
+                            <div class="keynote-meta">2004</div>
+                            <div class="keynote-title"><span data-lang="de">Silver Medal, International Conference on Computing in Civil and Building Engineering (ICCCBE)</span><span data-lang="en">Silver Medal, International Conference on Computing in Civil and Building Engineering (ICCCBE)</span></div>
+                        </div>
+                    </div>
                 </div>
             </details>
 
@@ -942,8 +1115,8 @@
                 <div class="section-content">
                     <p data-lang="de">Thomas Mrokon ist Professor für Entwerfen und Digitale Konstruktion an der Hochschule Mainz und seit 2024 Studiengangsleiter des Bachelorstudiengangs Architektur.</p>
                     <p data-lang="en">Thomas Mrokon is Professor of Architectural Design and Digital Construction at Mainz University of Applied Sciences and, since 2024, director of its Bachelor’s programme in Architecture.</p>
-                    <p data-lang="de">Seine Arbeit mit regelbasierten Verfahren begann 2004 mit agentenbasierter Simulation im Städtebau. Als Architekt verband er bei den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie“ in Heidelberg und „ESO Supernova“ in Garching Computational Design und digitale Fertigung mit der Realisierung komplexer Bauten.</p>
-                    <p data-lang="en">His work with rule-based methods began in 2004 with agent-based simulation in urban design. As an architect, he combined computational design and digital fabrication with the delivery of complex buildings on the award-winning House of Astronomy in Heidelberg and ESO Supernova in Garching.</p>
+                    <p data-lang="de">Seine Arbeit mit regelbasierten Verfahren begann 2004 mit agentenbasierter Simulation im Städtebau – im eigenen Büro raumsyntax und als wissenschaftlicher Mitarbeiter an der TU Darmstadt. Als Architekt bei Bernhardt + Partner verband er bei den mehrfach ausgezeichneten Gebäuden „Haus der Astronomie“ in Heidelberg und „ESO Supernova“ in Garching Computational Design und digitale Fertigung mit der Realisierung komplexer Bauten.</p>
+                    <p data-lang="en">His work with rule-based methods began in 2004 with agent-based simulation in urban design – in his own practice raumsyntax and as a research associate at TU Darmstadt. As an architect with Bernhardt + Partner, he combined computational design and digital fabrication with the delivery of complex buildings on the award-winning House of Astronomy in Heidelberg and ESO Supernova in Garching.</p>
                     <p data-lang="de">Nach der Gründung des Start-ups monomer und der Mitarbeit in der Architekturabteilung von Drees &amp; Sommer folgte er 2021 dem Ruf an die Hochschule Mainz. Seitdem verbindet er Lehre, angewandte Forschung und die Weiterentwicklung des Architekturstudiums unter den Bedingungen von KI und Automatisierung.</p>
                     <p data-lang="en">After founding the start-up monomer and working in the architecture department of Drees &amp; Sommer, he was appointed to Mainz University of Applied Sciences in 2021. Since then, he has combined teaching, applied research and the further development of architectural education under conditions of AI and automation.</p>
                     <p data-lang="de">Seit 2023 hält er regelmäßig Keynotes zu KI für Fachpublikum und Öffentlichkeit.</p>
